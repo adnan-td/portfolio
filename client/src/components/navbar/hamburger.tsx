@@ -13,10 +13,11 @@ export default function Hamburger({ isOpen, setIsOpen }: { isOpen: boolean; setI
       scale: 5,
       customPosition: {
         x: cur?.offsetLeft + cur?.scrollWidth / 2.5 + 3,
-        y: cur?.offsetHeight - cur?.scrollHeight / 2.5 + 9,
+        y: cur?.offsetHeight - cur?.scrollHeight / 2.5 + 2.5,
       },
       zIndex: 3,
       bgColor: options.invert ? "white" : null,
+      bg: null,
     });
   };
 

@@ -44,6 +44,7 @@ function FeaturedWork({ data }: { data: WorkInterface }) {
       bgColor: "transparent",
       zIndex: 1,
       bg: <FWHover color={data.mouseColor} />,
+      invert: false,
     });
   };
   const handleMouseLeave = () => {
@@ -73,7 +74,7 @@ function FeaturedWork({ data }: { data: WorkInterface }) {
       </div>
       <div className="flex flex-col gap-10 py-5 px-7">
         <p className="text-2xl font-medium">{data.title}</p>
-        <p className="text-4xl font-semibold">{data.description}</p>
+        <p className="text-4xl font-semibold md:text-3xl">{data.description}</p>
         <p className="text-1xl text-[#6f6f6f] font-medium">{data.tech}</p>
       </div>
     </div>

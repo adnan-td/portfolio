@@ -17,7 +17,23 @@ interface MouseSettings {
   scale?: number;
   rotate?: number;
   customPosition?: Pos;
-  mixBlendMode?: "difference" | "initial";
+  mixBlendMode?:
+    | "initial"
+    | "multiply"
+    | "screen"
+    | "overlay"
+    | "darken"
+    | "lighten"
+    | "color-dodge"
+    | "color-burn"
+    | "hard-light"
+    | "soft-light"
+    | "difference"
+    | "exclusion"
+    | "hue"
+    | "saturation"
+    | "color"
+    | "luminosity";
   invert?: boolean;
 }
 

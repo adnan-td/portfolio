@@ -11,7 +11,7 @@ const api = express.Router();
 //   })
 // );
 
-api.use("/", express.static(path.join(__dirname, "../../client_build")));
-api.get("/", (req, res) => res.sendFile(path.join(__dirname, "../../client_build/index.html")));
+api.use("/", express.static("client_build"));
+api.get("/", (req, res) => res.sendFile("client_build/index.html"));
 
 export default api;

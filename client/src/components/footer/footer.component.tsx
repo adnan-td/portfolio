@@ -37,7 +37,7 @@ export default function FooterComponent() {
   const y = useParallax(scrollYProgress, [-500, 0]);
   return (
     <div
-      className="relative left-0 top-0 h-screen bg-black text-white flex flex-col justify-center items-center gap-10 pt-10 overflow-hidden"
+      className="relative left-0 top-0 min-h-screen bg-black text-white flex flex-col justify-center items-center gap-10 pt-10 overflow-hidden"
       ref={ref}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

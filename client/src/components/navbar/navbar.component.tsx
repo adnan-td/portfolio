@@ -57,17 +57,17 @@ export default function NavbarComponent() {
   return (
     <div className="flex justify-between pl-14 py-6 items-center min-h-20 gap-3">
       <a href="/" className="cursor-pointer">
-        <img className="w-20 text-black" src="/Logo.svg" alt="Logo" />
+        <img className="w-20 text-black sm:w-14" src="/Logo.svg" alt="Logo" />
       </a>
-      <div className="flex items-center">
-        <div className="flex gap-12 items-center font-sono font-medium text-xl">
-          <a href="#" className="flex items-center gap-1">
+      <div className="flex items-center justify-center">
+        <div className="flex gap-12 items-center font-sono font-medium text-xl sm:gap-7">
+          <a href="#" className="flex items-center gap-1 sm:hidden">
             <ArticleIcon /> resume
           </a>
           <a href="#" className="">
             menu
           </a>
-          <div className="h-[80px] w-[80px]"></div>
+          <div className="h-[60px] w-[70px] sm:w-[80px]"></div>
         </div>
         <Hamburger isOpen={isOpen} setIsOpen={setIsOpen} />
         <AnimatePresence mode="wait">
@@ -75,10 +75,10 @@ export default function NavbarComponent() {
             <>
               <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 0.7 }}
+                animate={{ opacity: 0.5 }}
                 exit={{ opacity: 0 }}
                 key="navbar-bg"
-                className="bg-neutral-300 fixed top-0 left-0 min-h-screen min-w-full overflow-auto z-[2]"
+                className="bg-black fixed top-0 left-0 min-h-screen min-w-full overflow-auto z-[2]"
               ></motion.div>
               <motion.div
                 key="navbar-grid"

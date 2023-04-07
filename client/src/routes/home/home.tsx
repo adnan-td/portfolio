@@ -6,20 +6,7 @@ import { LoaderContext } from "../../context/loader/loader.context";
 import FeaturedWorks from "./featuredwork";
 import "./home.scss";
 import LandingPage from "./landing";
-
-const fwQuery = gql`
-  {
-    featuredWorks {
-      id
-      title
-      description
-      tech
-      image
-      bgColor
-      mouseColor
-    }
-  }
-`;
+import TimeLine from "./timeline";
 
 export default function Home() {
   const { data: fw, loading: fwloading } = useQuery(fwQuery);
@@ -42,14 +29,38 @@ export function HomeRoute({ fw }: { fw: any }) {
         <LandingPage />
         <div className="flex flex-col gap-6 mb-28">
           <div className="text-6xl font-semibold flex flex-col gap-3">
+            <p>Where I've</p>
+            <p className="main-skills-head">Worked</p>
+          </div>
+        </div>
+        <div className="w-screen px-[5vw] flex justify-center flex-wrap mb-28 gap-10">
+          <TimeLine data={{}} />
+        </div>
+
+        <div className="flex flex-col gap-6 mb-28">
+          <div className="text-6xl font-semibold flex flex-col gap-3">
             <p>Featured</p>
             <p className="main-skills-head">Projects</p>
           </div>
         </div>
-      </div>
-      <div className="w-screen px-[5vw] flex justify-center flex-wrap mb-28 gap-10">
-        <FeaturedWorks data={fw} />
+        <div className="w-screen px-[5vw] flex justify-center flex-wrap mb-28 gap-10">
+          <FeaturedWorks data={fw} />
+        </div>
       </div>
     </>
   );
 }
+
+const fwQuery = gql`
+  {
+    featuredWorks {
+      id
+      title
+      description
+      tech
+      image
+      bgColor
+      mouseColor
+    }
+  }
+`;

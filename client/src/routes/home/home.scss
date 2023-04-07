@@ -6,10 +6,10 @@
     transition: color 0.5 ease-in;
     span {
       transition: color 0.5 ease-in;
-      &:hover {
-        color: black;
-        -webkit-text-stroke: none;
-      }
+      // &:hover {
+      //   color: black;
+      //   -webkit-text-stroke: none;
+      // }
     }
   }
 }
