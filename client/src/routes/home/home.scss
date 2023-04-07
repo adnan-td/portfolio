@@ -1,0 +1,26 @@
+.main-cont {
+  background-color: transparent;
+  .main-title {
+    color: white;
+    -webkit-text-stroke: 1px black;
+    transition: color 0.5 ease-in;
+    span {
+      transition: color 0.5 ease-in;
+      &:hover {
+        color: black;
+        -webkit-text-stroke: none;
+      }
+    }
+  }
+}
+
+#mouse-follower {
+  video {
+    max-width: 200%;
+  }
+}
+
+.main-skills-head {
+  color: transparent;
+  -webkit-text-stroke: 1px black;
+}

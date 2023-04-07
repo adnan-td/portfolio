@@ -1,0 +1,56 @@
+$transition-duration: 2s;
+$path-length: 157px;
+
+.loader {
+  overflow: visible;
+  width: 100px;
+  height: 150px;
+
+  g {
+    animation: slide $transition-duration linear infinite;
+
+    &:nth-child(2) {
+      animation-delay: calc($transition-duration / 4);
+
+      path {
+        animation-delay: calc($transition-duration / 4);
+        stroke-dasharray: 0px $path-length + 1;
+        stroke-dashoffset: 1px;
+      }
+    }
+  }
+
+  path {
+    stroke: url(#gradient);
+    stroke-width: 20px;
+    stroke-linecap: round;
+    fill: none;
+    stroke-dasharray: 0 $path-length;
+    stroke-dashoffset: 0;
+    animation: escalade $transition-duration cubic-bezier(0.8, 0, 0.2, 1) infinite;
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(50px);
+  }
+}
+
+@keyframes escalade {
+  0% {
+    stroke-dasharray: 0 $path-length;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: $path-length $path-length;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: $path-length $path-length;
+    stroke-dashoffset: -calc($path-length - 1);
+  }
+}

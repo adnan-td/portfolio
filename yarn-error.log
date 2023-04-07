@@ -1,0 +1,43 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js --prefix client
+
+PATH: 
+  C:\Users\ADNAN\AppData\Local\Temp\yarn--1680845617945-0.6167896412925669;D:\GitHub\portfolio\node_modules\.bin;C:\Users\ADNAN\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Users\ADNAN\AppData\Local\Yarn\bin;C:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Program Files\Amazon Corretto\jdk19.0.1_10\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files (x86)\dotnet\;C:\Program Files\dotnet\;C:\Users\ADNAN\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\PuTTY\;C:\Users\ADNAN\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\ADNAN\AppData\Local\Programs\Python\Python310\;C:\Users\ADNAN\AppData\Local\Microsoft\WindowsApps;C:\Users\ADNAN\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\msys64\mingw64\bin;C:\Users\ADNAN\AppData\Roaming\npm;C:\Users\ADNAN\AppData\Local\GitHubDesktop\bin;C:\Modeltech_5.7g\win32;C:\Users\ADNAN\AppData\Roaming\nvm;C:\Program Files\nodejs
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  19.1.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Invariant Violation: Action must exists
+      at invariant (C:\Users\ADNAN\AppData\Roaming\nvm\v19.1.0\node_modules\yarn\lib\cli.js:2318:15)
+      at Object.<anonymous> (C:\Users\ADNAN\AppData\Roaming\nvm\v19.1.0\node_modules\yarn\lib\cli.js:61719:9)
+      at Generator.next (<anonymous>)
+      at step (C:\Users\ADNAN\AppData\Roaming\nvm\v19.1.0\node_modules\yarn\lib\cli.js:310:30)
+      at C:\Users\ADNAN\AppData\Roaming\nvm\v19.1.0\node_modules\yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "portfolio",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+      "build_client": "",
+      "install_client": "yarn --prefix client"
+    },
+    "description": "My personal developer portfolio",
+    "repository": "https://github.com/Adnan-S-Husain/portfolio.git",
+    "author": "Adnan Shabbir Husain <generaladnan139@gmail.com>"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
