@@ -6,31 +6,31 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
+      - name: Setup Node.js and Yarn
         uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "16.x"
 
       - name: Install dependencies
         run: |
           cd client
-          npm ci
+          yarn install
           cd ../server
-          npm ci
+          yarn install
 
       - name: Build app
         run: |
           cd client
-          npm run build
+          yarn build
           cd ../server
-          npm run build
+          yarn build
 
       - name: Push server code to server branch
         uses: ad-m/github-push-action@master
