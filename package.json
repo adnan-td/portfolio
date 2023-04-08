@@ -9,11 +9,12 @@
     "install_server": "yarn --cwd server",
     "build_client": "yarn --cwd client build",
     "build_server": "yarn --cwd server build",
+    "build": "yarn build_client & yarn build_server",
     "deploy_server": "yarn --cwd server deploy",
     "server": "yarn --cwd server dev",
     "client": "yarn --cwd client dev",
     "dev": "concurrently -n server,client \"yarn server\" \"yarn client\"",
-    "deploy": "yarn build_client & yarn deploy_server",
+    "deploy": "yarn deploy_server",
     "stop": "yarn --cwd server stop"
   },
   "description": "My personal developer portfolio",

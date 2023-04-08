@@ -6,7 +6,7 @@
     "start": "pm2 start ./dist/server.js",
     "dev": "nodemon ./server.ts",
     "build": "tsc -p .",
-    "deploy": "yarn build && yarn start",
+    "deploy": "node ./dist/server.js",
     "stop": "pm2 kill"
   },
   "license": "MIT",
