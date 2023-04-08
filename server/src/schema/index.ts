@@ -1,8 +1,8 @@
 import { gql } from "graphql-tag";
 
 export const typeDefs = gql`
-  type FeaturedWork @exclude(operations: [DELETE]) {
-    id: ID!
+  type FeaturedWork {
+    id: ID! @id
     title: String!
     description: String
     tech: String
@@ -11,7 +11,21 @@ export const typeDefs = gql`
     mouseColor: String
   }
 
-  extend type FeaturedWork @auth(rules: [{ operations: [CREATE, UPDATE], isAuthenticated: true }])
+  type Experience {
+    id: ID! @id
+    title: String!
+    subtitle: String!
+    description: String!
+    date: String!
+    tech: String!
+    order: Int!
+  }
+
+  extend type FeaturedWork
+    @auth(rules: [{ operations: [CREATE, UPDATE, DELETE], isAuthenticated: true }])
+
+  extend type Experience
+    @auth(rules: [{ operations: [CREATE, UPDATE, DELETE], isAuthenticated: true }])
 
   type Mutation {
     signIn(userName: String!, password: String!): String!

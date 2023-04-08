@@ -7,22 +7,23 @@ import FeaturedWorks from "./featuredwork";
 import "./home.scss";
 import LandingPage from "./landing";
 import TimeLine from "./timeline";
+import Learned from "./learned";
 
 export default function Home() {
-  const { data: fw, loading: fwloading } = useQuery(fwQuery);
+  const { data, loading } = useQuery(fwQuery);
   const { setLoadingPage } = useContext(LoaderContext);
   useEffect(() => {
     setTimeout(() => {
-      if (!fwloading) {
+      if (!loading) {
         setLoadingPage(false);
       }
     }, 1000);
-  }, [fwloading, setLoadingPage]);
+  }, [loading, setLoadingPage]);
 
-  return <HomeRoute fw={fw?.featuredWorks} />;
+  return <HomeRoute data={data} />;
 }
 
-export function HomeRoute({ fw }: { fw: any }) {
+export function HomeRoute({ data }: { data: any }) {
   return (
     <>
       <div className="px-[5vw] flex flex-col w-full items-center">
@@ -34,7 +35,7 @@ export function HomeRoute({ fw }: { fw: any }) {
           </div>
         </div>
         <div className="w-screen px-[5vw] flex justify-center flex-wrap mb-28 gap-10">
-          <TimeLine data={{}} />
+          <TimeLine data={data?.experiences} />
         </div>
 
         <div className="flex flex-col gap-6 mb-28">
@@ -43,8 +44,18 @@ export function HomeRoute({ fw }: { fw: any }) {
             <p className="main-skills-head">Projects</p>
           </div>
         </div>
+        <div className="w-screen px-[5vw] flex justify-center flex-wrap mb-48 gap-10">
+          <FeaturedWorks data={data?.featuredWorks} />
+        </div>
+
+        <div className="flex flex-col gap-6 mb-28">
+          <div className="text-6xl font-semibold flex flex-col gap-3">
+            <p>What I've</p>
+            <p className="main-skills-head">Learned</p>
+          </div>
+        </div>
         <div className="w-screen px-[5vw] flex justify-center flex-wrap mb-28 gap-10">
-          <FeaturedWorks data={fw} />
+          <Learned data={{}} />
         </div>
       </div>
     </>
@@ -61,6 +72,14 @@ const fwQuery = gql`
       image
       bgColor
       mouseColor
+    }
+
+    experiences(options: { sort: { order: ASC } }) {
+      date
+      description
+      subtitle
+      title
+      tech
     }
   }
 `;

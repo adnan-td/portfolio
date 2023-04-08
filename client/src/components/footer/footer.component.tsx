@@ -49,7 +49,7 @@ export default function FooterComponent() {
               <div className="footer-container">
                 <div className="footer-header">
                   <h2>Have an idea?</h2>
-                  <a href="/contacts/">Tell us about it</a>
+                  <a href="/contacts/">Share it with me</a>
                 </div>
               </div>
             </div>
