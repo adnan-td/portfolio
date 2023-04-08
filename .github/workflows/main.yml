@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
 
       - name: Setup Node.js and Yarn
         uses: actions/setup-node@v2
@@ -31,10 +34,6 @@ jobs:
           yarn build
           cd ../server
           yarn build
-
-      - name: Set permissions on .git directory
-        run: |
-          sudo chown -R $USER:$USER .git/
 
       - name: Push server code to server branch
         uses: ad-m/github-push-action@master
