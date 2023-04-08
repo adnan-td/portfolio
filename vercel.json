@@ -1,8 +1,7 @@
 {
   "version": 2,
-
-  "framework": "other",
   "buildCommand": "yarn build",
+  "installCommand": "yarn install",
   "builds": [
     {
       "src": "./server/dist/server.js",
