@@ -13,8 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          persist-credentials: false
-          fetch-depth: 0
+          token: ${{secrets.PAT}}
 
       - name: Setup Node.js and Yarn
         uses: actions/setup-node@v2
