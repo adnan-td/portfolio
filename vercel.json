@@ -1,0 +1,18 @@
+{
+  "version": 2,
+
+  "framework": "other",
+  "buildCommand": "yarn build",
+  "builds": [
+    {
+      "src": "./server/dist/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
+}
