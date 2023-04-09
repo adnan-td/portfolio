@@ -40,17 +40,22 @@ jobs:
           sed 's/client_build/qqq' .gitignore
 
       - name: Push server code to server branch
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.PAT }}
-          branch: server
-          force: true
-          directory: ./server
+        run: |
+          cd server
+          git init
+          git add .
+          git commit -m "Updating server codebase"
+          git remote add origin https://github.com/Adnan-S-Husain/portfolio.git
+          git checkout -b server
+          git push --force origin server
 
-      - name: Push client code to client branch
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.PAT }}
-          branch: client
-          force: true
-          directory: ./client
+        - name: Push client code to client branch
+          run: |
+            cd client
+            git init
+            git add .
+            git commit -m "Updating client codebase"
+            git remote add origin https://github.com/Adnan-S-Husain/portfolio.git
+            git checkout -b client
+            git push --force origin client
+          
