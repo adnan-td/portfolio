@@ -42,8 +42,8 @@ jobs:
       - name: Push server code to server branch
         run: |
           cd server
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
           git init
           git add .
           git commit -m "Updating server codebase"
@@ -54,8 +54,8 @@ jobs:
       - name: Push client code to client branch
         run: |
           cd client
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
           git init
           git add .
           git commit -m "Updating client codebase"
