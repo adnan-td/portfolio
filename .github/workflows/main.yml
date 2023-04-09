@@ -37,7 +37,7 @@ jobs:
       - name: Edit .gitignore file
         run: |
           cd server
-          sed 's/client_build/qqq' .gitignore
+          sed 's/client_build/qqq/' .gitignore
 
       - name: Push server code to server branch
         run: |
