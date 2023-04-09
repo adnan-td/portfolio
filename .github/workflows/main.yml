@@ -49,13 +49,12 @@ jobs:
           git checkout -b server
           git push --force origin server
 
-        - name: Push client code to client branch
-          run: |
-            cd client
-            git init
-            git add .
-            git commit -m "Updating client codebase"
-            git remote add origin https://github.com/Adnan-S-Husain/portfolio.git
-            git checkout -b client
-            git push --force origin client
-          
+      - name: Push client code to client branch
+        run: |
+          cd client
+          git init
+          git add .
+          git commit -m "Updating client codebase"
+          git remote add origin https://github.com/Adnan-S-Husain/portfolio.git
+          git checkout -b client
+          git push --force origin client
