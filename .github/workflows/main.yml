@@ -49,7 +49,7 @@ jobs:
       - name: Setup git in server
         run: |
           cd server
-          sed 's/\/client_build/ /g' .gitignore > .gitignore
+          sed -i 's/\/client_build/ /' .gitignore
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git init
