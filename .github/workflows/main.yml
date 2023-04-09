@@ -22,6 +22,16 @@ jobs:
         with:
           node-version: "16.x"
 
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            client/node_modules
+            server/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
         run: |
           cd client
@@ -45,7 +55,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           branch: server
-          directory: server
+          directory: ./server
           github_token: ${{ secrets.GITHUB_TOKEN }}
           force: true
 
@@ -53,6 +63,6 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           branch: client
-          directory: client
+          directory: ./client
           github_token: ${{ secrets.GITHUB_TOKEN }}
           force: true
