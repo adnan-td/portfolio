@@ -47,6 +47,7 @@ jobs:
           branch: server
           directory: server
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
 
       - name: Push client code to client branch
         uses: ad-m/github-push-action@master
@@ -54,3 +55,4 @@ jobs:
           branch: client
           directory: client
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
