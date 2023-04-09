@@ -13,7 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          token: ${{secrets.PAT}}
+          ref: ${{ github.ref }}
+          persist-credentials: false
+          fetch-depth: 0
 
       - name: Setup Node.js and Yarn
         uses: actions/setup-node@v2
@@ -40,25 +42,15 @@ jobs:
           sed 's/client_build/qqq/' .gitignore
 
       - name: Push server code to server branch
-        run: |
-          cd server
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git init
-          git add .
-          git commit -m "Updating server codebase"
-          git remote add origin https://github.com/Adnan-S-Husain/portfolio.git
-          git checkout -b server
-          git push --force origin server
+        uses: ad-m/github-push-action@master
+        with:
+          branch: server
+          directory: server
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push client code to client branch
-        run: |
-          cd client
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git init
-          git add .
-          git commit -m "Updating client codebase"
-          git remote add origin https://github.com/Adnan-S-Husain/portfolio.git
-          git checkout -b client
-          git push --force origin client
+        uses: ad-m/github-push-action@master
+        with:
+          branch: client
+          directory: client
+          github_token: ${{ secrets.GITHUB_TOKEN }}
