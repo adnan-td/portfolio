@@ -54,16 +54,16 @@ jobs:
       - name: Setup git in server
         run: |
           cd server
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
           git init
           git commit -a -m "Update server codebase"
 
       - name: Setup git in client
         run: |
           cd client
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
           git init
           git commit -a -m "Update client codebase"
 
