@@ -34,13 +34,18 @@ jobs:
           cd ../server
           yarn build
 
+      - name: Edit .gitignore file
+        run: |
+          cd server
+          sed 's/client_build/qqq' .gitignore
+
       - name: Push server code to server branch
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.PAT }}
           branch: server
           force: true
-          directory: server
+          directory: ./server
 
       - name: Push client code to client branch
         uses: ad-m/github-push-action@master
@@ -48,4 +53,4 @@ jobs:
           github_token: ${{ secrets.PAT }}
           branch: client
           force: true
-          directory: client
+          directory: ./client
