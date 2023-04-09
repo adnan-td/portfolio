@@ -57,7 +57,8 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git init
-          git commit -a -m "Update server codebase"
+          git add --all
+          git commit -m "Update server codebase"
 
       - name: Setup git in client
         run: |
@@ -65,7 +66,8 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git init
-          git commit -a -m "Update client codebase"
+          git add --all
+          git commit -m "Update client codebase"
 
       - name: Push server code to server branch
         uses: ad-m/github-push-action@master
