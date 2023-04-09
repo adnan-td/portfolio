@@ -51,6 +51,22 @@ jobs:
           cd server
           sed 's/client_build/qqq/' .gitignore
 
+      - name: Setup git in server
+        run: |
+          cd server
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git init
+          git commit -a -m "Update server codebase"
+
+      - name: Setup git in client
+        run: |
+          cd client
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git init
+          git commit -a -m "Update client codebase"
+
       - name: Push server code to server branch
         uses: ad-m/github-push-action@master
         with:
