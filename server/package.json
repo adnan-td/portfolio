@@ -1,7 +1,7 @@
 {
   "name": "coding-profile-api",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "./dist/server.js",
   "scripts": {
     "start": "pm2 start ./dist/server.js",
     "dev": "nodemon ./server.ts",
