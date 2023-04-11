@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -82,16 +82,25 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           force: true
 
-      - name: Push to hosting git
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: server
+
+      - name: Configure Git
         run: |
-          cd server
-          sed -i 's/\/client_build/ /' .gitignore
-          sed -i 's/\/dist/ /' .gitignore
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          rm .git -r
-          git init
-          git remote add origin ssh://sudhanshu@sudhanshuprasad.xyz/home/sudhanshu/repositories/portfolio_adnan
-          git add --all
-          git commit -m "Update server codebase"
+
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Push to SSH server
+        run: |
+          git remote add ssh ssh://sudhanshu@sudhanshuprasad.xyz/home/sudhanshu/repositories/portfolio_adnan
           git push origin master
