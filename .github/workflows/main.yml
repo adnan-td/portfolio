@@ -86,7 +86,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:
           ref: server
 
@@ -94,6 +94,7 @@ jobs:
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
+          ls
 
       - name: Add SSH key
         uses: webfactory/ssh-agent@v0.5.0
