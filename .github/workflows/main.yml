@@ -98,10 +98,8 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git add --all
           git commit -m "updating production"
-          ls
 
       - name: Push to hosting
-        uses: ad-m/github-push-action@master
-        with:
-          ssh: true
-          branch: ${{ github.ref }}
+        run: |
+          git remote add ssh ssh://sudhanshu@sudhanshuprasad.xyz/home/sudhanshu/repositories/portfolio_adnan
+          git push --force ssh master
