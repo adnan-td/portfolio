@@ -9,9 +9,9 @@ interface Context {
   user?: any;
 }
 
-async function startServer() {
+export default async function handler(req: any, res: any) {
   const apolloServer = new ApolloServer<Context>({
-    schema: await schema,
+    schema: schema,
     introspection: true,
   });
 
@@ -25,8 +25,6 @@ async function startServer() {
       },
     })
   );
+
+  app(req, res);
 }
-
-startServer();
-
-export default app;
