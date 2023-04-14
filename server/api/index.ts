@@ -1,21 +1,32 @@
-const express = require("express");
-const app = express();
-const router = express.Router();
+import app from "../src/app";
+import { ApolloServer } from "@apollo/server";
+import { expressMiddleware } from "@apollo/server/express4";
+import { schema } from "../src/neo4j";
 
-router.get("/", (req: any, res: any) => {
-  res.json({
-    route: "/",
-    message: "welcome to the route",
+interface Context {
+  req: any;
+  res: any;
+  user?: any;
+}
+
+async function startServer() {
+  const apolloServer = new ApolloServer<Context>({
+    schema: await schema,
+    introspection: true,
   });
-});
 
-router.get("/hello", (req: any, res: any) => {
-  res.json({
-    route: "/hello",
-    message: "welcome to the route",
-  });
-});
+  await apolloServer.start();
 
-app.use("/api", router);
+  app.use(
+    "/graphql",
+    expressMiddleware(apolloServer, {
+      context: async ({ req, res }) => {
+        return { req, res, user: null };
+      },
+    })
+  );
+}
 
-module.exports = app;
+startServer();
+
+export default app;
