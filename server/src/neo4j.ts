@@ -3,6 +3,7 @@ import neo4j from "neo4j-driver";
 import { Neo4jGraphQL } from "@neo4j/graphql";
 import { typeDefs } from "./schema";
 import { signInResolver } from "./resolvers/mutation/mutation";
+import { Neo4jGraphQLAuthJWTPlugin } from "@neo4j/graphql-plugin-auth";
 
 dotenv.config();
 
@@ -19,11 +20,11 @@ const neoSchema = new Neo4jGraphQL({
       signIn: signInResolver,
     },
   },
-  config: {
-    jwt: {
+  plugins: {
+    auth: new Neo4jGraphQLAuthJWTPlugin({
       secret: process.env.NEO4J_SECRET,
-    },
+    }),
   },
 });
 
-export const schema = neoSchema.schema;
+export const schema = neoSchema.getSchema();

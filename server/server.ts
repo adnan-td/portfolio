@@ -16,7 +16,7 @@ interface Context {
 
 async function startServer() {
   const apolloServer = new ApolloServer<Context>({
-    schema: schema,
+    schema: await schema,
     introspection: true,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer: server })],
   });
