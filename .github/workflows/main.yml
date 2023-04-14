@@ -42,6 +42,7 @@ jobs:
       - name: Build app
         run: |
           cd client
+          echo "VITE_GRAPHQL_URI = "http://backend.adnansh.in/graphql" > .env
           yarn build
           cd ../server
           yarn build

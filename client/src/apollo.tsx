@@ -12,12 +12,11 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 export default function ApolloWrapper({ children }: { children: React.ReactNode }) {
   const url = import.meta.env.VITE_GRAPHQL_URI;
-  const isProd = import.meta.env.PROD;
 
   const link = from([
     errorLink,
     new HttpLink({
-      uri: isProd ? "/graphql" : url,
+      uri: !url ? "/graphql" : url,
     }),
   ]);
 
