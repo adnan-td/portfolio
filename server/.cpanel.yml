@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/sudhanshu/adnansh.in
+    - /bin/cp -R . $DEPLOYPATH
+    - cd $DEPLOYPATH
+    - /usr/local/bin/npm run stop
+    - /usr/local/bin/npm run start
