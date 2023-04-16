@@ -9,7 +9,7 @@ interface Pos {
   y: number;
 }
 
-interface MouseSettings {
+export interface MouseSettings {
   zIndex?: number;
   bgColor?: string;
   skew?: string;

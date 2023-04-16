@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { MouseContext } from "../../context/mousepos/mouse.context";
-import BgVideo from "./hovervideo";
+import BgVideo from "../../components/home/hovervideo";
 
 export default function LandingPage() {
   const { options, setOptions } = useContext(MouseContext);
