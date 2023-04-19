@@ -31,7 +31,7 @@ export function HomeRoute({ data }: { data: any }) {
         <LandingPage />
 
         <div className="flex flex-col gap-6 mb-28">
-          <div className="text-6xl font-semibold flex flex-col gap-3">
+          <div className="text-6xl font-semibold flex flex-col gap-3 lg:text-5xl">
             <p>Featured</p>
             <p className="main-skills-head">Projects</p>
           </div>
@@ -41,7 +41,7 @@ export function HomeRoute({ data }: { data: any }) {
         </div>
 
         <div className="flex flex-col gap-6 mb-28">
-          <div className="text-6xl font-semibold flex flex-col gap-3">
+          <div className="text-6xl font-semibold flex flex-col gap-3 lg:text-5xl">
             <p>What I've</p>
             <p className="main-skills-head">Learned</p>
           </div>
@@ -51,7 +51,7 @@ export function HomeRoute({ data }: { data: any }) {
         </div>
 
         <div className="flex flex-col gap-6 mb-28">
-          <div className="text-6xl font-semibold flex flex-col gap-3">
+          <div className="text-6xl font-semibold flex flex-col gap-3 lg:text-5xl">
             <p>Where I've</p>
             <p className="main-skills-head">Worked</p>
           </div>
@@ -61,7 +61,7 @@ export function HomeRoute({ data }: { data: any }) {
         </div>
 
         <div className="flex flex-col gap-6 mb-28">
-          <div className="text-6xl font-semibold flex flex-col gap-3">
+          <div className="text-6xl font-semibold flex flex-col gap-3 lg:text-5xl">
             <p>Projects</p>
             <p className="main-skills-head">Completed</p>
           </div>

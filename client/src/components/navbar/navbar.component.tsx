@@ -55,12 +55,12 @@ export default function NavbarComponent() {
   const whileHover = { scale: 1.2, x: 5 };
 
   return (
-    <div className="flex justify-between pl-14 py-6 items-center min-h-20 gap-3">
+    <div className="flex justify-between pl-14 py-6 items-center min-h-20 gap-3 sm:pl-7">
       <a href="/" className="cursor-pointer">
         <img className="w-20 text-black sm:w-14" src="/Logo.svg" alt="Logo" />
       </a>
       <div className="flex items-center justify-center">
-        <div className="flex gap-12 items-center font-sono font-medium text-xl sm:gap-7">
+        <div className="flex gap-12 items-center font-sono font-medium text-xl sm:gap-0">
           <a href="#" className="flex items-center gap-1 sm:hidden">
             <ArticleIcon /> resume
           </a>

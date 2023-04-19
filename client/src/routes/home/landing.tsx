@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { MouseContext } from "../../context/mousepos/mouse.context";
 import BgVideo from "../../components/home/hovervideo";
+import { WidthContext } from "../../context/screenwidth/screenwidth.context";
 
 export default function LandingPage() {
   const { options, setOptions } = useContext(MouseContext);
+  const { screenwidth } = useContext(WidthContext);
   const handleMouseEnterOuter = () => {
     setOptions({
       ...options,
@@ -44,9 +46,9 @@ export default function LandingPage() {
   };
   return (
     <>
-      <div className="font-sono min-h-[80vh] flex flex-col justify-center items-center">
+      <div className="font-sono min-h-[80vh] flex flex-col justify-center items-center xl:min-h-fit">
         <div
-          className="flex flex-col justify-center -mt-24"
+          className="flex flex-col justify-center -mt-24 xl:hidden"
           onMouseEnter={handleMouseEnterOuter}
           onMouseLeave={handleMouseLeaveOuter}
         >
@@ -64,11 +66,28 @@ export default function LandingPage() {
             </p>
           </div>
         </div>
+        <div className="hidden xl:flex font-sono">
+          <div className="flex gap-14 justify-center items-center lg:flex-col">
+            <div className="w-[320px] h-[320px] rounded-full flex justify-center items-center overflow-hidden sm:w-[240px] sm:h-[240px]">
+              <BgVideo />
+            </div>
+            <div className="flex flex-col gap-4">
+              <p className="text-xl font-semibold">Hi, my name is</p>
+              <p className="text-4xl font-bold underline">Adnan Shabbir Husain</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="text-[32px] pb-[300px] font-normal flex flex-col gap-1 items-center sm:text-3xl sm:pb-40 sm:text-center">
+      <div className="text-[32px] pb-[300px] font-normal flex flex-col gap-1 items-center lg:hidden xl:pt-[60px]">
         <p>A skilled software developer, having a copious amount of</p>
         <p>experience in creating robust digital solutions.</p>
         <p>With professionalism, loves to bring ideas to life.</p>
+      </div>
+      <div className="hidden text-center pt-[60px] pb-40 font-normal lg:flex items-center text-2xl sm:text-left">
+        <p>
+          A skilled software developer, having a copious amount of experience in creating robust
+          digital solutions. With professionalism, loves to bring ideas to life.
+        </p>
       </div>
     </>
   );
