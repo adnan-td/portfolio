@@ -1,26 +1,32 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { MouseContext } from "../../context/mousepos/mouse.context";
+import { motion } from "framer-motion";
+import { WidthContext } from "../../context/screenwidth/screenwidth.context";
 
 export default function ProjectsCompleted({ data }: { data: any }) {
-  const randomItems: any[] = [];
-  if (data?.length >= 8) {
-    while (randomItems.length < 8) {
-      const randomIndex: number = Math.floor(Math.random() * data.length);
-      const randomItem = data[randomIndex];
-      if (!randomItems.includes(randomItem)) {
-        randomItems.push(randomItem);
-      }
-    }
-  } else {
-    if (data) {
-      randomItems.push(...data);
-    }
+  const [totalWidth, setTotalWidth] = useState(0);
+  const { screenwidth } = useContext(WidthContext);
+
+  if (data) {
+    data = [...data, ...data];
   }
 
+  useEffect(() => {
+    if (screenwidth < 768) {
+      setTotalWidth((data?.length || 0) * (330 + 30) - screenwidth);
+    } else {
+      setTotalWidth((data?.length || 0) * (450 + 30) - screenwidth);
+    }
+  }, [screenwidth, data]);
+
   return (
-    <div className="grid grid-cols-4 justify-items-center items-stretch gap-10 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-      {randomItems &&
-        randomItems.map((fw: any, i: number) => {
+    <motion.div
+      className="w-full flex justify-start items-stretch gap-8 md:gap-4"
+      drag="x"
+      dragConstraints={{ right: 0, left: -totalWidth }}
+    >
+      {data &&
+        data.map((fw: any, i: number) => {
           return (
             <Project
               key={i}
@@ -32,7 +38,7 @@ export default function ProjectsCompleted({ data }: { data: any }) {
             />
           );
         })}
-    </div>
+    </motion.div>
   );
 }
 
@@ -68,7 +74,7 @@ function Project({ data }: { data: WorkInterface }) {
   };
   return (
     <div
-      className="w-full flex flex-col  rounded-xl max-w-[750px] bg-white cursor-pointer md:w-[90%] transition-all shadow-xl"
+      className="min-w-[400px] flex flex-col rounded-xl max-w-[750px] bg-white cursor-pointer md:min-w-[300px] md:w-[300px] transition-all shadow-xl"
       id="featuredWork"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -80,7 +86,7 @@ function Project({ data }: { data: WorkInterface }) {
       <div className="overflow-hidden flex justify-center items-center h-4/6 w-full p-5">
         <img
           src={data.image}
-          className="h-full min-w-full rounded-lg hover:scale-[1.02] transition-transform"
+          className="h-full min-w-full rounded-lg hover:scale-[1.02] transition-transform pointer-events-none"
           alt={data.title}
         />
       </div>
@@ -98,7 +104,7 @@ function FWHover() {
       className="flex flex-col justify-center items-center w-full h-full text-white bg-opacity-60 font-[arial] bg-white font-semibold"
       style={{ fontSize: "3px", letterSpacing: "0.07px" }}
     >
-      <p>view</p>
+      <p>drag</p>
     </div>
   );
 }

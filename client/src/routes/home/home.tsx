@@ -60,13 +60,13 @@ export function HomeRoute({ data }: { data: any }) {
           <TimeLine data={data?.experiences} />
         </div>
 
-        <div className="flex flex-col gap-6 mb-28">
+        <div className="flex flex-col gap-6 mb-20">
           <div className="text-6xl font-semibold flex flex-col gap-3 lg:text-5xl">
             <p>Projects</p>
             <p className="main-skills-head">Completed</p>
           </div>
         </div>
-        <div className="w-screen px-[5vw] flex justify-center mb-48 gap-10">
+        <div className="w-screen pl-[5vw] py-10 flex justify-center mb-48 gap-10 overflow-hidden">
           <ProjectsCompleted data={data?.featuredWorks} />
         </div>
       </div>
