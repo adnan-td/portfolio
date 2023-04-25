@@ -1,44 +1,36 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { MouseContext } from "../../context/mousepos/mouse.context";
 import { motion } from "framer-motion";
-import { WidthContext } from "../../context/screenwidth/screenwidth.context";
 
 export default function ProjectsCompleted({ data }: { data: any }) {
-  const [totalWidth, setTotalWidth] = useState(0);
-  const { screenwidth } = useContext(WidthContext);
+  const containerRef = useRef(null);
 
   if (data) {
     data = [...data, ...data];
   }
 
-  useEffect(() => {
-    if (screenwidth < 768) {
-      setTotalWidth((data?.length || 0) * (330 + 30) - screenwidth);
-    } else {
-      setTotalWidth((data?.length || 0) * (450 + 30) - screenwidth);
-    }
-  }, [screenwidth, data]);
-
   return (
-    <motion.div
-      className="w-full flex justify-start items-stretch gap-8 md:gap-4"
-      drag="x"
-      dragConstraints={{ right: 0, left: -totalWidth }}
-    >
-      {data &&
-        data.map((fw: any, i: number) => {
-          return (
-            <Project
-              key={i}
-              data={{
-                title: fw.title,
-                tech: fw.tech,
-                image: fw.image,
-              }}
-            />
-          );
-        })}
-    </motion.div>
+    <div className="w-full flex justify-start items-center" ref={containerRef}>
+      <motion.div
+        className="flex justify-start items-stretch gap-8 md:gap-4"
+        drag="x"
+        dragConstraints={containerRef}
+      >
+        {data &&
+          data.map((fw: any, i: number) => {
+            return (
+              <Project
+                key={i}
+                data={{
+                  title: fw.title,
+                  tech: fw.tech,
+                  image: fw.image,
+                }}
+              />
+            );
+          })}
+      </motion.div>
+    </div>
   );
 }
 
