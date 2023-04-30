@@ -15,6 +15,7 @@ export default function ProjectsCompleted({ data }: { data: any }) {
         className="flex justify-start items-stretch gap-8 md:gap-4"
         drag="x"
         dragConstraints={containerRef}
+        whileTap={{ cursor: "grab" }}
       >
         {data &&
           data.map((fw: any, i: number) => {
@@ -65,7 +66,7 @@ function Project({ data }: { data: WorkInterface }) {
     });
   };
   return (
-    <div
+    <motion.div
       className="min-w-[400px] flex flex-col rounded-xl max-w-[750px] bg-white cursor-pointer md:min-w-[300px] md:w-[300px] transition-all shadow-xl"
       id="featuredWork"
       onMouseEnter={handleMouseEnter}
@@ -74,6 +75,7 @@ function Project({ data }: { data: WorkInterface }) {
         backgroundColor: isHovering ? "#171717" : "white",
         color: isHovering ? "white" : "black",
       }}
+      whileTap={{ cursor: "grab" }}
     >
       <div className="overflow-hidden flex justify-center items-center h-4/6 w-full p-5">
         <img
@@ -86,7 +88,7 @@ function Project({ data }: { data: WorkInterface }) {
         <p className="text-2xl font-medium">{data.title}</p>
         <p className="text-1xl text-[#6f6f6f] font-medium">{data.tech}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

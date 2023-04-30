@@ -36,8 +36,11 @@ export function HomeRoute({ data }: { data: any }) {
             <p className="main-skills-head">Projects</p>
           </div>
         </div>
-        <div className="w-screen px-[5vw] flex justify-center items-center mb-48 gap-10">
+        <div className="w-screen px-[5vw] flex justify-center items-center mb-16 gap-10">
           <FeaturedWorks data={data?.featuredWorks} />
+        </div>
+        <div className="flex mb-48">
+          <HomeBtn href="/projects" text="View more" />
         </div>
 
         <div className="flex flex-col gap-6 mb-28">
@@ -66,8 +69,11 @@ export function HomeRoute({ data }: { data: any }) {
             <p className="main-skills-head">Completed</p>
           </div>
         </div>
-        <div className="w-screen pl-[5vw] py-10 flex justify-center mb-48 gap-10 overflow-hidden">
+        <div className="w-screen pl-[5vw] py-10 flex justify-center mb-16 gap-10 overflow-hidden">
           <ProjectsCompleted data={data?.featuredWorks} />
+        </div>
+        <div className="flex mb-48">
+          <HomeBtn href="/projects" text="View all projects" />
         </div>
       </div>
     </>
@@ -95,3 +101,16 @@ const fwQuery = gql`
     }
   }
 `;
+
+function HomeBtn({ href, text }: { href: string; text: string }) {
+  return (
+    <a className="home-btn home-btn_more" href={href}>
+      <span className="home-btn_more-title">
+        <span data-text={text}>{text}</span>
+      </span>
+      <span className="home-btn_more-ripple">
+        <span></span>
+      </span>
+    </a>
+  );
+}
