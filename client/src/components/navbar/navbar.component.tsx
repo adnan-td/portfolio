@@ -27,7 +27,7 @@ export default function NavbarComponent() {
   const handleMouseEnterSocials = () => {
     setOptions({
       ...options,
-      scale: 3,
+      scale: 4,
       bgColor: "white",
       mixBlendMode: "difference",
     });
@@ -52,7 +52,7 @@ export default function NavbarComponent() {
     },
   };
 
-  const whileHover = { scale: 1.2, x: 5 };
+  const whileHover = { scale: 0.97 };
 
   return (
     <div className="flex justify-between pl-14 py-6 items-center min-h-20 gap-3 sm:pl-7">
@@ -90,56 +90,80 @@ export default function NavbarComponent() {
                   type: "just",
                   delay: 0.2,
                 }}
-                className="bg-white p-6 pt-32 grid grid-cols-2 gap-10 fixed right-0 top-0 min-h-screen align-top opacity-100 z-[2] overflow-auto"
+                className="bg-white p-6 pt-32 grid grid-cols-2 gap-10 fixed right-0 top-0 min-h-screen align-top opacity-100 z-[2] overflow-auto sm:w-screen sm:px-[15%] sm:grid-cols-1"
               >
-                <div id="nav-grid-left" className="flex flex-col gap-24 px-20 z-[3]">
-                  <div id="socials" className="flex flex-col gap-3 font-semibold text-sm">
+                <div id="nav-grid-left" className="flex flex-col gap-40 px-20 z-[3] sm:px-0">
+                  <div
+                    id="socials"
+                    className="flex flex-col gap-3 font-semibold text-base sm:hidden"
+                  >
                     <p className="font-base mb-5 text-neutral-400">Social</p>
                     <motion.a
-                      href="#"
+                      href="https://www.linkedin.com/in/adnan-shabbir-husain/"
                       whileHover={whileHover}
                       onHoverStart={handleMouseEnterSocials}
                       onHoverEnd={handleMouseLeaveSocials}
+                      target="_blank"
+                      rel="noreferrer"
                     >
                       LinkedIn
                     </motion.a>
                     <motion.a
-                      href="#"
+                      href="https://github.com/Adnan-S-Husain"
                       whileHover={whileHover}
                       onHoverStart={handleMouseEnterSocials}
                       onHoverEnd={handleMouseLeaveSocials}
+                      target="_blank"
+                      rel="noreferrer"
                     >
                       GitHub
                     </motion.a>
                     <motion.a
-                      href="#"
+                      href="https://www.instagram.com/adnan_td0/"
                       whileHover={whileHover}
                       onHoverStart={handleMouseEnterSocials}
                       onHoverEnd={handleMouseLeaveSocials}
+                      target="_blank"
+                      rel="noreferrer"
                     >
                       Instagram
                     </motion.a>
                     <motion.a
-                      href="#"
+                      href="https://twitter.com/adnan_td"
                       whileHover={whileHover}
                       onHoverStart={handleMouseEnterSocials}
                       onHoverEnd={handleMouseLeaveSocials}
+                      target="_blank"
+                      rel="noreferrer"
                     >
                       Twitter
                     </motion.a>
                   </div>
-                  <div id="getintouch" className="flex flex-col gap-3 font-semibold text-sm">
+                  <div
+                    id="getintouch"
+                    className="flex flex-col gap-3 font-semibold text-base min-w-[200px]"
+                  >
                     <p className="font-base mb-3 text-neutral-400">Get in touch</p>
-                    <p className="underline">adnan.s.husain</p>
+                    <a className="underline" href="mailto:adnan.s.husain.1@gmail.com">
+                      adnan.s.husain@gmail.com
+                    </a>
                   </div>
                 </div>
                 <div
                   id="nav-grid-right"
-                  className="flex flex-col gap-6 font-semibold text-3xl z-[3]"
+                  className="flex flex-col gap-5 font-semibold text-[40px] z-[3] sm:text-3xl sm:row-start-1"
                 >
-                  <p className="font-base mb-5 text-neutral-400 text-sm">Menu</p>
+                  <p className="font-base mb-5 text-neutral-400 text-base">Menu</p>
                   <motion.a
-                    href="#"
+                    href="/"
+                    whileHover={whileHover}
+                    onHoverStart={handleMouseEnterLinks}
+                    onHoverEnd={handleMouseLeaveLinks}
+                  >
+                    Home
+                  </motion.a>
+                  <motion.a
+                    href="/about"
                     whileHover={whileHover}
                     onHoverStart={handleMouseEnterLinks}
                     onHoverEnd={handleMouseLeaveLinks}
@@ -147,7 +171,7 @@ export default function NavbarComponent() {
                     About
                   </motion.a>
                   <motion.a
-                    href="#"
+                    href="/projects"
                     whileHover={whileHover}
                     onHoverStart={handleMouseEnterLinks}
                     onHoverEnd={handleMouseLeaveLinks}
@@ -155,7 +179,7 @@ export default function NavbarComponent() {
                     Projects
                   </motion.a>
                   <motion.a
-                    href="#"
+                    href="/blogs"
                     whileHover={whileHover}
                     onHoverStart={handleMouseEnterLinks}
                     onHoverEnd={handleMouseLeaveLinks}
@@ -163,12 +187,12 @@ export default function NavbarComponent() {
                     Blogs
                   </motion.a>
                   <motion.a
-                    href="#"
+                    href="/contact"
                     whileHover={whileHover}
                     onHoverStart={handleMouseEnterLinks}
                     onHoverEnd={handleMouseLeaveLinks}
                   >
-                    Contacts
+                    Contact
                   </motion.a>
                 </div>
               </motion.div>

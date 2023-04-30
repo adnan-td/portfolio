@@ -1,6 +1,6 @@
 import { useState, createContext, ReactNode } from "react";
 import Lottie from "react-lottie";
-import loaderjson from "../../loader.json";
+import loaderjson from "../../json/loader.json";
 interface Props {
   children: ReactNode;
 }

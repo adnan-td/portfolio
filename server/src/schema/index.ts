@@ -1,14 +1,13 @@
 import { gql } from "graphql-tag";
 
 export const typeDefs = gql`
-  type FeaturedWork {
+  type Projects {
     id: ID! @id
     title: String!
-    description: String
-    tech: String
+    tech: String!
     image: String
-    bgColor: String
-    mouseColor: String
+    github: String
+    url: String
   }
 
   type Experience {
@@ -21,7 +20,7 @@ export const typeDefs = gql`
     order: Int!
   }
 
-  extend type FeaturedWork
+  extend type Projects
     @auth(rules: [{ operations: [CREATE, UPDATE, DELETE], isAuthenticated: true }])
 
   extend type Experience

@@ -7,7 +7,7 @@ export default function MouseCircleComponent() {
   return (
     <motion.div
       className={
-        "fixed top-0 left-0 pointer-events-none flex justify-center items-center w-min h-min rounded-full"
+        "fixed top-0 left-0 pointer-events-none flex justify-center items-center w-min h-min rounded-full sm:hidden"
       }
       initial={{
         x: pos.x,

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "title": "ScriptHome",
+    "description": "A hub for all your roblox scripts",
+    "tech": "web, full-stack, ui/ux",
+    "image": "/works/scripthome.webp",
+    "bgColor": "#f3e8ff",
+    "mouseColor": "#9333ea",
+    "url": "/projects/scripthome"
+  },
+  {
+    "id": "2",
+    "title": "Sensor Lifeline Backend",
+    "description": "Graphql Backend for Sensor Lifeline Project",
+    "tech": "graphql, expressjs, typescript",
+    "image": "/works/graphql.png",
+    "bgColor": "#e0f2fe",
+    "mouseColor": "#3185FC",
+    "url": "/projects/sensorlifeline"
+  },
+  {
+    "id": "3",
+    "title": "Crown Clothing",
+    "description": "Frontend based clothing e-commerce web application",
+    "tech": "e-commerce, firebase, react",
+    "image": "/works/crownclothing.png",
+    "bgColor": "#ffedd5",
+    "mouseColor": "#f97316",
+    "url": "/projects/crownclothing",
+    "projectLink": "https://db-crownclothing.web.app/",
+    "githubLink": "https://github.com/Adnan-S-Husain/React-CrownClothing"
+  }
+]

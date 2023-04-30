@@ -43,64 +43,59 @@ export default function FooterComponent() {
       onMouseLeave={handleMouseLeave}
     >
       <motion.div style={{ y }} className="w-full flex justify-center items-center relative">
-        <section className="footer">
-          <div className="footer-content">
-            <div className="footer-body">
-              <div className="footer-container">
-                <div className="footer-header">
-                  <h2>Have an idea?</h2>
-                  <a href="/contacts/">Share it with me</a>
-                </div>
-              </div>
-            </div>
-            <div className="footer-footer">
-              <div className="footer-container">
-                <div className="footer-grid">
-                  <div className="footer-grid-col -left">
-                    <div className="footer-mail">
-                      <a href="mailto:adnan.s.husain.1@gmail.com">
-                        <em>
-                          <span>adnan.s.husain.1@gmail.com</span>
-                        </em>
-                      </a>
-                    </div>
-                    <div className="footer-address">
-                      <address>
-                        <p>Shantinagar, Nagpur-440002</p>
-                        <p>Maharashtra, India</p>
-                      </address>
-                    </div>
-                    <div className="footer-link">
-                      <p className="w-full">Copyright &#169; 2023-24</p>
-                    </div>
-                  </div>
-                  <div id="footerSocials" className="grid grid-cols-2 gap-5 m-8 ml-14">
-                    <SocialLink
-                      href="https://www.linkedin.com/in/adnan-shabbir-husain/"
-                      content="LinkedIn"
-                      icon={<LinkedInIcon />}
-                    />
-                    <SocialLink
-                      href="https://github.com/Adnan-S-Husain"
-                      content="GitHub"
-                      icon={<GitHubIcon />}
-                    />
-                    <SocialLink
-                      href="https://www.instagram.com/adnan_td0/"
-                      content="Instagram"
-                      icon={<InstagramIcon />}
-                    />
-                    <SocialLink
-                      href="https://twitter.com/adnan_td"
-                      content="Twitter"
-                      icon={<TwitterIcon />}
-                    />
-                  </div>
-                </div>
-              </div>
+        <div
+          id="footer"
+          className="w-full flex flex-col gap-20 justify-center items-center md:gap-5"
+        >
+          <div id="footer-top" className="">
+            <div className="footer-header">
+              <h2>Have an idea?</h2>
+              <a href="/contacts/">Share it with me</a>
             </div>
           </div>
-        </section>
+          <div id="footer-bottom" className="flex gap-7 justify-center items-center lg:flex-col">
+            <div className="flex flex-col justify-center items-start lg:items-center">
+              <div className="footer-mail">
+                <a href="mailto:adnan.s.husain.1@gmail.com">
+                  <em>
+                    <span style={{ fontStyle: "normal" }}>adnan.s.husain@gmail.com</span>
+                  </em>
+                </a>
+              </div>
+              <div className="footer-address text-zinc-500 font-semibold text-base">
+                <address>
+                  <p className="lg:text-center">Shantinagar, Nagpur-440002</p>
+                  <p className="lg:text-center">Maharashtra, India</p>
+                </address>
+              </div>
+              <div className="footer-link mt-3 mb-6">
+                <p className="w-full">Copyright &#169; 2023-24</p>
+              </div>
+            </div>
+            <div id="footerSocials" className="grid grid-cols-2 gap-5">
+              <SocialLink
+                href="https://www.linkedin.com/in/adnan-shabbir-husain/"
+                content="LinkedIn"
+                icon={<LinkedInIcon />}
+              />
+              <SocialLink
+                href="https://github.com/Adnan-S-Husain"
+                content="GitHub"
+                icon={<GitHubIcon />}
+              />
+              <SocialLink
+                href="https://www.instagram.com/adnan_td0/"
+                content="Instagram"
+                icon={<InstagramIcon />}
+              />
+              <SocialLink
+                href="https://twitter.com/adnan_td"
+                content="Twitter"
+                icon={<TwitterIcon />}
+              />
+            </div>
+          </div>
+        </div>
       </motion.div>
     </div>
   );
@@ -120,7 +115,7 @@ function SocialLink({ href, content, icon }: { href: string; content: string; ic
   };
   return (
     <div
-      className="p-2 flex justify-center items-center"
+      className="py-2 flex justify-center items-center px-8 lg:py-1"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -128,11 +123,13 @@ function SocialLink({ href, content, icon }: { href: string; content: string; ic
         href={href}
         rel="noreferrer"
         target="_blank"
-        className="md:hidden text-xl cursor-pointer font-semibold"
+        className="lg:hidden text-xl cursor-pointer font-semibold"
       >
         {content}
       </a>
-      <div className="md:block hidden">{icon}</div>
+      <a href={href} rel="noreferrer" target="_blank" className="lg:block hidden text-zinc-600">
+        {icon}
+      </a>
     </div>
   );
 }

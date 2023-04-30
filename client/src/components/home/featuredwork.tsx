@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import { MouseContext } from "../../context/mousepos/mouse.context";
 import { WidthContext } from "../../context/screenwidth/screenwidth.context";
+import { useNavigate } from "react-router-dom";
 
 export default function FeaturedWorks({ data }: { data: any }) {
   return (
-    <div className="w-full flex flex-col justify-center items-center gap-10">
+    <div className="w-full flex flex-col justify-center items-center">
       {data &&
         data.map((fw: any, i: number) => {
           return (
@@ -18,6 +19,7 @@ export default function FeaturedWorks({ data }: { data: any }) {
                 image: fw.image,
                 bgColor: fw.bgColor,
                 mouseColor: fw.mouseColor,
+                url: fw.url,
               }}
             />
           );
@@ -33,12 +35,18 @@ interface WorkInterface {
   image: string;
   bgColor: string;
   mouseColor: string;
+  url: string;
 }
 
 function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: boolean }) {
+  const navigate = useNavigate();
   const { options, setOptions } = useContext(MouseContext);
   const [isHoverImg, setIsHoverImage] = useState(false);
   const { screenwidth } = useContext(WidthContext);
+
+  function handleImageClick() {
+    navigate(data.url);
+  }
   const handleMouseEnterImage = () => {
     setIsHoverImage(true);
     setOptions({
@@ -111,17 +119,17 @@ function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: b
         <div
           className={
             isHoverImg && screenwidth > 768
-              ? `${imageContClass} grayscale-[40%] md:grayscale-0`
+              ? `${imageContClass} grayscale-[10%] md:grayscale-0`
               : imageContClass
           }
           onMouseEnter={handleMouseEnterImage}
           onMouseLeave={handleMouseLeaveImage}
-          style={{}}
+          onClick={handleImageClick}
         >
           <img
             src={data.image}
             alt={data.title}
-            className="w-full hover:scale-[1.01] transition-transform md:hover:scale-100 md:h-full md:w-auto md:max-w-none"
+            className="w-full hover:scale-[1.02] transition-transform md:hover:scale-100 md:h-full md:w-auto md:max-w-none duration-[1s]"
           />
           {screenwidth < 768 && (
             <div className="absolute top-0 bottom-0 left-0 right-0 w-full h-full bg-black bg-opacity-80"></div>
@@ -135,7 +143,7 @@ function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: b
         }}
       >
         <div
-          className="relative z-[2] flex justify-center flex-col items-start w-full max-w-[600px] gap-4 cursor-pointer md:px-5 md:text-white md:py-10 md:aspect-[16/10]"
+          className="relative z-[1] flex justify-center flex-col items-start w-full max-w-[600px] gap-4 cursor-pointer md:px-5 md:text-white md:py-10 md:aspect-[16/10]"
           style={{
             textAlign: isInverted && screenwidth > 768 ? "right" : null,
           }}
