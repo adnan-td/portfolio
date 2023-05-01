@@ -48,10 +48,10 @@ function Project({ data }: { data: WorkInterface }) {
     setIsHovering(true);
     setOptions({
       ...options,
-      scale: 4,
-      bgColor: "transparent",
+      scale: null,
+      bgColor: "white",
       zIndex: 1,
-      bg: <FWHover />,
+      bg: null,
       invert: false,
     });
   };
@@ -67,7 +67,7 @@ function Project({ data }: { data: WorkInterface }) {
   };
   return (
     <motion.div
-      className="w-full flex flex-col rounded-xl bg-white cursor-pointer transition-all shadow-xl max-h-fit pb-3 md:pb-5"
+      className="w-full flex flex-col rounded-xl bg-white transition-all shadow-xl max-h-fit pb-3 md:pb-5"
       id="project"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -114,16 +114,5 @@ function Project({ data }: { data: WorkInterface }) {
         </p>
       </div>
     </motion.div>
-  );
-}
-
-function FWHover() {
-  return (
-    <div
-      className="flex flex-col justify-center items-center w-full h-full text-white bg-opacity-60 font-[arial] bg-white font-semibold"
-      style={{ fontSize: "3px", letterSpacing: "0.07px" }}
-    >
-      <p>drag</p>
-    </div>
   );
 }
