@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ApolloWrapper from "./apollo";
 import { MousePos } from "./context/mousepos/mouse.context";
 import Home from "./routes/home/home";
@@ -23,7 +22,7 @@ function App() {
                 <Route path="/blogs" element={<ComingSoon />} />
                 <Route path="/contact" element={<ComingSoon />} />
                 <Route path="/projects">
-                  <Route index element={<ComingSoon />} />
+                  <Route index element={<ProjectsRoute />} />
                   <Route path="scripthome" element={<ComingSoon />} />
                   <Route path="sensorlifeline" element={<ComingSoon />} />
                   <Route path="crownclothing" element={<ComingSoon />} />

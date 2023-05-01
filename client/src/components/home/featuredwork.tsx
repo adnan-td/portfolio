@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function FeaturedWorks({ data }: { data: any }) {
   return (
-    <div className="w-full flex flex-col justify-center items-center">
+    <div className="w-full flex flex-col justify-center items-center md:gap-6">
       {data &&
         data.map((fw: any, i: number) => {
           return (
@@ -44,9 +44,16 @@ function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: b
   const [isHoverImg, setIsHoverImage] = useState(false);
   const { screenwidth } = useContext(WidthContext);
 
+  function handleDivClick() {
+    if (screenwidth < 768) {
+      navigate(data.url);
+    }
+  }
+
   function handleImageClick() {
     navigate(data.url);
   }
+
   const handleMouseEnterImage = () => {
     setIsHoverImage(true);
     setOptions({
@@ -108,6 +115,7 @@ function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: b
       className="relative grid grid-cols-2 items-center w-full gap-8 p-5 py-10 md:flex overflow-hidden"
       onMouseEnter={handleMouseEnterDiv}
       onMouseLeave={handleMouseLeaveDiv}
+      onClick={handleDivClick}
     >
       <div
         className="relative w-full flex justify-end md:absolute md:top-0 md:bottom-0 md:left-0 md:right-0 md:justify-center"

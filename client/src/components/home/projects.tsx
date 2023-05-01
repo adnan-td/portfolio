@@ -1,26 +1,23 @@
 import { useContext, useRef, useState } from "react";
 import { MouseContext } from "../../context/mousepos/mouse.context";
-import ShortcutIcon from "@mui/icons-material/Shortcut";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { motion } from "framer-motion";
+import { DataContext } from "../../context/data/data.context";
 
-export default function ProjectsCompleted({ data }: { data: any }) {
+export default function ProjectsCompleted() {
   const containerRef = useRef(null);
-  var sortedData = null;
-  if (data) {
-    sortedData = [...data].sort(() => Math.random() - 0.5);
-  }
+  const { data } = useContext(DataContext);
 
   return (
     <div className="w-full flex justify-start items-center" ref={containerRef}>
       <motion.div
-        className="flex justify-start items-stretch gap-8 md:gap-4"
+        className="flex justify-start items-stretch gap-8 md:gap-4 md:items-start"
         drag="x"
         dragConstraints={containerRef}
         whileTap={{ cursor: "grab" }}
       >
-        {sortedData &&
-          sortedData.map((fw: any, i: number) => {
+        {data?.projects &&
+          data.projects.map((fw: any, i: number) => {
             return (
               <Project
                 key={i}
@@ -39,7 +36,7 @@ export default function ProjectsCompleted({ data }: { data: any }) {
   );
 }
 
-interface WorkInterface {
+export interface WorkInterface {
   title: string;
   tech: string;
   image: string;
@@ -73,8 +70,8 @@ function Project({ data }: { data: WorkInterface }) {
   };
   return (
     <motion.div
-      className="min-w-[400px] flex flex-col rounded-xl max-w-[750px] bg-white cursor-pointer md:min-w-[300px] md:w-[300px] transition-all shadow-xl"
-      id="featuredWork"
+      className="md:h-[400px] min-w-[400px] flex flex-col rounded-xl max-w-[750px] bg-white cursor-pointer md:min-w-[300px] md:w-[300px] transition-all shadow-xl max-h-fit"
+      id="project"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{
@@ -83,14 +80,14 @@ function Project({ data }: { data: WorkInterface }) {
       }}
       whileTap={{ cursor: "grab" }}
     >
-      <div className="overflow-hidden flex justify-center items-center h-4/6 w-full p-5">
+      <div className="overflow-hidden flex justify-center items-center h-4/6 w-full p-5 md:h-1/2">
         <img
           src={data.image}
           className="w-full max-h-[290px] rounded-lg transition-transform pointer-events-none"
           alt={data.title}
         />
       </div>
-      <div className="flex flex-col gap-3 py-5 px-5">
+      <div className="flex flex-col gap-3 py-5 px-5 md:min-h-[140px]">
         <p className="text-2xl font-medium">{data.title}</p>
         <p className="text-1xl text-[#6f6f6f] font-medium">{data.tech}</p>
       </div>
@@ -109,9 +106,9 @@ function Project({ data }: { data: WorkInterface }) {
                 <path
                   fill="none"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6m4-3h6v6m-11 5L21 3"
                 />
               </svg>

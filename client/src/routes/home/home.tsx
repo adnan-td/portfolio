@@ -1,7 +1,4 @@
-import { useQuery } from "@apollo/client";
-import React, { useContext, useEffect } from "react";
-import { gql } from "@apollo/client";
-import { LoaderContext } from "../../context/loader/loader.context";
+import { useContext } from "react";
 import FeaturedWorks from "../../components/home/featuredwork";
 import "./home.scss";
 import LandingPage from "./landing";
@@ -12,18 +9,7 @@ import featuredProjectsJson from "../../json/featuredProjects.json";
 import { DataContext } from "../../context/data/data.context";
 
 export default function Home() {
-  const { data, loading } = useQuery(fwQuery);
-  const { setLoadingPage } = useContext(LoaderContext);
-  const { setData } = useContext(DataContext);
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (!loading) {
-        setData(data);
-        setLoadingPage(false);
-      }
-    }, 1000);
-  }, [loading, setLoadingPage]);
+  const { data } = useContext(DataContext);
 
   return <HomeRoute data={data} />;
 }
@@ -74,7 +60,7 @@ export function HomeRoute({ data }: { data: any }) {
           </div>
         </div>
         <div className="w-screen pl-[5vw] py-10 flex justify-center mb-16 gap-10 overflow-hidden">
-          <ProjectsCompleted data={data?.projects} />
+          <ProjectsCompleted />
         </div>
         <div className="flex mb-48">
           <HomeBtn href="/projects" text="View all projects" />
@@ -83,27 +69,6 @@ export function HomeRoute({ data }: { data: any }) {
     </>
   );
 }
-
-const fwQuery = gql`
-  {
-    experiences(options: { sort: { order: ASC } }) {
-      date
-      description
-      subtitle
-      title
-      tech
-    }
-
-    projects {
-      id
-      title
-      tech
-      image
-      github
-      url
-    }
-  }
-`;
 
 function HomeBtn({ href, text }: { href: string; text: string }) {
   return (
