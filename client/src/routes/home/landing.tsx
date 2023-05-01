@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import { MouseContext } from "../../context/mousepos/mouse.context";
 import BgVideo from "../../components/home/hovervideo";
-import { WidthContext } from "../../context/screenwidth/screenwidth.context";
+import { motion } from "framer-motion";
 
 export default function LandingPage() {
   const { options, setOptions } = useContext(MouseContext);
-  const { screenwidth } = useContext(WidthContext);
   const handleMouseEnterOuter = () => {
     setOptions({
       ...options,
@@ -53,17 +52,27 @@ export default function LandingPage() {
           onMouseLeave={handleMouseLeaveOuter}
         >
           <div className="main-cont flex flex-col gap-4 cursor-pointer bg-transparent py-40 items-center">
-            <p className="main-hi text-2xl font-semibold sm:text-xl">Hi, my name is</p>
-            <p
+            <motion.p
+              initial={{ y: -300 }}
+              whileInView={{ y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="main-hi text-2xl font-semibold sm:text-xl"
+            >
+              Hi, my name is
+            </motion.p>
+            <motion.p
               className="main-title text-8xl font-bold sm:text-7xl text-center"
               onMouseEnter={handleMouseEnterInner}
               onMouseLeave={handleMouseLeaveInner}
+              initial={{ scale: 0.3 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 0.3 }}
             >
               <span>Adnan</span> <span>Shabbir</span>{" "}
               <span>
                 Husain<span className="sm:hidden">.</span>
               </span>
-            </p>
+            </motion.p>
           </div>
         </div>
         <div className="hidden xl:flex font-sono">
@@ -78,11 +87,16 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-      <div className="text-[32px] pb-[300px] font-normal flex flex-col gap-1 items-center lg:hidden xl:pt-[60px]">
+      <motion.div
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        transition={{ duration: 0.3 }}
+        className="text-[32px] pb-[300px] font-normal flex flex-col gap-1 items-center lg:hidden xl:pt-[60px]"
+      >
         <p>A skilled software developer, having a copious amount of</p>
         <p>experience in creating robust digital solutions.</p>
         <p>With professionalism, loves to bring ideas to life.</p>
-      </div>
+      </motion.div>
       <div className="hidden text-center pt-[60px] pb-40 font-normal lg:flex items-center text-2xl sm:text-left">
         <p>
           A skilled software developer, having a copious amount of experience in creating robust

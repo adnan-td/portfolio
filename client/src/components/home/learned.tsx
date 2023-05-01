@@ -1,7 +1,8 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { skillInterface, skills } from "./skills";
 import Select from "react-select";
 import { WidthContext } from "../../context/screenwidth/screenwidth.context";
+import { motion } from "framer-motion";
 
 const selectOptions = skills.map((skill) => {
   return {
@@ -64,13 +65,16 @@ export default function Learned() {
       <div className="grid grid-cols-5 justify-items-center items-center gap-8 md:grid-cols-3 sm:grid-cols-2">
         {filteredSkills.map((skill, i) => {
           return (
-            <div
-              key={i}
+            <motion.div
+              initial={{ opacity: 0, translateX: -50, translateY: -50 }}
+              whileInView={{ opacity: 1, translateX: 0, translateY: 0 }}
+              transition={{ duration: 0.2, delay: i * 0.05 }}
+              key={skill.name}
               className="px-10 py-4 bg-neutral-100 border border-neutral-700 rounded-lg w-full flex justify-center gap-2 items-center"
             >
               <p className="min-w-[20px]">{skill.icon}</p>
               <p>{skill.name}</p>
-            </div>
+            </motion.div>
           );
         })}
       </div>
