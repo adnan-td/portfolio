@@ -94,14 +94,14 @@ function Project({ data }: { data: WorkInterface }) {
       <div className="flex w-full px-5 items-center justify-between">
         <p>
           {data.github && (
-            <a href={data.github}>
+            <a href={data.github} target="_blank" rel="noreferrer">
               <GitHubIcon />
             </a>
           )}
         </p>
         <p>
           {data.url && (
-            <a href={data.url}>
+            <a href={data.url} target="_blank" rel="noreferrer">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path
                   fill="none"

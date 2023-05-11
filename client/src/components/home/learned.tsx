@@ -68,7 +68,7 @@ export default function Learned() {
             <motion.div
               initial={{ opacity: 0, translateX: -50, translateY: -50 }}
               whileInView={{ opacity: 1, translateX: 0, translateY: 0 }}
-              transition={{ duration: 0.2, delay: i * 0.05 }}
+              transition={{ duration: 0.1, delay: i * 0.04 }}
               key={skill.name}
               className="px-10 py-4 bg-neutral-100 border border-neutral-700 rounded-lg w-full flex justify-center gap-2 items-center"
             >

@@ -87,16 +87,11 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-      <motion.div
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        transition={{ duration: 0.3 }}
-        className="text-[32px] pb-[300px] font-normal flex flex-col gap-1 items-center lg:hidden xl:pt-[60px]"
-      >
+      <div className="text-[32px] pb-[300px] font-normal flex flex-col gap-1 items-center lg:hidden xl:pt-[60px]">
         <p>A skilled software developer, having a copious amount of</p>
         <p>experience in creating robust digital solutions.</p>
         <p>With professionalism, loves to bring ideas to life.</p>
-      </motion.div>
+      </div>
       <div className="hidden text-center pt-[60px] pb-40 font-normal lg:flex items-center text-2xl sm:text-left">
         <p>
           A skilled software developer, having a copious amount of experience in creating robust

@@ -50,7 +50,7 @@ export default function FooterComponent() {
           <div id="footer-top" className="">
             <div className="footer-header">
               <h2>Have an idea?</h2>
-              <a href="/contacts/">Share it with me</a>
+              <a href="/contact">Share it with me</a>
             </div>
           </div>
           <div id="footer-bottom" className="flex gap-7 justify-center items-center lg:flex-col">
