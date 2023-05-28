@@ -4,6 +4,7 @@ import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHt
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { schema } from "./src/neo4j";
+import CronDeclare from "./src/cron";
 
 const PORT = parseInt(process.env.PORT, 10) || 3000;
 const server = http.createServer(app);
@@ -37,5 +38,7 @@ async function startServer() {
     console.log(`Site - http://localhost:${PORT}/graphql`);
   });
 }
+
+CronDeclare();
 
 startServer();
