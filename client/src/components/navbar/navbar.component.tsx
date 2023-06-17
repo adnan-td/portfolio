@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import Hamburger from "./hamburger";
 import ArticleIcon from "@mui/icons-material/Article";
 import { MouseContext } from "../../context/mousepos/mouse.context";
+import { Link } from "react-router-dom";
 
 export default function NavbarComponent() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -56,17 +57,22 @@ export default function NavbarComponent() {
 
   return (
     <div className="flex justify-between pl-14 py-6 items-center min-h-20 gap-3 sm:pl-7">
-      <a href="/" className="cursor-pointer">
-        <img className="w-20 text-black sm:w-14" src="/Logo.svg" alt="Logo" />
-      </a>
+      <Link to="/">
+        <button className="cursor-pointer">
+          <img className="w-20 text-black sm:w-14" src="/Logo.svg" alt="Logo" />
+        </button>
+      </Link>
       <div className="flex items-center justify-center">
         <div className="flex gap-12 items-center font-sono font-medium text-xl sm:gap-0">
-          <a href="#" className="flex items-center gap-1 sm:hidden">
+          <a
+            href="https://drive.google.com/file/d/1Io1UJSCp8j1mHFWAa0wknBYzdr3CIwlC/view?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-1 sm:hidden"
+          >
             <ArticleIcon /> resume
           </a>
-          <a href="#" className="">
-            menu
-          </a>
+          <button style={{ cursor: "default" }}>menu</button>
           <div className="h-[60px] w-[70px] sm:w-[80px]"></div>
         </div>
         <Hamburger isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -154,46 +160,52 @@ export default function NavbarComponent() {
                   className="flex flex-col gap-5 font-semibold text-[40px] z-[3] sm:text-3xl sm:row-start-1"
                 >
                   <p className="font-base mb-5 text-neutral-400 text-base">Menu</p>
-                  <motion.a
-                    href="/"
-                    whileHover={whileHover}
-                    onHoverStart={handleMouseEnterLinks}
-                    onHoverEnd={handleMouseLeaveLinks}
-                  >
-                    Home
-                  </motion.a>
-                  <motion.a
-                    href="/about"
-                    whileHover={whileHover}
-                    onHoverStart={handleMouseEnterLinks}
-                    onHoverEnd={handleMouseLeaveLinks}
-                  >
-                    About
-                  </motion.a>
-                  <motion.a
-                    href="/projects"
-                    whileHover={whileHover}
-                    onHoverStart={handleMouseEnterLinks}
-                    onHoverEnd={handleMouseLeaveLinks}
-                  >
-                    Projects
-                  </motion.a>
-                  <motion.a
-                    href="/blogs"
-                    whileHover={whileHover}
-                    onHoverStart={handleMouseEnterLinks}
-                    onHoverEnd={handleMouseLeaveLinks}
-                  >
-                    Blogs
-                  </motion.a>
-                  <motion.a
-                    href="/contact"
-                    whileHover={whileHover}
-                    onHoverStart={handleMouseEnterLinks}
-                    onHoverEnd={handleMouseLeaveLinks}
-                  >
-                    Contact
-                  </motion.a>
+                  <Link to="/">
+                    <motion.button
+                      whileHover={whileHover}
+                      onHoverStart={handleMouseEnterLinks}
+                      onHoverEnd={handleMouseLeaveLinks}
+                    >
+                      Home
+                    </motion.button>
+                  </Link>
+                  <Link to="/about">
+                    <motion.button
+                      whileHover={whileHover}
+                      onHoverStart={handleMouseEnterLinks}
+                      onHoverEnd={handleMouseLeaveLinks}
+                    >
+                      About
+                    </motion.button>
+                  </Link>
+                  <Link to="/projects">
+                    <motion.button
+                      whileHover={whileHover}
+                      onHoverStart={handleMouseEnterLinks}
+                      onHoverEnd={handleMouseLeaveLinks}
+                    >
+                      Projects
+                    </motion.button>
+                  </Link>
+
+                  <Link to="/blogs">
+                    <motion.button
+                      whileHover={whileHover}
+                      onHoverStart={handleMouseEnterLinks}
+                      onHoverEnd={handleMouseLeaveLinks}
+                    >
+                      Blogs
+                    </motion.button>
+                  </Link>
+                  <Link to="/contact">
+                    <motion.button
+                      whileHover={whileHover}
+                      onHoverStart={handleMouseEnterLinks}
+                      onHoverEnd={handleMouseLeaveLinks}
+                    >
+                      Contact
+                    </motion.button>
+                  </Link>
                 </div>
               </motion.div>
             </>

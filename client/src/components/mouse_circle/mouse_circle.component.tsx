@@ -1,9 +1,28 @@
 import { MouseContext } from "../../context/mousepos/mouse.context";
 import { motion } from "framer-motion";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+
+interface Pos {
+  x: number;
+  y: number;
+}
 
 export default function MouseCircleComponent() {
-  const { options, pos } = useContext(MouseContext);
+  const { options, radius } = useContext(MouseContext);
+  const [pos, setPos] = useState<Pos>({
+    x: 0,
+    y: 0,
+  });
+  useEffect(() => {
+    function mouseMove(event: any) {
+      setPos({
+        x: event.clientX - radius,
+        y: event.clientY - radius,
+      });
+    }
+    window.addEventListener("mousemove", mouseMove);
+    return () => {};
+  }, []);
   return (
     <motion.div
       className={
@@ -31,7 +50,7 @@ export default function MouseCircleComponent() {
         mixBlendMode: options.mixBlendMode || "initial",
         zIndex: options.zIndex || -5,
       }}
-      transition={{ type: "tween", duration: 0.5, ease: "circOut" }}
+      transition={{ type: "tween", duration: 0.3, ease: "circOut" }}
       id="mouse-follower"
     >
       <div className="w-3 h-3 flex justify-center items-center bg-transparent">

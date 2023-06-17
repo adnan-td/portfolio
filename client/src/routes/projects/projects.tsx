@@ -10,13 +10,17 @@ export default function ProjectsRoute() {
   const { setLoadingPage } = useContext(LoaderContext);
   const { data } = useContext(DataContext);
 
-  console.log(data);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
-    setTimeout(() => {
+    if (!data) {
+      setLoadingPage(true);
+    } else {
       setLoadingPage(false);
-    }, 800);
-  }, []);
+    }
+  }, [data]);
 
   return (
     <div className="w-screen flex justify-center min-h-screen px-[10%]">

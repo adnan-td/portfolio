@@ -7,6 +7,7 @@ import Learned from "../../components/home/learned";
 import ProjectsCompleted from "../../components/home/projects";
 import featuredProjectsJson from "../../json/featuredProjects.json";
 import { DataContext } from "../../context/data/data.context";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const { data } = useContext(DataContext);
@@ -72,13 +73,15 @@ export function HomeRoute({ data }: { data: any }) {
 
 function HomeBtn({ href, text }: { href: string; text: string }) {
   return (
-    <a className="home-btn home-btn_more z-[1]" href={href}>
-      <span className="home-btn_more-title">
-        <span data-text={text}>{text}</span>
-      </span>
-      <span className="home-btn_more-ripple">
-        <span></span>
-      </span>
-    </a>
+    <Link to={href}>
+      <button className="home-btn home-btn_more z-[1]">
+        <span className="home-btn_more-title">
+          <span data-text={text}>{text}</span>
+        </span>
+        <span className="home-btn_more-ripple">
+          <span></span>
+        </span>
+      </button>
+    </Link>
   );
 }

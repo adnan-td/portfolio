@@ -1,0 +1,52 @@
+.floating_input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  transition: 300ms ease;
+
+  &:hover {
+    border-color: black;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: black;
+    box-shadow: 0 1px 0 0 black;
+  }
+
+  overflow-y: hidden;
+}
+
+.floating_label {
+  pointer-events: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: 300ms ease;
+  color: #ccc;
+}
+
+.floating_label2 {
+  pointer-events: none;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  transition: 300ms ease;
+  color: #ccc;
+}
+
+.floating_input:focus + .floating_label,
+.floating_input:focus + .floating_label2,
+.floating_input:not(:placeholder-shown) + .floating_label,
+.floating_input:not(:placeholder-shown) + .floating_label2 {
+  transform: translateY(-40px);
+  font-size: 20px;
+}
+
+.error_text {
+  pointer-events: none;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  color: rgb(222, 50, 50);
+  bottom: -34px;
+}

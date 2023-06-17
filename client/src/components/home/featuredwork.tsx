@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { MouseContext } from "../../context/mousepos/mouse.context";
 import { WidthContext } from "../../context/screenwidth/screenwidth.context";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function FeaturedWorks({ data }: { data: any }) {
   return (
@@ -108,14 +109,26 @@ function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: b
       bg: null,
     });
   };
+  const slideAmount = () => {
+    if (isInverted) {
+      if (screenwidth <= 768) return 200;
+      else return 600;
+    } else {
+      if (screenwidth <= 768) return -200;
+      else return -600;
+    }
+  };
   const imageContClass =
     "max-w-[600px] shadow-md w-full aspect-[16/12] overflow-hidden rounded-lg cursor-pointer relative flex justify-center items-center";
   return (
-    <div
+    <motion.div
       className="relative grid grid-cols-2 items-center w-full gap-8 p-5 py-10 md:flex overflow-hidden"
       onMouseEnter={handleMouseEnterDiv}
       onMouseLeave={handleMouseLeaveDiv}
       onClick={handleDivClick}
+      initial={{ opacity: 0, scale: 0.4, x: slideAmount() }}
+      whileInView={{ scale: 1, opacity: 1, x: 0 }}
+      transition={{ duration: 0.3 }}
     >
       <div
         className="relative w-full flex justify-end md:absolute md:top-0 md:bottom-0 md:left-0 md:right-0 md:justify-center"
@@ -161,7 +174,7 @@ function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: b
           <p className="text-1xl text-[#6f6f6f] font-medium w-full">{data.tech}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

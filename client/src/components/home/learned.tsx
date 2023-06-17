@@ -20,6 +20,9 @@ export default function Learned() {
     const currentSkills = skills.find((skill) => {
       return skill.category === tab.value;
     }).skills;
+    currentSkills.forEach((skill) => {
+      skill.key = tab.value;
+    });
     setFilteredSkills(currentSkills);
   }, [tab]);
 
@@ -66,10 +69,10 @@ export default function Learned() {
         {filteredSkills.map((skill, i) => {
           return (
             <motion.div
-              initial={{ opacity: 0, translateX: -50, translateY: -50 }}
-              whileInView={{ opacity: 1, translateX: 0, translateY: 0 }}
-              transition={{ duration: 0.1, delay: i * 0.04 }}
-              key={skill.name}
+              initial={{ opacity: 0, scale: 0, translateY: 200 }}
+              whileInView={{ opacity: 1, scale: 1, translateY: 0 }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+              key={`${skill.name}-${skill.key}`}
               className="px-10 py-4 bg-neutral-100 border border-neutral-700 rounded-lg w-full flex justify-center gap-2 items-center"
             >
               <p className="min-w-[20px]">{skill.icon}</p>

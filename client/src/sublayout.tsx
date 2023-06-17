@@ -4,6 +4,7 @@ import NavbarComponent from "./components/navbar/navbar.component";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { LoaderState } from "./context/loader/loader.context";
+import CallToAction from "./components/calltoaction/calltoaction";
 
 export default function SubLayout({ children }: { children: React.ReactNode }) {
   const [isHovering, setIsHovering] = useState<boolean>(false);
@@ -22,6 +23,7 @@ export default function SubLayout({ children }: { children: React.ReactNode }) {
         <NavbarComponent />
         {children}
         <FooterComponent />
+        <CallToAction />
       </LoaderState>
     </div>
   );

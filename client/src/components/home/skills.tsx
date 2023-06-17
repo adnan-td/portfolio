@@ -39,6 +39,7 @@ export interface skillsInterface {
 export interface skillInterface {
   name: string;
   icon: JSX.Element;
+  key?: string;
 }
 
 export const skills: skillsInterface[] = [

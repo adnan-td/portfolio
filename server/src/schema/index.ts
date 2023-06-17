@@ -20,11 +20,20 @@ export const typeDefs = gql`
     order: Int!
   }
 
+  type ContactMessages {
+    name: String!
+    email: String!
+    message: String!
+  }
+
   extend type Projects
     @auth(rules: [{ operations: [CREATE, UPDATE, DELETE], isAuthenticated: true }])
 
   extend type Experience
     @auth(rules: [{ operations: [CREATE, UPDATE, DELETE], isAuthenticated: true }])
+
+  extend type ContactMessages
+    @auth(rules: [{ operations: [UPDATE, DELETE], isAuthenticated: true }])
 
   type Mutation {
     signIn(userName: String!, password: String!): String!

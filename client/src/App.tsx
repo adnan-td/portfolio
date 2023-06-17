@@ -8,6 +8,7 @@ import ProjectsRoute from "./routes/projects/projects";
 import ComingSoon from "./components/commingsoon/commingsoon";
 import NotFound from "./components/notfound/notfound";
 import { DataStateComponent } from "./context/data/data.context";
+import ContactRoute from "./routes/contact/contact.route";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<ComingSoon />} />
                 <Route path="/blogs" element={<ComingSoon />} />
-                <Route path="/contact" element={<ComingSoon />} />
+                <Route path="/contact" element={<ContactRoute />} />
                 <Route path="/projects">
                   <Route index element={<ProjectsRoute />} />
                   <Route path="scripthome" element={<ComingSoon />} />
