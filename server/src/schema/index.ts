@@ -21,6 +21,7 @@ export const typeDefs = gql`
   }
 
   type ContactMessages {
+    id: ID! @id
     name: String!
     email: String!
     message: String!

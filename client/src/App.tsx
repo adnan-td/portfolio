@@ -9,6 +9,13 @@ import ComingSoon from "./components/commingsoon/commingsoon";
 import NotFound from "./components/notfound/notfound";
 import { DataStateComponent } from "./context/data/data.context";
 import ContactRoute from "./routes/contact/contact.route";
+import FeaturedRoute from "./routes/featured/featured.route";
+import {
+  CrownclothingContent,
+  PixelAlienContent,
+  ScripthomeContent,
+  SensorlifelineContent,
+} from "./routes/featured/featured.content";
 
 function App() {
   return (
@@ -24,10 +31,22 @@ function App() {
                 <Route path="/contact" element={<ContactRoute />} />
                 <Route path="/projects">
                   <Route index element={<ProjectsRoute />} />
-                  <Route path="scripthome" element={<ComingSoon />} />
-                  <Route path="sensorlifeline" element={<ComingSoon />} />
-                  <Route path="crownclothing" element={<ComingSoon />} />
-                  <Route path="pixelalien" element={<ComingSoon />} />
+                  <Route
+                    path="pixelalien"
+                    element={<FeaturedRoute id="1" text={<PixelAlienContent />} />}
+                  />
+                  <Route
+                    path="scripthome"
+                    element={<FeaturedRoute id="2" text={<ScripthomeContent />} />}
+                  />
+                  <Route
+                    path="sensorlifeline"
+                    element={<FeaturedRoute id="3" text={<SensorlifelineContent />} />}
+                  />
+                  <Route
+                    path="crownclothing"
+                    element={<FeaturedRoute id="4" text={<CrownclothingContent />} />}
+                  />
                 </Route>
                 <Route path="/*" element={<NotFound />} />
               </Routes>

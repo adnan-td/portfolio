@@ -1,50 +1,58 @@
 [
   {
     "id": "1",
-    "title": "ScriptHome",
-    "description": "A hub for all your roblox scripts",
-    "tech": "web, full-stack, ui/ux",
-    "image": "/works/scripthome.webp",
-    "bgColor": "#f3e8ff",
-    "mouseColor": "#9333ea",
-    "url": "/projects/scripthome",
-    "projectLink": "https://scripthome.org",
-    "githubLink": "https://github.com/Adnan-S-Husain/Scripthome-NextJs"
-  },
-  {
-    "id": "2",
-    "title": "Sensor Lifeline Backend",
-    "description": "Graphql Backend for Sensor Lifeline Project",
-    "tech": "graphql, expressjs, typescript",
-    "image": "/works/graphql.png",
-    "bgColor": "#e0f2fe",
-    "mouseColor": "#3185FC",
-    "url": "/projects/sensorlifeline",
-    "projectLink": "",
-    "githubLink": "https://github.com/Adnan-S-Husain/expressjs-graphql-mysql-api"
-  },
-  {
-    "id": "3",
-    "title": "Crown Clothing",
-    "description": "Frontend based clothing e-commerce web application",
-    "tech": "e-commerce, firebase, react",
-    "image": "/works/crownclothing.png",
-    "bgColor": "#ffedd5",
-    "mouseColor": "#f97316",
-    "url": "/projects/crownclothing",
-    "projectLink": "https://db-crownclothing.web.app/",
-    "githubLink": "https://github.com/Adnan-S-Husain/React-CrownClothing"
-  },
-  {
-    "id": "4",
     "title": "Pixel Alien",
     "description": "Godot 4 based 2D platformer - action game",
     "tech": "godot4, aseprite, gdscript",
     "image": "/works/pixelalien.png",
-    "bgColor": "#ecfccb",
+    "bgColor": "rgb(247, 254, 231, 0.5)",
     "mouseColor": "#84cc16",
     "url": "/projects/pixelalien",
     "projectLink": "https://adnan-td.itch.io/pixel-alien",
-    "githubLink": "https://github.com/Adnan-S-Husain/2d-Platformer"
+    "githubLink": "https://github.com/Adnan-S-Husain/2d-Platformer",
+    "mainImg": "/featured/pixelmain.png",
+    "images": []
+  },
+  {
+    "id": "2",
+    "title": "ScriptHome",
+    "description": "A hub for all your roblox scripts",
+    "tech": "web, full-stack, ui/ux",
+    "image": "/works/scripthome.webp",
+    "bgColor": "rgb(250, 245, 255, 0.5)",
+    "mouseColor": "#9333ea",
+    "url": "/projects/scripthome",
+    "projectLink": "https://scripthome.org",
+    "githubLink": "https://github.com/Adnan-S-Husain/Scripthome-NextJs",
+    "mainImg": "/works/scripthome.webp",
+    "images": []
+  },
+  {
+    "id": "3",
+    "title": "Sensor Lifeline Backend",
+    "description": "Graphql Backend for Sensor Lifeline Project",
+    "tech": "graphql, expressjs, typescript",
+    "image": "/works/graphql.png",
+    "bgColor": "rgb(240, 249, 255, 0.5)",
+    "mouseColor": "#3185FC",
+    "url": "/projects/sensorlifeline",
+    "projectLink": "",
+    "githubLink": "https://github.com/Adnan-S-Husain/expressjs-graphql-mysql-api",
+    "mainImg": "/works/graphql.png",
+    "images": []
+  },
+  {
+    "id": "4",
+    "title": "Crown Clothing",
+    "description": "Frontend based clothing e-commerce web application",
+    "tech": "e-commerce, firebase, react",
+    "image": "/works/crownclothing.png",
+    "bgColor": "rgb(255, 247, 237, 0.5)",
+    "mouseColor": "#f97316",
+    "url": "/projects/crownclothing",
+    "projectLink": "https://db-crownclothing.web.app/",
+    "githubLink": "https://github.com/Adnan-S-Husain/React-CrownClothing",
+    "mainImg": "/works/crownclothing.png",
+    "images": []
   }
 ]

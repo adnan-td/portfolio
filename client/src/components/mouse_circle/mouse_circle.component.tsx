@@ -37,8 +37,7 @@ export default function MouseCircleComponent() {
         x: options.customPosition ? options.customPosition.x : pos.x,
         y: options.customPosition ? options.customPosition.y : pos.y,
         scale: options.scale || 1,
-        // skewX: options.skew,
-        skewX: -10,
+        skewX: options.skew,
         rotate: options.rotate || 0,
       }}
       exit={{
