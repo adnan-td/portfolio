@@ -4,6 +4,9 @@ import { gql } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 
 export default function ContactRoute() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <div className="w-screen min-h-screen flex justify-center items-start py-32">
       <ContactForm />

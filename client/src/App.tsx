@@ -27,6 +27,7 @@ function App() {
                   <Route path="scripthome" element={<ComingSoon />} />
                   <Route path="sensorlifeline" element={<ComingSoon />} />
                   <Route path="crownclothing" element={<ComingSoon />} />
+                  <Route path="pixelalien" element={<ComingSoon />} />
                 </Route>
                 <Route path="/*" element={<NotFound />} />
               </Routes>

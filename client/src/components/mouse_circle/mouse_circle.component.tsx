@@ -37,7 +37,8 @@ export default function MouseCircleComponent() {
         x: options.customPosition ? options.customPosition.x : pos.x,
         y: options.customPosition ? options.customPosition.y : pos.y,
         scale: options.scale || 1,
-        skewX: options.skew,
+        // skewX: options.skew,
+        skewX: -10,
         rotate: options.rotate || 0,
       }}
       exit={{
@@ -50,7 +51,7 @@ export default function MouseCircleComponent() {
         mixBlendMode: options.mixBlendMode || "initial",
         zIndex: options.zIndex || -5,
       }}
-      transition={{ type: "tween", duration: 0.3, ease: "circOut" }}
+      transition={{ type: "tween", duration: 0.4, ease: "circOut" }}
       id="mouse-follower"
     >
       <div className="w-3 h-3 flex justify-center items-center bg-transparent">

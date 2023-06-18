@@ -7,7 +7,9 @@
     "image": "/works/scripthome.webp",
     "bgColor": "#f3e8ff",
     "mouseColor": "#9333ea",
-    "url": "/projects/scripthome"
+    "url": "/projects/scripthome",
+    "projectLink": "https://scripthome.org",
+    "githubLink": "https://github.com/Adnan-S-Husain/Scripthome-NextJs"
   },
   {
     "id": "2",
@@ -17,7 +19,9 @@
     "image": "/works/graphql.png",
     "bgColor": "#e0f2fe",
     "mouseColor": "#3185FC",
-    "url": "/projects/sensorlifeline"
+    "url": "/projects/sensorlifeline",
+    "projectLink": "",
+    "githubLink": "https://github.com/Adnan-S-Husain/expressjs-graphql-mysql-api"
   },
   {
     "id": "3",
@@ -30,5 +34,17 @@
     "url": "/projects/crownclothing",
     "projectLink": "https://db-crownclothing.web.app/",
     "githubLink": "https://github.com/Adnan-S-Husain/React-CrownClothing"
+  },
+  {
+    "id": "4",
+    "title": "Pixel Alien",
+    "description": "Godot 4 based 2D platformer - action game",
+    "tech": "godot4, aseprite, gdscript",
+    "image": "/works/pixelalien.png",
+    "bgColor": "#ecfccb",
+    "mouseColor": "#84cc16",
+    "url": "/projects/pixelalien",
+    "projectLink": "https://adnan-td.itch.io/pixel-alien",
+    "githubLink": "https://github.com/Adnan-S-Husain/2d-Platformer"
   }
 ]
