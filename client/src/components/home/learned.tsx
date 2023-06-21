@@ -69,9 +69,10 @@ export default function Learned() {
         {filteredSkills.map((skill, i) => {
           return (
             <motion.div
-              initial={{ opacity: 0, scale: 0, translateY: 200 }}
-              whileInView={{ opacity: 1, scale: 1, translateY: 0 }}
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
+              viewport={{ once: true }}
               key={`${skill.name}-${skill.key}`}
               className="px-10 py-4 bg-neutral-100 border border-neutral-700 rounded-lg w-full flex justify-center gap-2 items-center"
             >

@@ -72,7 +72,8 @@ const ContactForm = () => {
         },
       });
       try {
-        const response = fetch("http://localhost:3000/contact", {
+        const url = import.meta.env.VITE_BACKEND_URI;
+        const response = fetch(!url ? "/contact" : url + "/contact", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

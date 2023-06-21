@@ -1,5 +1,4 @@
 import express from "express";
-import path from "path";
 import contactRouter from "./contact/contact.router";
 
 const api = express.Router();

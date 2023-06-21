@@ -111,11 +111,9 @@ function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: b
   };
   const slideAmount = () => {
     if (isInverted) {
-      if (screenwidth <= 768) return 200;
-      else return 600;
+      return 200;
     } else {
-      if (screenwidth <= 768) return -200;
-      else return -600;
+      return -200;
     }
   };
   const imageContClass =
@@ -129,6 +127,7 @@ function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: b
       initial={{ opacity: 0, scale: 0.4, x: slideAmount() }}
       whileInView={{ scale: 1, opacity: 1, x: 0 }}
       transition={{ duration: 0.3 }}
+      viewport={{ once: true }}
     >
       <div
         className="relative w-full flex justify-end md:absolute md:top-0 md:bottom-0 md:left-0 md:right-0 md:justify-center"

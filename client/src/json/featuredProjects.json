@@ -24,7 +24,7 @@
     "url": "/projects/scripthome",
     "projectLink": "https://scripthome.org",
     "githubLink": "https://github.com/Adnan-S-Husain/Scripthome-NextJs",
-    "mainImg": "/works/scripthome.webp",
+    "mainImg": "/featured/scripthomemain.png",
     "images": []
   },
   {
@@ -36,9 +36,9 @@
     "bgColor": "rgb(240, 249, 255, 0.5)",
     "mouseColor": "#3185FC",
     "url": "/projects/sensorlifeline",
-    "projectLink": "",
+    "projectLink": null,
     "githubLink": "https://github.com/Adnan-S-Husain/expressjs-graphql-mysql-api",
-    "mainImg": "/works/graphql.png",
+    "mainImg": "/featured/graphqlmain.svg",
     "images": []
   },
   {

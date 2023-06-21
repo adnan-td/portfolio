@@ -12,7 +12,7 @@ const ParallaxEffectBgImg = ({ img, className }: { img: string; className: strin
           height: "100%",
           width: "100%",
           background: `url("${img}") center center / cover no-repeat`,
-          y: y,
+          translateY: y,
         }}
       />
     </div>

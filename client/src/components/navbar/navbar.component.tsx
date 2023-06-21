@@ -9,6 +9,10 @@ export default function NavbarComponent() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { options, setOptions } = useContext(MouseContext);
 
+  const closeNavbar = () => {
+    setIsOpen(false);
+  };
+
   const handleMouseEnterLinks = () => {
     setOptions({
       ...options,
@@ -51,6 +55,13 @@ export default function NavbarComponent() {
       opacity: 1,
       x: 0,
     },
+    exit: {
+      opacity: 0,
+      x: 1000,
+      transition: {
+        delay: 0,
+      },
+    },
   };
 
   const whileHover = { scale: 0.97 };
@@ -91,7 +102,7 @@ export default function NavbarComponent() {
                 variants={variantsNavbarGrid}
                 initial="hidden"
                 animate="show"
-                exit="hidden"
+                exit="exit"
                 transition={{
                   type: "just",
                   delay: 0.2,
@@ -160,7 +171,7 @@ export default function NavbarComponent() {
                   className="flex flex-col gap-5 font-semibold text-[40px] z-[3] sm:text-3xl sm:row-start-1"
                 >
                   <p className="font-base mb-5 text-neutral-400 text-base">Menu</p>
-                  <Link to="/">
+                  <Link onClick={closeNavbar} to="/">
                     <motion.button
                       whileHover={whileHover}
                       onHoverStart={handleMouseEnterLinks}
@@ -169,7 +180,7 @@ export default function NavbarComponent() {
                       Home
                     </motion.button>
                   </Link>
-                  <Link to="/about">
+                  {/* <Link onClick={closeNavbar} to="/about">
                     <motion.button
                       whileHover={whileHover}
                       onHoverStart={handleMouseEnterLinks}
@@ -177,8 +188,8 @@ export default function NavbarComponent() {
                     >
                       About
                     </motion.button>
-                  </Link>
-                  <Link to="/projects">
+                  </Link> */}
+                  <Link onClick={closeNavbar} to="/projects">
                     <motion.button
                       whileHover={whileHover}
                       onHoverStart={handleMouseEnterLinks}
@@ -188,7 +199,7 @@ export default function NavbarComponent() {
                     </motion.button>
                   </Link>
 
-                  <Link to="/blogs">
+                  <Link onClick={closeNavbar} to="/blogs">
                     <motion.button
                       whileHover={whileHover}
                       onHoverStart={handleMouseEnterLinks}
@@ -197,7 +208,7 @@ export default function NavbarComponent() {
                       Blogs
                     </motion.button>
                   </Link>
-                  <Link to="/contact">
+                  <Link onClick={closeNavbar} to="/contact">
                     <motion.button
                       whileHover={whileHover}
                       onHoverStart={handleMouseEnterLinks}

@@ -51,7 +51,8 @@ export default function ParallaxComponent({
       onMouseLeave={handleMouseLeave}
       style={style}
     >
-      <motion.div style={{ y }} className={"relative " + childClass}>
+      {/* @ts-ignore */}
+      <motion.div className={"relative " + childClass} style={{ translateY: y }}>
         {children}
       </motion.div>
     </motion.div>
