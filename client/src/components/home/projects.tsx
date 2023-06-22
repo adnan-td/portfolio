@@ -17,7 +17,7 @@ export default function ProjectsCompleted() {
         whileTap={{ cursor: "grab" }}
       >
         {data?.projects &&
-          data.projects.map((fw: any, i: number) => {
+          data.projects.slice(0, 10).map((fw: any, i: number) => {
             return (
               <Project
                 key={i}
