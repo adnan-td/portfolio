@@ -23,8 +23,8 @@ export function HomeRoute({ data }: { data: any }) {
 
         <div className="flex flex-col gap-6 mb-20">
           <div className="text-6xl font-semibold flex flex-col gap-3 lg:text-5xl">
-            <p>Featured</p>
-            <p className="main-skills-head">Projects</p>
+            <h2>Featured</h2>
+            <h2 className="main-skills-head">Projects</h2>
           </div>
         </div>
         <div className="w-screen px-[5vw] flex justify-center items-center mb-16 gap-10">
@@ -36,8 +36,8 @@ export function HomeRoute({ data }: { data: any }) {
 
         <div className="flex flex-col gap-6 mb-16">
           <div className="text-6xl font-semibold flex flex-col gap-3 lg:text-5xl">
-            <p>What I've</p>
-            <p className="main-skills-head">Learned</p>
+            <h2>What I've</h2>
+            <h2 className="main-skills-head">Learned</h2>
           </div>
         </div>
         <div className="w-screen px-[5vw] flex justify-center flex-wrap mb-40 gap-10">
@@ -46,8 +46,8 @@ export function HomeRoute({ data }: { data: any }) {
 
         <div className="flex flex-col gap-6 mb-20">
           <div className="text-6xl font-semibold flex flex-col gap-3 lg:text-5xl">
-            <p>Where I've</p>
-            <p className="main-skills-head">Worked</p>
+            <h2>Where I've</h2>
+            <h2 className="main-skills-head">Worked</h2>
           </div>
         </div>
         <div className="w-screen px-[5vw] flex justify-center flex-wrap mb-28 gap-10">
@@ -56,8 +56,8 @@ export function HomeRoute({ data }: { data: any }) {
 
         <div className="flex flex-col gap-6 mb-20">
           <div className="text-6xl font-semibold flex flex-col gap-3 lg:text-5xl">
-            <p>Projects</p>
-            <p className="main-skills-head">Completed</p>
+            <h2>Projects</h2>
+            <h2 className="main-skills-head">Completed</h2>
           </div>
         </div>
         <div className="w-screen pl-[5vw] py-10 flex justify-center mb-16 gap-10 overflow-hidden">

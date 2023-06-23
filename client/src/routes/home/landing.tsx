@@ -60,7 +60,7 @@ export default function LandingPage() {
             >
               Hi, my name is
             </motion.p>
-            <motion.p
+            <motion.h1
               className="main-title text-8xl font-bold sm:text-7xl text-center"
               onMouseEnter={handleMouseEnterInner}
               onMouseLeave={handleMouseLeaveInner}
@@ -72,7 +72,7 @@ export default function LandingPage() {
               <span>
                 Husain<span className="sm:hidden">.</span>
               </span>
-            </motion.p>
+            </motion.h1>
           </div>
         </div>
         <div className="hidden xl:flex font-sono">

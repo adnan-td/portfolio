@@ -3,6 +3,7 @@ import { MouseContext } from "../../context/mousepos/mouse.context";
 import LaunchIcon from "@mui/icons-material/Launch";
 import ParallaxEffectBgImg from "../parallax/parallaxbackground";
 import { WidthContext } from "../../context/screenwidth/screenwidth.context";
+import { Helmet } from "react-helmet";
 
 export default function FeatureComponent({
   text,
@@ -15,6 +16,7 @@ export default function FeatureComponent({
   bgColor,
   description,
   mouseColor,
+  metaDescription,
 }: {
   text?: string | JSX.Element;
   images: string[];
@@ -26,6 +28,7 @@ export default function FeatureComponent({
   mouseColor: string;
   tech: string;
   description: string;
+  metaDescription: string;
 }) {
   const { options, setOptions } = useContext(MouseContext);
   const { screenwidth } = useContext(WidthContext);
@@ -60,6 +63,10 @@ export default function FeatureComponent({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      <Helmet>
+        <title>Featured - {title}</title>
+        <meta name="description" content={metaDescription} />
+      </Helmet>
       <div className="w-[45%] xl:w-[65%] lg:w-[70%] md:w-[75%] sm:w-[80%] mb-52 flex flex-col gap-5 md:mb-10">
         <p className="text-2xl font-medium md:text-lg">Project</p>
         <p className="text-6xl font-semibold md:text-3xl">{title}</p>
