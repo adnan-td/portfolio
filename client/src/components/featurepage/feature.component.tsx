@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react";
-import { MouseContext } from "../../context/mousepos/mouse.context";
 import LaunchIcon from "@mui/icons-material/Launch";
 import ParallaxEffectBgImg from "../parallax/parallaxbackground";
 import { WidthContext } from "../../context/screenwidth/screenwidth.context";
 import { Helmet } from "react-helmet";
+import { UpdateFollower } from "react-mouse-follower";
 
 export default function FeatureComponent({
   text,
@@ -30,23 +30,7 @@ export default function FeatureComponent({
   description: string;
   metaDescription: string;
 }) {
-  const { options, setOptions } = useContext(MouseContext);
   const { screenwidth } = useContext(WidthContext);
-  const handleMouseEnter = () => {
-    setOptions({
-      ...options,
-      scale: null,
-      bgColor: mouseColor,
-      bg: null,
-    });
-  };
-  const handleMouseLeave = () => {
-    setOptions({
-      ...options,
-      scale: null,
-      bgColor: null,
-    });
-  };
 
   useEffect(() => {
     const body = document.body;
@@ -58,10 +42,14 @@ export default function FeatureComponent({
   }, []);
 
   return (
-    <div
+    <UpdateFollower
+      mouseOptions={{
+        backgroundColor: mouseColor,
+        backgroundElement: null,
+        scale: null,
+        zIndex: 1,
+      }}
       className="w-screen flex flex-col justify-center items-center gap-16 pt-32 mb-16 z-[1]"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
       <Helmet>
         <title>Featured - {title}</title>
@@ -131,6 +119,6 @@ export default function FeatureComponent({
           </div>
         </div>
       </div>
-    </div>
+    </UpdateFollower>
   );
 }

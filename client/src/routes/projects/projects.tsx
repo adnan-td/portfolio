@@ -2,9 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { LoaderContext } from "../../context/loader/loader.context";
 import { DataContext } from "../../context/data/data.context";
 import { motion } from "framer-motion";
-import { MouseContext } from "../../context/mousepos/mouse.context";
 import { WorkInterface } from "../../components/home/projects";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { UpdateFollower } from "react-mouse-follower";
 
 export default function ProjectsRoute() {
   const { setLoadingPage } = useContext(LoaderContext);
@@ -46,40 +46,24 @@ export default function ProjectsRoute() {
 }
 
 function Project({ data }: { data: WorkInterface }) {
-  const { options, setOptions } = useContext(MouseContext);
   const [isHovering, setIsHovering] = useState<boolean>(false);
-  const handleMouseEnter = () => {
-    setIsHovering(true);
-    setOptions({
-      ...options,
-      scale: null,
-      bgColor: "white",
-      zIndex: 1,
-      bg: null,
-      invert: false,
-    });
-  };
-  const handleMouseLeave = () => {
-    setIsHovering(false);
-    setOptions({
-      ...options,
-      scale: null,
-      bgColor: null,
-      zIndex: null,
-      bg: null,
-    });
-  };
   return (
-    <motion.div
+    <UpdateFollower
       className="w-full flex flex-col rounded-xl bg-white transition-all shadow-xl max-h-fit pb-3 md:pb-5"
-      id="project"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       style={{
         backgroundColor: isHovering ? "#171717" : "white",
         color: isHovering ? "white" : "black",
       }}
-      whileTap={{ cursor: "grab" }}
+      mouseOptions={{
+        backgroundColor: "white",
+        zIndex: 1,
+      }}
+      onMouseEnter={() => {
+        setIsHovering(true);
+      }}
+      onMouseLeave={() => {
+        setIsHovering(false);
+      }}
     >
       <div className="overflow-hidden flex justify-center items-center h-4/6 w-full p-5">
         <img
@@ -117,6 +101,6 @@ function Project({ data }: { data: WorkInterface }) {
           )}
         </p>
       </div>
-    </motion.div>
+    </UpdateFollower>
   );
 }

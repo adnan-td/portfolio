@@ -1,10 +1,12 @@
-.menu--2,
-.menu--2_invert {
+.menu_container {
   z-index: 1000;
   position: fixed;
   top: calc(113.4 / 2);
   right: 30px;
+}
 
+.menu--2,
+.menu--2_invert {
   &:hover {
     path {
       stroke: white;

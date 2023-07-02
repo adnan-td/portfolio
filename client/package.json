@@ -23,6 +23,7 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-lottie": "^1.2.3",
+    "react-mouse-follower": "^1.1.0",
     "react-router-dom": "^6.11.0",
     "react-select": "^5.7.2",
     "react-vertical-timeline-component": "^3.6.0",

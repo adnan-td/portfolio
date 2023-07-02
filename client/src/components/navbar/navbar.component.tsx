@@ -1,49 +1,29 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Hamburger from "./hamburger";
 import ArticleIcon from "@mui/icons-material/Article";
-import { MouseContext } from "../../context/mousepos/mouse.context";
 import { Link } from "react-router-dom";
+import { UpdateFollower } from "react-mouse-follower";
+import { MouseSettings } from "react-mouse-follower/dist/types/types";
+import { NavStatusContext } from "../../context/navstatus/navstatus.context";
 
 export default function NavbarComponent() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { options, setOptions } = useContext(MouseContext);
+  const { isOpen, setIsOpen } = useContext(NavStatusContext);
 
   const closeNavbar = () => {
     setIsOpen(false);
   };
 
-  const handleMouseEnterLinks = () => {
-    setOptions({
-      ...options,
-      scale: 6,
-      bgColor: "white",
-      mixBlendMode: "difference",
-    });
+  const mouseOptionLinks: MouseSettings = {
+    scale: 6,
+    backgroundColor: "white",
+    mixBlendMode: "difference",
   };
-  const handleMouseLeaveLinks = () => {
-    setOptions({
-      ...options,
-      scale: null,
-      bgColor: null,
-      mixBlendMode: null,
-    });
-  };
-  const handleMouseEnterSocials = () => {
-    setOptions({
-      ...options,
-      scale: 4,
-      bgColor: "white",
-      mixBlendMode: "difference",
-    });
-  };
-  const handleMouseLeaveSocials = () => {
-    setOptions({
-      ...options,
-      scale: null,
-      bgColor: null,
-      mixBlendMode: null,
-    });
+
+  const mouseOptionSocials: MouseSettings = {
+    scale: 4,
+    backgroundColor: "white",
+    mixBlendMode: "difference",
   };
 
   const variantsNavbarGrid = {
@@ -86,7 +66,7 @@ export default function NavbarComponent() {
           <button style={{ cursor: "default" }}>menu</button>
           <div className="h-[60px] w-[70px] sm:w-[80px]"></div>
         </div>
-        <Hamburger isOpen={isOpen} setIsOpen={setIsOpen} />
+        <Hamburger />
         <AnimatePresence mode="wait">
           {isOpen && (
             <>
@@ -97,132 +77,146 @@ export default function NavbarComponent() {
                 key="navbar-bg"
                 className="bg-black fixed top-0 left-0 min-h-screen min-w-full overflow-auto z-[2]"
               ></motion.div>
-              <motion.div
-                key="navbar-grid"
-                variants={variantsNavbarGrid}
-                initial="hidden"
-                animate="show"
-                exit="exit"
-                transition={{
-                  type: "just",
-                  delay: 0.2,
+              <UpdateFollower
+                mouseOptions={{
+                  zIndex: 3,
                 }}
-                className="bg-white p-6 pt-32 grid grid-cols-2 gap-10 fixed right-0 top-0 min-h-screen align-top opacity-100 z-[2] overflow-auto sm:w-screen sm:px-[15%] sm:grid-cols-1"
               >
-                <div id="nav-grid-left" className="flex flex-col gap-40 px-20 z-[3] sm:px-0">
-                  <div
-                    id="socials"
-                    className="flex flex-col gap-3 font-semibold text-base sm:hidden"
-                  >
-                    <p className="font-base mb-5 text-neutral-400">Social</p>
-                    <motion.a
-                      href="https://www.linkedin.com/in/adnan-shabbir-husain/"
-                      whileHover={whileHover}
-                      onHoverStart={handleMouseEnterSocials}
-                      onHoverEnd={handleMouseLeaveSocials}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      LinkedIn
-                    </motion.a>
-                    <motion.a
-                      href="https://github.com/Adnan-S-Husain"
-                      whileHover={whileHover}
-                      onHoverStart={handleMouseEnterSocials}
-                      onHoverEnd={handleMouseLeaveSocials}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      GitHub
-                    </motion.a>
-                    <motion.a
-                      href="https://www.instagram.com/adnan_td0/"
-                      whileHover={whileHover}
-                      onHoverStart={handleMouseEnterSocials}
-                      onHoverEnd={handleMouseLeaveSocials}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Instagram
-                    </motion.a>
-                    <motion.a
-                      href="https://twitter.com/adnan_td"
-                      whileHover={whileHover}
-                      onHoverStart={handleMouseEnterSocials}
-                      onHoverEnd={handleMouseLeaveSocials}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Twitter
-                    </motion.a>
-                  </div>
-                  <div
-                    id="getintouch"
-                    className="flex flex-col gap-3 font-semibold text-base min-w-[200px]"
-                  >
-                    <p className="font-base mb-3 text-neutral-400">Get in touch</p>
-                    <a className="underline" href="mailto:adnan.s.husain.1@gmail.com">
-                      adnan.s.husain@gmail.com
-                    </a>
-                  </div>
-                </div>
-                <div
-                  id="nav-grid-right"
-                  className="flex flex-col gap-5 font-semibold text-[40px] z-[3] sm:text-3xl sm:row-start-1"
+                <motion.div
+                  key="navbar-grid"
+                  variants={variantsNavbarGrid}
+                  initial="hidden"
+                  animate="show"
+                  exit="exit"
+                  transition={{
+                    type: "just",
+                    delay: 0.2,
+                  }}
+                  className="bg-white p-6 pt-32 grid grid-cols-2 gap-10 fixed right-0 top-0 min-h-screen align-top opacity-100 z-[2] overflow-auto sm:w-screen sm:px-[15%] sm:grid-cols-1"
                 >
-                  <p className="font-base mb-5 text-neutral-400 text-base">Menu</p>
-                  <Link onClick={closeNavbar} to="/">
-                    <motion.button
-                      whileHover={whileHover}
-                      onHoverStart={handleMouseEnterLinks}
-                      onHoverEnd={handleMouseLeaveLinks}
+                  <div id="nav-grid-left" className="flex flex-col gap-40 px-20 z-[3] sm:px-0">
+                    <div
+                      id="socials"
+                      className="flex flex-col gap-3 font-semibold text-base sm:hidden"
                     >
-                      Home
-                    </motion.button>
-                  </Link>
-                  {/* <Link onClick={closeNavbar} to="/about">
-                    <motion.button
-                      whileHover={whileHover}
-                      onHoverStart={handleMouseEnterLinks}
-                      onHoverEnd={handleMouseLeaveLinks}
+                      <p className="font-base mb-5 text-neutral-400">Socials</p>
+                      <NavSocialsComponent
+                        text="LinkedIn"
+                        href="https://www.linkedin.com/in/adnan-shabbir-husain/"
+                        whileHover={whileHover}
+                        mouseOptions={mouseOptionSocials}
+                      />
+                      <NavSocialsComponent
+                        text="GitHub"
+                        href="https://github.com/Adnan-S-Husain"
+                        whileHover={whileHover}
+                        mouseOptions={mouseOptionSocials}
+                      />
+                      <NavSocialsComponent
+                        text="Instagram"
+                        href="https://www.instagram.com/adnan_td0/"
+                        whileHover={whileHover}
+                        mouseOptions={mouseOptionSocials}
+                      />
+                      <NavSocialsComponent
+                        text="Twitter"
+                        href="https://twitter.com/adnan_td"
+                        whileHover={whileHover}
+                        mouseOptions={mouseOptionSocials}
+                      />
+                    </div>
+                    <div
+                      id="getintouch"
+                      className="flex flex-col gap-3 font-semibold text-base min-w-[200px]"
                     >
-                      About
-                    </motion.button>
-                  </Link> */}
-                  <Link onClick={closeNavbar} to="/projects">
-                    <motion.button
+                      <p className="font-base mb-3 text-neutral-400">Get in touch</p>
+                      <a className="underline" href="mailto:adnan.s.husain.1@gmail.com">
+                        adnan.s.husain@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    id="nav-grid-right"
+                    className="flex flex-col gap-5 font-semibold text-[40px] z-[3] sm:text-3xl sm:row-start-1"
+                  >
+                    <p className="font-base mb-5 text-neutral-400 text-base">Menu</p>
+                    <NavLinksComponent
+                      to="/"
+                      text="Home"
+                      mouseOptions={mouseOptionLinks}
+                      handleClick={closeNavbar}
                       whileHover={whileHover}
-                      onHoverStart={handleMouseEnterLinks}
-                      onHoverEnd={handleMouseLeaveLinks}
-                    >
-                      Projects
-                    </motion.button>
-                  </Link>
-
-                  <Link onClick={closeNavbar} to="/blogs">
-                    <motion.button
+                    />
+                    <NavLinksComponent
+                      to="/projects"
+                      text="Projects"
+                      mouseOptions={mouseOptionLinks}
+                      handleClick={closeNavbar}
                       whileHover={whileHover}
-                      onHoverStart={handleMouseEnterLinks}
-                      onHoverEnd={handleMouseLeaveLinks}
-                    >
-                      Blogs
-                    </motion.button>
-                  </Link>
-                  <Link onClick={closeNavbar} to="/contact">
-                    <motion.button
+                    />
+                    <NavLinksComponent
+                      to="/blogs"
+                      text="Blogs"
+                      mouseOptions={mouseOptionLinks}
+                      handleClick={closeNavbar}
                       whileHover={whileHover}
-                      onHoverStart={handleMouseEnterLinks}
-                      onHoverEnd={handleMouseLeaveLinks}
-                    >
-                      Contact
-                    </motion.button>
-                  </Link>
-                </div>
-              </motion.div>
+                    />
+                    <NavLinksComponent
+                      to="/contact"
+                      text="Contact"
+                      mouseOptions={mouseOptionLinks}
+                      handleClick={closeNavbar}
+                      whileHover={whileHover}
+                    />
+                  </div>
+                </motion.div>
+              </UpdateFollower>
             </>
           )}
         </AnimatePresence>
       </div>
     </div>
+  );
+}
+
+function NavLinksComponent({
+  whileHover,
+  mouseOptions,
+  to,
+  text,
+  handleClick,
+}: {
+  whileHover: object;
+  mouseOptions: MouseSettings;
+  to: string;
+  text: string;
+  handleClick: () => void;
+}) {
+  return (
+    <Link onClick={handleClick} to={to}>
+      <UpdateFollower mouseOptions={mouseOptions} className="flex">
+        <motion.button whileHover={whileHover}>{text}</motion.button>
+      </UpdateFollower>
+    </Link>
+  );
+}
+
+function NavSocialsComponent({
+  whileHover,
+  mouseOptions,
+  text,
+  href,
+}: {
+  whileHover: object;
+  mouseOptions: MouseSettings;
+  text: string;
+  href: string;
+}) {
+  return (
+    <UpdateFollower mouseOptions={mouseOptions} className="flex">
+      <motion.a href={href} whileHover={whileHover} target="_blank" rel="noreferrer">
+        {text}
+      </motion.a>
+    </UpdateFollower>
   );
 }

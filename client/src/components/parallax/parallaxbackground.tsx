@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion, useTransform, useScroll, MotionValue } from "framer-motion";
 
 const ParallaxEffectBgImg = ({ img, className }: { img: string; className: string }) => {
