@@ -25,11 +25,9 @@ export default function FooterComponent() {
         className="relative left-0 top-0 min-h-screen bg-black text-white flex flex-col justify-center items-center gap-10 pt-10 overflow-hidden"
         ref={ref}
         onViewportEnter={() => {
-          console.log("Viewport entered");
           setIsInverted(true);
         }}
         onViewportLeave={() => {
-          console.log("Viewport exited");
           setIsInverted(false);
         }}
       >
