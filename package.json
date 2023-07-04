@@ -22,5 +22,6 @@
   "author": "Adnan Shabbir Husain <generaladnan139@gmail.com>",
   "devDependencies": {
     "concurrently": "^8.0.1"
-  }
+  },
+  "dependencies": {}
 }

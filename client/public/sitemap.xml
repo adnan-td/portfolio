@@ -34,4 +34,8 @@
     <loc>https://adnansh.in/projects/crownclothing</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://adnansh.in/projects/react-mouse-follower</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>

@@ -1,6 +1,6 @@
 import { useScroll, useTransform, motion, MotionValue, useMotionValueEvent } from "framer-motion";
-import { useContext, useRef } from "react";
-import { MouseContext } from "../../context/mousepos/mouse.context";
+import { useRef } from "react";
+import { UpdateFollower } from "react-mouse-follower";
 
 export default function ParallaxComponent({
   mouseColor,
@@ -17,45 +17,31 @@ export default function ParallaxComponent({
   style?: any;
   children?: React.ReactNode;
 }) {
-  const { options, setOptions } = useContext(MouseContext);
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
 
-  const handleMouseEnter = () => {
-    setOptions({
-      ...options,
-      bgColor: mouseColor,
-      zIndex: zIndex,
-      customPosition: null,
-      scale: null,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setOptions({
-      ...options,
-      bgColor: null,
-      zIndex: null,
-    });
-  };
   // useMotionValueEvent(scrollYProgress, "change", (latest) => {
   //   console.log("Page scroll: ", latest);
   // });
 
   const y = useParallax(scrollYProgress, [-400, 0]);
   return (
-    <motion.div
-      className={`relative left-0 top-0 overflow-hidden w-full ` + className}
-      ref={ref}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={style}
+    <UpdateFollower
+      mouseOptions={{
+        backgroundColor: mouseColor,
+        zIndex: zIndex,
+      }}
     >
-      {/* @ts-ignore */}
-      <motion.div className={"relative " + childClass} style={{ translateY: y }}>
-        {children}
+      <motion.div
+        className={`relative left-0 top-0 overflow-hidden w-full ` + className}
+        ref={ref}
+        style={style}
+      >
+        <motion.div className={"relative " + childClass} style={{ translateY: y }}>
+          {children}
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </UpdateFollower>
   );
 }
 

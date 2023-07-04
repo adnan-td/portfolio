@@ -7,7 +7,7 @@ export function PixelAlienContent() {
         a hostile robotic world, engaging in battles against a legion of mechanical enemies.
       </p>
       <br />
-      <p>
+      <div>
         Features:
         <ul>
           <li className="list-disc list-inside">Visually stunning pixel art style</li>
@@ -17,7 +17,7 @@ export function PixelAlienContent() {
           <li className="list-disc list-inside">Over 100 hours of fun and dedication</li>
           <li className="list-disc list-inside">Engaging level design with unique challenges</li>
         </ul>
-      </p>
+      </div>
     </div>
   );
 }
@@ -33,7 +33,7 @@ export function ScripthomeContent() {
         experience.
       </p>
       <br />
-      <p>
+      <div>
         Features:
         <ul>
           <li className="list-disc list-inside">Over 600 scripts available</li>
@@ -46,7 +46,7 @@ export function ScripthomeContent() {
           <li className="list-disc list-inside">Built with Next.js for efficient performance</li>
           <li className="list-disc list-inside">Over 6 months of dedicated work on UI/UX</li>
         </ul>
-      </p>
+      </div>
     </div>
   );
 }
@@ -60,7 +60,7 @@ export function SensorlifelineContent() {
         for individuals who may not have access to immediate medical assistance.
       </p>
       <br />
-      <p>
+      <div>
         Features:
         <ul>
           <li className="list-disc list-inside">Sequelize dynamic models</li>
@@ -72,7 +72,7 @@ export function SensorlifelineContent() {
           <li className="list-disc list-inside">Image Uploads</li>
           <li className="list-disc list-inside">Testing with Jest</li>
         </ul>
-      </p>
+      </div>
     </div>
   );
 }
@@ -86,7 +86,7 @@ export function CrownclothingContent() {
         experience.
       </p>
       <br />
-      <p>
+      <div>
         Features:
         <ul>
           <li className="list-disc list-inside">Responsive and reactive cart for products</li>
@@ -99,7 +99,38 @@ export function CrownclothingContent() {
             Styling using styled-components, a React library
           </li>
         </ul>
+      </div>
+    </div>
+  );
+}
+
+export function ReactMouseFollowerContent() {
+  return (
+    <div className="flex flex-col gap-4 items-start">
+      <p>
+        React Mouse Follower is a versatile npm package built on React and Framer Motion. This
+        package offers a set of components that allow you to effortlessly integrate and personalize
+        an impressive mouse follower to your cursor. With React Mouse Follower, you can easily
+        enhance the user experience by adding visually appealing and fully customizable effects that
+        follow the movement of the mouse.
       </p>
+      <br />
+      <div>
+        Features:
+        <ul>
+          <li className="list-disc list-inside">
+            Easy to use components to allow quick development and integration
+          </li>
+          <li className="list-disc list-inside">Stackable effects to enhance usability</li>
+          <li className="list-disc list-inside">
+            Customise mouse follower by changing every aspect of it
+          </li>
+          <li className="list-disc list-inside">
+            Storybook for development and testing of the package
+          </li>
+          <li className="list-disc list-inside">Uses roll-up as bundler for TypeScript</li>
+        </ul>
+      </div>
     </div>
   );
 }

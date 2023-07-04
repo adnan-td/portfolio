@@ -1,8 +1,8 @@
 import { useContext, useRef, useState } from "react";
-import { MouseContext } from "../../context/mousepos/mouse.context";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { motion } from "framer-motion";
 import { DataContext } from "../../context/data/data.context";
+import { UpdateFollower } from "react-mouse-follower";
 
 export default function ProjectsCompleted() {
   const containerRef = useRef(null);
@@ -45,40 +45,28 @@ export interface WorkInterface {
 }
 
 function Project({ data }: { data: WorkInterface }) {
-  const { options, setOptions } = useContext(MouseContext);
   const [isHovering, setIsHovering] = useState<boolean>(false);
   const handleMouseEnter = () => {
     setIsHovering(true);
-    setOptions({
-      ...options,
-      scale: 4,
-      bgColor: "transparent",
-      zIndex: 1,
-      bg: <FWHover />,
-      invert: false,
-    });
   };
   const handleMouseLeave = () => {
     setIsHovering(false);
-    setOptions({
-      ...options,
-      scale: null,
-      bgColor: null,
-      zIndex: null,
-      bg: null,
-    });
   };
   return (
-    <motion.div
+    <UpdateFollower
       className="md:h-[400px] min-w-[400px] flex flex-col rounded-xl max-w-[750px] bg-white cursor-pointer md:min-w-[300px] md:w-[300px] transition-all shadow-xl max-h-fit"
-      id="project"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       style={{
         backgroundColor: isHovering ? "#171717" : "white",
         color: isHovering ? "white" : "black",
       }}
-      whileTap={{ cursor: "grab" }}
+      mouseOptions={{
+        scale: 4,
+        backgroundColor: "transparent",
+        zIndex: 1,
+        backgroundElement: <FWHover />,
+      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="overflow-hidden flex justify-center items-center h-4/6 w-full p-5 md:h-1/2">
         <img
@@ -116,7 +104,7 @@ function Project({ data }: { data: WorkInterface }) {
           )}
         </p>
       </div>
-    </motion.div>
+    </UpdateFollower>
   );
 }
 

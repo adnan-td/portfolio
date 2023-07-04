@@ -1291,6 +1291,15 @@ fraction.js@^4.2.0:
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.2.0.tgz#448e5109a313a3527f5a3ab2119ec4cf0e0e2950"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
+framer-motion@^10.12.18:
+  version "10.12.18"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.12.18.tgz#92015860b6468a82e76c4739fcae81e1f6723b3f"
+  integrity sha512-cfhiUpPbj+0eEWKjuD+5cz5cMqH71xOtMxGiS/cSGfHn2OlHIEAqFnFyzEMENw5PxWR9bMVhatzzpD6lexmHZQ==
+  dependencies:
+    tslib "^2.4.0"
+  optionalDependencies:
+    "@emotion/is-prop-valid" "^0.8.2"
+
 framer-motion@^10.9.1:
   version "10.9.1"
   resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.9.1.tgz#623dc7e21e94cac60836e82fe3d5ef748390ca88"
@@ -1777,6 +1786,13 @@ react-merge-refs@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-1.1.0.tgz#73d88b892c6c68cbb7a66e0800faa374f4c38b06"
   integrity sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==
+
+react-mouse-follower@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-mouse-follower/-/react-mouse-follower-1.1.4.tgz#2b6a76b2e0d2431ce8cce6a5af0346ede04fe3f9"
+  integrity sha512-YH/+045Pg9nh9IV5wv1xjO6g/B2KxY6xiM9LJ5yso263oqipBQMR/XrBWV/xUfkgaoLcM4fUW6lc+ANp0kfSFQ==
+  dependencies:
+    framer-motion "^10.12.18"
 
 react-reconciler@^0.27.0:
   version "0.27.0"

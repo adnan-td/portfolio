@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react";
-import { MouseContext } from "../../context/mousepos/mouse.context";
 import LaunchIcon from "@mui/icons-material/Launch";
 import ParallaxEffectBgImg from "../parallax/parallaxbackground";
 import { WidthContext } from "../../context/screenwidth/screenwidth.context";
 import { Helmet } from "react-helmet";
+import { UpdateFollower } from "react-mouse-follower";
 
 export default function FeatureComponent({
   text,
@@ -30,23 +30,7 @@ export default function FeatureComponent({
   description: string;
   metaDescription: string;
 }) {
-  const { options, setOptions } = useContext(MouseContext);
   const { screenwidth } = useContext(WidthContext);
-  const handleMouseEnter = () => {
-    setOptions({
-      ...options,
-      scale: null,
-      bgColor: mouseColor,
-      bg: null,
-    });
-  };
-  const handleMouseLeave = () => {
-    setOptions({
-      ...options,
-      scale: null,
-      bgColor: null,
-    });
-  };
 
   useEffect(() => {
     const body = document.body;
@@ -58,10 +42,12 @@ export default function FeatureComponent({
   }, []);
 
   return (
-    <div
+    <UpdateFollower
+      mouseOptions={{
+        backgroundColor: mouseColor,
+        zIndex: 1,
+      }}
       className="w-screen flex flex-col justify-center items-center gap-16 pt-32 mb-16 z-[1]"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
       <Helmet>
         <title>Featured - {title}</title>
@@ -89,12 +75,15 @@ export default function FeatureComponent({
       )}
 
       <div className="min-h-screen w-full flex flex-col justify-center items-center px-[20%] md:px-[10%] gap-16 mb-36">
-        <div className="w-full flex gap-6 justify-center items-start sm:flex-col">
-          <p className="text-2xl w-[20%] font-semibold sm:w-full">Technologies:</p>
-          <div className="w-[80%] text-2xl flex gap-8 flex-wrap sm:w-full sm:text-xl sm:gap-5">
-            {tech.split(",").map((item) => {
+        <div className="w-full flex gap-6 justify-center items-start lg:flex-col">
+          <p className="text-2xl w-[20%] font-semibold lg:w-full">Technologies:</p>
+          <div className="w-[80%] text-2xl flex gap-8 flex-wrap lg:w-full sm:text-xl sm:gap-5">
+            {tech.split(",").map((item, i) => {
               return (
-                <div className="rounded-full px-6 py-3 border border-[rgba(0,0,0,.1)] flex justify-center items-center">
+                <div
+                  className="rounded-full px-6 py-3 border border-[rgba(0,0,0,.1)] flex justify-center items-center"
+                  key={i}
+                >
                   <p>{item}</p>
                 </div>
               );
@@ -131,6 +120,6 @@ export default function FeatureComponent({
           </div>
         </div>
       </div>
-    </div>
+    </UpdateFollower>
   );
 }
