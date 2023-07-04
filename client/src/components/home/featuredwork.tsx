@@ -2,13 +2,13 @@ import { useContext, useState } from "react";
 import { WidthContext } from "../../context/screenwidth/screenwidth.context";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { UpdateFollower } from "react-mouse-follower";
+import { UpdateFollower, useControlOptions } from "react-mouse-follower";
 
 export default function FeaturedWorks({ data }: { data: any }) {
   return (
     <div className="w-full flex flex-col justify-center items-center md:gap-6">
       {data &&
-        data.map((fw: any, i: number) => {
+        data.slice(0, 4).map((fw: any, i: number) => {
           return (
             <FeaturedWork
               key={i}
@@ -42,15 +42,18 @@ interface WorkInterface {
 function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: boolean }) {
   const navigate = useNavigate();
   const [isHoverImg, setIsHoverImage] = useState(false);
+  const { clearAllLayers } = useControlOptions();
   const { screenwidth } = useContext(WidthContext);
 
   function handleDivClick() {
     if (screenwidth < 768) {
+      clearAllLayers();
       navigate(data.url);
     }
   }
 
   function handleImageClick() {
+    clearAllLayers();
     navigate(data.url);
   }
 
@@ -65,12 +68,18 @@ function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: b
     "max-w-[600px] shadow-md w-full aspect-[16/12] overflow-hidden rounded-lg cursor-pointer relative flex justify-center items-center";
   return (
     <UpdateFollower
-      mouseOptions={{
-        backgroundColor: data.mouseColor,
-        // zIndex: 3,
-        // scale: 5,
-        // backgroundElement: <FWHover color={data.mouseColor} />,
-      }}
+      mouseOptions={
+        screenwidth > 768
+          ? {
+              backgroundColor: data.mouseColor,
+            }
+          : {
+              backgroundColor: data.mouseColor,
+              zIndex: 3,
+              scale: 5,
+              backgroundElement: <FWHover color={data.mouseColor} />,
+            }
+      }
     >
       <motion.div
         className="relative grid grid-cols-2 items-center w-full gap-8 p-5 py-10 md:flex overflow-hidden"
@@ -93,12 +102,16 @@ function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: b
                 ? `${imageContClass} grayscale-[10%] md:grayscale-0`
                 : imageContClass
             }
-            mouseOptions={{
-              scale: 5,
-              zIndex: 3,
-              backgroundElement: <FWHover color={data.mouseColor} />,
-              backgroundColor: data.mouseColor,
-            }}
+            mouseOptions={
+              screenwidth > 768
+                ? {
+                    scale: 5,
+                    zIndex: 3,
+                    backgroundElement: <FWHover color={data.mouseColor} />,
+                    backgroundColor: data.mouseColor,
+                  }
+                : {}
+            }
           >
             <img
               onClick={handleImageClick}

@@ -1,7 +1,7 @@
 import BgVideo from "../../components/home/hovervideo";
 import { motion } from "framer-motion";
 import { UpdateFollower } from "react-mouse-follower";
-import { MouseSettings } from "react-mouse-follower/dist/types/types";
+import { MouseSettings } from "react-mouse-follower/dist/types";
 
 export default function LandingPage() {
   const mouseOuterOptions: MouseSettings = {

@@ -4,7 +4,7 @@ import Hamburger from "./hamburger";
 import ArticleIcon from "@mui/icons-material/Article";
 import { Link } from "react-router-dom";
 import { UpdateFollower } from "react-mouse-follower";
-import { MouseSettings } from "react-mouse-follower/dist/types/types";
+import { MouseSettings } from "react-mouse-follower/dist/types";
 import { NavStatusContext } from "../../context/navstatus/navstatus.context";
 
 export default function NavbarComponent() {
@@ -194,7 +194,7 @@ function NavLinksComponent({
 }) {
   return (
     <Link onClick={handleClick} to={to}>
-      <UpdateFollower mouseOptions={mouseOptions} className="flex">
+      <UpdateFollower mouseOptions={mouseOptions} className="inline-block">
         <motion.button whileHover={whileHover}>{text}</motion.button>
       </UpdateFollower>
     </Link>
@@ -213,10 +213,12 @@ function NavSocialsComponent({
   href: string;
 }) {
   return (
-    <UpdateFollower mouseOptions={mouseOptions} className="flex">
-      <motion.a href={href} whileHover={whileHover} target="_blank" rel="noreferrer">
-        {text}
-      </motion.a>
-    </UpdateFollower>
+    <div>
+      <UpdateFollower mouseOptions={mouseOptions} className="inline-block">
+        <motion.a href={href} whileHover={whileHover} target="_blank" rel="noreferrer">
+          {text}
+        </motion.a>
+      </UpdateFollower>
+    </div>
   );
 }

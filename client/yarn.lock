@@ -1787,10 +1787,10 @@ react-merge-refs@^1.1.0:
   resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-1.1.0.tgz#73d88b892c6c68cbb7a66e0800faa374f4c38b06"
   integrity sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==
 
-react-mouse-follower@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-mouse-follower/-/react-mouse-follower-1.1.0.tgz#fa1eb66ebfb9cb4c2135fd83318cadd22f2ab610"
-  integrity sha512-I8njGJnnIrdXEWZ3u24dBr6yuCsftu+jy++WLiO7wOlzLXc8gjpzhSUSdHE8iMwn06PR+XW6q6t/eeYOWqh28Q==
+react-mouse-follower@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-mouse-follower/-/react-mouse-follower-1.1.4.tgz#2b6a76b2e0d2431ce8cce6a5af0346ede04fe3f9"
+  integrity sha512-YH/+045Pg9nh9IV5wv1xjO6g/B2KxY6xiM9LJ5yso263oqipBQMR/XrBWV/xUfkgaoLcM4fUW6lc+ANp0kfSFQ==
   dependencies:
     framer-motion "^10.12.18"
 
