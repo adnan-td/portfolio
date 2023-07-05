@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { WidthContext } from "../../context/screenwidth/screenwidth.context";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { UpdateFollower, useControlOptions } from "react-mouse-follower";
+import { UpdateFollower } from "react-mouse-follower";
 
 export default function FeaturedWorks({ data }: { data: any }) {
   return (
@@ -42,18 +42,15 @@ interface WorkInterface {
 function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: boolean }) {
   const navigate = useNavigate();
   const [isHoverImg, setIsHoverImage] = useState(false);
-  const { clearAllLayers } = useControlOptions();
   const { screenwidth } = useContext(WidthContext);
 
   function handleDivClick() {
     if (screenwidth < 768) {
-      clearAllLayers();
       navigate(data.url);
     }
   }
 
   function handleImageClick() {
-    clearAllLayers();
     navigate(data.url);
   }
 

@@ -2,10 +2,12 @@ import "./hamburger.scss";
 import { useEffect, useRef, useState, useContext } from "react";
 import { UpdateFollower } from "react-mouse-follower";
 import { NavStatusContext } from "../../context/navstatus/navstatus.context";
+import { WidthContext } from "../../context/screenwidth/screenwidth.context";
 
 export default function Hamburger() {
   const containerRef = useRef(null);
   const { isInverted, isOpen, setIsOpen } = useContext(NavStatusContext);
+  const { screenwidth } = useContext(WidthContext);
   return (
     <UpdateFollower
       className="menu_container"

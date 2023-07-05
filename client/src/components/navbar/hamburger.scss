@@ -76,6 +76,13 @@
 @media only screen and (max-width: 640px) {
   .menu--2,
   .menu--2_invert {
+    &:hover {
+      path {
+        stroke: black;
+      }
+    }
+  }
+  .menu_container {
     right: 12px;
   }
 }

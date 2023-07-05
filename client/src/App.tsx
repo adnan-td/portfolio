@@ -1,7 +1,7 @@
 import ApolloWrapper from "./apollo";
 import Home from "./routes/home/home";
 import { ScreenWidth, WidthContext } from "./context/screenwidth/screenwidth.context";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import ProjectsRoute from "./routes/projects/projects";
 import ComingSoon from "./components/commingsoon/commingsoon";
 import NotFound from "./components/notfound/notfound";
@@ -17,12 +17,12 @@ import {
 } from "./routes/featured/featured.content";
 import { Helmet } from "react-helmet";
 import { NavStatusProvider } from "./context/navstatus/navstatus.context";
-import { FollowerProvider } from "react-mouse-follower";
+import { FollowerProvider, useControlOptions } from "react-mouse-follower";
 import FooterComponent from "./components/footer/footer.component";
 import NavbarComponent from "./components/navbar/navbar.component";
 import { LoaderState } from "./context/loader/loader.context";
 import CallToAction from "./components/calltoaction/calltoaction";
-import { ReactNode, useContext } from "react";
+import { ReactNode, useContext, useEffect } from "react";
 
 function App() {
   return (
@@ -91,6 +91,12 @@ function App() {
 export default App;
 
 function Structure({ element }: { element: JSX.Element }) {
+  const { clearAllLayers } = useControlOptions();
+  const location = useLocation();
+  useEffect(() => {
+    clearAllLayers();
+  }, [location]);
+
   return (
     <div className={"min-h-screen w-screen "}>
       <NavbarComponent />

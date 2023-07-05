@@ -43,7 +43,7 @@ jobs:
         run: |
           cd client
           echo "VITE_GRAPHQL_URI = https://backend.adnansh.in/graphql " > .env
-          echo "VITE_BACKEND_URI = https://backend.adnansh.in/contact " >> .env
+          echo "VITE_BACKEND_URI = https://backend.adnansh.in" >> .env
           yarn build
           cd ../server
           yarn build
