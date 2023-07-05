@@ -1,0 +1,80 @@
+{
+  "data": {
+    "featuredWorks": [
+      {
+        "id": "1",
+        "title": "ScriptHome",
+        "description": "A hub for all your roblox scripts",
+        "tech": "web, full-stack, ui/ux",
+        "image": "/works/scripthome.webp",
+        "bgColor": "#ede9fe",
+        "mouseColor": "#53389e",
+        "__typename": "FeaturedWork"
+      },
+      {
+        "id": "2",
+        "title": "SLP Backend",
+        "description": "Graphql Backend for Sensor Lifeline Project",
+        "tech": "graphql, expressjs, typescript",
+        "image": "/works/graphql.png",
+        "bgColor": "#e0f2fe",
+        "mouseColor": "#3185FC",
+        "__typename": "FeaturedWork"
+      },
+      {
+        "id": "3",
+        "title": "SLP Backend2",
+        "description": "A hub for all your roblox scripts",
+        "tech": "web, full-stack, ui/ux",
+        "image": "/works/scripthome.webp",
+        "bgColor": "#fef9c3",
+        "mouseColor": "#eab308",
+        "__typename": "FeaturedWork"
+      },
+      {
+        "id": "4",
+        "title": "ScriptHome4",
+        "description": "A hub for all your roblox scripts",
+        "tech": "web, full-stack, ui/ux",
+        "image": "/works/scripthome.webp",
+        "bgColor": "#d1fae5",
+        "mouseColor": "#10b981",
+        "__typename": "FeaturedWork"
+      }
+    ],
+    "experiences": [
+      {
+        "date": "Dec 2022 - Present",
+        "description": "Built and managed backend API along with designing database architechture for POC project",
+        "subtitle": "Sensor Lifeline Project",
+        "title": "Backend Developer",
+        "tech": "Graphql, Sequelize, Expressjs, Nodejs",
+        "__typename": "Experience"
+      },
+      {
+        "date": "Sep 2022 - Present",
+        "description": "Collaborated on multiple projects, managed events, conducted sessions.",
+        "subtitle": "GDSC - RCOEM",
+        "title": "Frontend Developer",
+        "tech": "Reactjs, HTML, Javascript, Sass",
+        "__typename": "Experience"
+      },
+      {
+        "date": "Dec 2022 - Apr 2023",
+        "description": "As the team leader, spearheaded the development of web projects and ensured collaborative growth.",
+        "subtitle": "TBI - RCOEM",
+        "title": "Vice President of Technical Team",
+        "tech": "Reactjs, Firebase, Javascript, Sass",
+        "__typename": "Experience"
+      },
+      {
+        "date": "Jun 2022 - Feb 2023",
+        "description": "Built a fullstack webapplication, designed UX and database architechture.",
+        "subtitle": "Scripthome (freelance)",
+        "title": "Fullstack Developer",
+        "tech": "Reactjs, Nextjs, Expressjs, SQL",
+        "__typename": "Experience"
+      }
+    ]
+  }
+}
