@@ -1,27 +1,35 @@
 {
   "name": "portfolio",
+  "version": "0.1.0",
   "private": true,
-  "version": "1.0.0",
-  "type": "module",
   "scripts": {
-    "install": "yarn install_client & yarn install_server",
-    "install_client": "yarn --cwd client",
-    "install_server": "yarn --cwd server",
-    "build_client": "yarn --cwd client build",
-    "build_server": "yarn --cwd server build",
-    "build": "yarn build_client & yarn build_server",
-    "deploy_server": "yarn --cwd server deploy",
-    "server": "yarn --cwd server dev",
-    "client": "yarn --cwd client dev",
-    "dev": "concurrently -n server,client \"yarn server\" \"yarn client\"",
-    "deploy": "yarn deploy_server",
-    "stop": "yarn --cwd server stop"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "description": "My personal developer portfolio",
-  "repository": "https://github.com/Adnan-S-Husain/portfolio.git",
-  "author": "Adnan Shabbir Husain <generaladnan139@gmail.com>",
+  "dependencies": {
+    "@types/node": "20.5.0",
+    "@types/react": "18.2.20",
+    "@types/react-dom": "18.2.7",
+    "autoprefixer": "10.4.15",
+    "eslint": "8.47.0",
+    "eslint-config-next": "13.4.16",
+    "next": "13.4.16",
+    "postcss": "8.4.28",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.10.1",
+    "react-lottie": "^1.2.3",
+    "react-mouse-follower": "1.1.6",
+    "react-select": "^5.7.4",
+    "react-vertical-timeline-component": "^3.6.0",
+    "sass": "^1.65.1",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.1.6"
+  },
   "devDependencies": {
-    "concurrently": "^8.0.1"
-  },
-  "dependencies": {}
+    "@types/react-lottie": "^1.2.6",
+    "@types/react-vertical-timeline-component": "^3.3.3"
+  }
 }
