@@ -1,0 +1,15 @@
+projects:
+  Portfolio Api:
+    schemaPath: src/graphql/schema.json
+    includes:
+      - src/graphql/**/*.ts
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: aws-api
+        docsFilePath: src/graphql
+        region: eu-north-1
+        apiId: 45hdmdpzyned3f5vgaqgghcgpa
+        maxDepth: 10

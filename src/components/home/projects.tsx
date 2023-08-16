@@ -20,8 +20,8 @@ export default function ProjectsCompleted() {
         dragConstraints={containerRef}
         whileTap={{ cursor: "grab" }}
       >
-        {data?.projects &&
-          data.projects.slice(0, 10).map((fw: any, i: number) => {
+        {data?.listProjects &&
+          data.listProjects.items.slice(0, 10).map((fw: any, i: number) => {
             return (
               <Project
                 key={i}
@@ -77,8 +77,8 @@ function Project({ data }: { data: WorkInterface }) {
           src={data.image}
           className="w-full max-h-[290px] rounded-lg transition-transform pointer-events-none"
           alt={data.title}
-          width="100"
-          height="100"
+          width="1980"
+          height="1980"
         />
       </div>
       <div className="flex flex-col gap-3 py-5 px-5 md:min-h-[140px]">

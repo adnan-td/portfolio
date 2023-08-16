@@ -1,7 +1,6 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
-import { LoaderContext } from "@/context/loader/loader.context";
 import { DataContext } from "@/context/data/data.context";
 import { WorkInterface } from "@/components/home/projects";
 import { SiGithub as GitHubIcon } from "react-icons/si";
@@ -9,27 +8,17 @@ import { UpdateFollower } from "react-mouse-follower";
 import Image from "next/image";
 
 export default function Page() {
-  const { setLoadingPage } = useContext(LoaderContext);
   const { data } = useContext(DataContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    if (!data) {
-      setLoadingPage(false);
-    } else {
-      setLoadingPage(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
-
   return (
     <div className="w-screen flex justify-center min-h-screen px-[10%]">
       <div className="grid grid-cols-3 justify-items-center items-stretch gap-6 pt-5 pb-28 lg:grid-cols-2 md:grid-cols-1 md:items-center">
-        {data?.projects &&
-          data.projects.map((fw: any, i: number) => {
+        {data?.listProjects &&
+          data.listProjects.items.map((fw: any, i: number) => {
             return (
               <Project
                 key={i}

@@ -54,8 +54,8 @@ export default function NavbarComponent() {
       <Link href="/">
         <button className="cursor-pointer">
           <Image
-            height="100"
-            width="100"
+            height="1980"
+            width="1980"
             className="w-20 text-black sm:w-14"
             src="/Logo.svg"
             alt="Logo"

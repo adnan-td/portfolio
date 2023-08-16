@@ -1,0 +1,142 @@
+[
+  {
+    "github": "https://github.com/Adnan-S-Husain/Scripthome-NextJs",
+    "image": "/works/scripthome.webp",
+    "tech": "web, full-stack, ui/ux",
+    "title": "ScriptHome",
+    "url": "https://scripthome.org/"
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/expressjs-graphql-mysql-api",
+    "image": "/works/graphql.png",
+    "tech": "graphql, expressjs, typescript",
+    "title": "Sensor Lifeline Backend",
+    "url": null
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/React-CrownClothing",
+    "image": "/works/crownclothing.png",
+    "tech": "e-commerce, firebase, react",
+    "title": "Crown Clothing",
+    "url": "https://db-crownclothing.web.app/"
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/SalviFashion",
+    "image": "/works/salvifashion.webp",
+    "tech": "frontend, react-scroll, e-comm",
+    "title": "Salvi Fashion",
+    "url": null
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/portfolio",
+    "image": "/works/portfolio.webp",
+    "tech": "graphql, react, typescript",
+    "title": "Portfolio",
+    "url": "https://adnansh.in"
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/Manzar-CSE-A",
+    "image": "/works/manzar.png",
+    "tech": "ui/ux, css, tailwind",
+    "title": "Manzar Site",
+    "url": "https://adnan-s-husain.github.io/Manzar-CSE-A/"
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/Hackathon-Oct-Api",
+    "image": "/works/apis.webp",
+    "tech": "expressjs, mongodb, reactjs",
+    "title": "Cados Api, Hackathon Oct 2022",
+    "url": null
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/AI-Chat-Bot",
+    "image": "/works/artificial-intellegence.jpg",
+    "tech": "expressjs, reactjs, css",
+    "title": "AI Chat bot",
+    "url": null
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/Hackathon-ReactJs-Portfolio",
+    "image": "/works/portfolio.webp",
+    "tech": "reactjs, sass, javascript",
+    "title": "SP Universe Portfolio",
+    "url": null
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/SpaceX-Nasa-Full-Stack-Application",
+    "image": "/works/spacex.jpg",
+    "tech": "reactjs, expressjs, mongodb",
+    "title": "SpaceX-Nasa Rocket Simulator",
+    "url": null
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/ReactJS-Web3Foundation",
+    "image": "/works/web3grants.png",
+    "tech": "reactjs, sass, ui/ux",
+    "title": "Web3 Grants Frontend",
+    "url": "https://react-web3funds.web.app/"
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/TaskLogger",
+    "image": "/works/tasklogger.jpg",
+    "tech": "python, django, schedule",
+    "title": "Task Logger",
+    "url": null
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/GuessingGame",
+    "image": "/works/guessinggame.png",
+    "tech": "javascript, html, css",
+    "title": "Guessing Game",
+    "url": "https://adnan-s-husain.github.io/GuessingGame/"
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/DinoGame-with-Python",
+    "image": "/works/dinogame.jpg",
+    "tech": "python, pygames",
+    "title": "Chrome DinoGame",
+    "url": null
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/Admin-Dashboard",
+    "image": "/works/adminscripthome.png",
+    "tech": "html, bootstrap, css",
+    "title": "Scripthome Admin Panel",
+    "url": "https://adnan-s-husain.github.io/Admin-Dashboard/dashboard.html"
+  },
+  {
+    "github": null,
+    "image": "/works/tbircoem.png",
+    "tech": "reactjs, sass, framer",
+    "title": "Tbi Rcoem Site",
+    "url": "http://rcoemtbi.org/"
+  },
+  {
+    "github": null,
+    "image": "/works/gdscsite.png",
+    "tech": "reactjs, sass, framer",
+    "title": "GDSC RCOEM Site",
+    "url": "https://rcoem-gdsc.web.app/"
+  },
+  {
+    "github": null,
+    "image": "/works/letsfightback.png",
+    "tech": "reactjs, firebase, css",
+    "title": "Let's Fight Back",
+    "url": "https://letsfightback.live/"
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/Flutter-meals-app",
+    "image": "/works/flutter-dev.png",
+    "tech": "dart, flutter, android-studio",
+    "title": "Meals Recipe Flutter",
+    "url": null
+  },
+  {
+    "github": "https://github.com/Adnan-S-Husain/2d-Platformer",
+    "image": "/works/pixelalien.png",
+    "tech": "godot4, aseprite, gdscript",
+    "title": "Pixel Alien",
+    "url": "https://adnan-td.itch.io/pixel-alien"
+  }
+]

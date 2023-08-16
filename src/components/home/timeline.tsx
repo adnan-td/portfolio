@@ -17,8 +17,7 @@ interface experience {
 export default function TimeLine() {
   const color1 = "white";
   const color2 = "black";
-  const data = useContext(DataContext)?.data?.listExperiences;
-
+  const data = useContext(DataContext)?.data?.listExperiences?.items;
   return (
     <div className="w-full mb-28">
       <VerticalTimeline lineColor="black">
