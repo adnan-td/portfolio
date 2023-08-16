@@ -1,5 +1,3 @@
-"use client";
-
 import FeaturedWorks from "@/components/home/featuredwork";
 import "./home.scss";
 import LandingPage from "@/components/home/landing";

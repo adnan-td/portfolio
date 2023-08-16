@@ -6,7 +6,7 @@ import React, { useContext, useEffect } from "react";
 import { LoaderContext } from "../../context/loader/loader.context";
 import { useRouter } from "next/navigation";
 
-export default function NotFound() {
+export default function NotFoundComponent() {
   const { setLoadingPage } = useContext(LoaderContext);
   const navigate = useRouter();
 

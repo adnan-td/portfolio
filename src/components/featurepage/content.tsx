@@ -1,4 +1,18 @@
-export function PixelAlienContent() {
+interface ContentMap {
+  [key: string]: JSX.Element;
+}
+
+const AllContent: ContentMap = {
+  "1": <ReactMouseFollowerContent />,
+  "2": <PixelAlienContent />,
+  "3": <ScripthomeContent />,
+  "4": <SensorlifelineContent />,
+  "5": <CrownclothingContent />,
+};
+
+export default AllContent;
+
+function PixelAlienContent() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <p>
@@ -21,7 +35,7 @@ export function PixelAlienContent() {
     </div>
   );
 }
-export function ScripthomeContent() {
+function ScripthomeContent() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <p>
@@ -50,14 +64,14 @@ export function ScripthomeContent() {
     </div>
   );
 }
-export function SensorlifelineContent() {
+function SensorlifelineContent() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <p>
         Sensor Lifeline Backend is a powerful backend project designed for the Sensor Lifeline
-        device. This device enables the reading of a patient's vital signs such as ECG, temperature,
-        blood pressure, blood group, and more, without the need for a doctor. It provides a lifeline
-        for individuals who may not have access to immediate medical assistance.
+        device. This device enables the reading of a patient{"'"}s vital signs such as ECG,
+        temperature, blood pressure, blood group, and more, without the need for a doctor. It
+        provides a lifeline for individuals who may not have access to immediate medical assistance.
       </p>
       <br />
       <div>
@@ -76,14 +90,14 @@ export function SensorlifelineContent() {
     </div>
   );
 }
-export function CrownclothingContent() {
+function CrownclothingContent() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <p>
-        Crown Clothing is a dynamic frontend project that presents an innovative "E-Commerce" web
-        application built with React and Firebase. With its robust features and seamless integration
-        with Firebase's backend services, Crown Clothing offers a compelling online shopping
-        experience.
+        Crown Clothing is a dynamic frontend project that presents an innovative {'"'}E-Commerce
+        {'"'} web application built with React and Firebase. With its robust features and seamless
+        integration with Firebase{"'"}s backend services, Crown Clothing offers a compelling online
+        shopping experience.
       </p>
       <br />
       <div>
@@ -104,7 +118,7 @@ export function CrownclothingContent() {
   );
 }
 
-export function ReactMouseFollowerContent() {
+function ReactMouseFollowerContent() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <p>

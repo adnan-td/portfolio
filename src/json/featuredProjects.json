@@ -11,6 +11,7 @@
     "projectLink": "https://www.npmjs.com/package/react-mouse-follower",
     "githubLink": "https://github.com/Adnan-S-Husain/react-mouse-follower",
     "mainImg": "/works/follower.svg",
+    "slug": "react-mouse-follower",
     "images": [],
     "metaDescription": "React Mouse Follower is a versatile npm package built on React and Framer Motion. This package offers a set of components that allow you to effortlessly integrate and personalize an impressive mouse follower to your cursor. With React Mouse Follower, you can easily enhance the user experience by adding visually appealing and fully customizable effects that follow the movement of the mouse."
   },
@@ -22,10 +23,11 @@
     "image": "/works/pixelalien.png",
     "bgColor": "rgb(247, 254, 231, 0.5)",
     "mouseColor": "#84cc16",
-    "url": "/projects/pixelalien",
+    "url": "/projects/pixel-alien",
     "projectLink": "https://adnan-td.itch.io/pixel-alien",
     "githubLink": "https://github.com/Adnan-S-Husain/2d-Platformer",
     "mainImg": "/featured/pixelmain.png",
+    "slug": "pixel-alien",
     "images": [],
     "metaDescription": "A thrilling 2D pixel art platformer that combines adventure, action, and intense single-player gameplay. Take control of a courageous extraterrestrial hero as they traverse a hostile robotic world, engaging in battles against a legion of mechanical enemies."
   },
@@ -41,6 +43,7 @@
     "projectLink": "https://scripthome.org",
     "githubLink": "https://github.com/Adnan-S-Husain/Scripthome-NextJs",
     "mainImg": "/featured/scripthomemain.png",
+    "slug": "scripthome",
     "images": [],
     "metaDescription": "A full-stack website dedicated to Lua scripts for popular platforms like Roblox and more. With a vast collection of over 600 scripts, users can not only discover and use these scripts but also engage with the community by liking, and even commenting on them. In addition, Scripthome offers a platform for users to post and share their own scripts. With over six months of dedicated work on UI/UX, Scripthome ensures a seamless and efficient user experience."
   },
@@ -52,10 +55,11 @@
     "image": "/works/graphql.png",
     "bgColor": "rgb(240, 249, 255, 0.5)",
     "mouseColor": "#3185FC",
-    "url": "/projects/sensorlifeline",
+    "url": "/projects/sensor-lifeline",
     "projectLink": null,
     "githubLink": "https://github.com/Adnan-S-Husain/expressjs-graphql-mysql-api",
     "mainImg": "/featured/graphqlmain.svg",
+    "slug": "sensor-lifeline",
     "images": [],
     "metaDescription": "Sensor Lifeline Backend is a powerful backend project designed for the Sensor Lifeline device. This device enables the reading of a patient's vital signs such as ECG, temperature, blood pressure, blood group, and more, without the need for a doctor. It provides a lifeline for individuals who may not have access to immediate medical assistance."
   },
@@ -67,10 +71,11 @@
     "image": "/works/crownclothing.png",
     "bgColor": "rgb(255, 247, 237, 0.5)",
     "mouseColor": "#f97316",
-    "url": "/projects/crownclothing",
+    "url": "/projects/crown-clothing",
     "projectLink": "https://db-crownclothing.web.app/",
     "githubLink": "https://github.com/Adnan-S-Husain/React-CrownClothing",
     "mainImg": "/works/crownclothing.png",
+    "slug": "crown-clothing",
     "images": [],
     "metaDescription": "Crown Clothing is a dynamic frontend project that presents an innovative E-Commerce web application built with React and Firebase. With its robust features and seamless integration with Firebase's backend services, Crown Clothing offers a compelling online shopping experience."
   }
