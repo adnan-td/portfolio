@@ -1,8 +1,7 @@
 "use client";
-import { API } from "@aws-amplify/api";
-import { useState, createContext, ReactNode, useCallback, useContext, useEffect } from "react";
+import { useState, createContext, ReactNode, useContext, useEffect } from "react";
 import { LoaderContext } from "../loader/loader.context";
-import config from "@/aws-exports";
+import axios from "axios";
 
 interface Props {
   children: ReactNode;
@@ -13,19 +12,17 @@ interface ContextInterface {
   setData: (data: any) => any;
 }
 
-API.configure(config);
-
 export const DataContext = createContext<ContextInterface>(null);
 
-export const DataStateComponent = ({ children }: Props) => {
+export const DataStateProvider = ({ children }: Props) => {
   const [data, setData] = useState<any>(null);
   const { setLoadingPage } = useContext(LoaderContext);
 
   const fetchData = async () => {
-    const res = (await API.graphql({
+    const res = await axios.post("/api/aws", {
       query: listExperiencesAndProjects,
-    })) as any;
-    setData(res?.data);
+    });
+    setData(res?.data?.data);
   };
 
   useEffect(() => {
@@ -33,6 +30,12 @@ export const DataStateComponent = ({ children }: Props) => {
       setLoadingPage(false);
     });
   }, [setLoadingPage]);
+
+  useEffect(() => {
+    if (data?.listProjects?.items) {
+      data.listProjects.items.reverse();
+    }
+  }, [data]);
 
   const value = { data, setData };
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

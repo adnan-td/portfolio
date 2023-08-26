@@ -7,13 +7,19 @@ import { motion } from "framer-motion";
 import { DataContext } from "../../context/data/data.context";
 import { UpdateFollower } from "react-mouse-follower";
 import Image from "next/image";
+import { WidthContext } from "@/context/screenwidth/screenwidth.context";
 
 export default function ProjectsCompleted() {
   const containerRef = useRef(null);
   const { data } = useContext(DataContext);
+  const { screenwidth } = useContext(WidthContext);
 
   return (
-    <div className="w-full flex justify-start items-center" ref={containerRef}>
+    <div
+      className="w-full flex justify-start items-center"
+      ref={containerRef}
+      key={screenwidth > 768 ? "big" : "small"}
+    >
       <motion.div
         className="flex justify-start items-stretch gap-8 md:gap-4 md:items-start"
         drag="x"
@@ -21,7 +27,7 @@ export default function ProjectsCompleted() {
         whileTap={{ cursor: "grab" }}
       >
         {data?.listProjects &&
-          data.listProjects.items.slice(0, 10).map((fw: any, i: number) => {
+          data.listProjects.items.slice(0, screenwidth > 768 ? 9 : 5).map((fw: any, i: number) => {
             return (
               <Project
                 key={i}

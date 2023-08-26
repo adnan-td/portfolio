@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import "./contact.style.scss";
+import axios from "axios";
+import { createContactMessage } from "@/graphql/mutations";
 
 export default function Page() {
   useEffect(() => {
@@ -25,12 +27,9 @@ const ContactForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const [errors, setErrors] = useState<{ [key: string]: string }>();
   const [hasSubmitted, setHasSubmitted] = useState<boolean>(false);
-  // const [createContactMessage] = useMutation(mutationMessage);
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
-
-  const informServer = () => {};
 
   const validateForm = () => {
     const errors: { [key: string]: string } = {};
@@ -62,31 +61,26 @@ const ContactForm = () => {
   const handleSubmit: React.FormEventHandler = async (event) => {
     event.preventDefault();
     if (validateForm()) {
-      // createContactMessage({
-      //   variables: {
-      //     input: {
-      //       name: formFields.name,
-      //       email: formFields.email,
-      //       message: formFields.message,
-      //     },
-      //   },
-      // });
       try {
-        // const url = import.meta.env.VITE_BACKEND_URI;
-        const url = "/api/contact";
-        const response = fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+        const response = (await axios.post("/api/aws", {
+          query: createContactMessage,
+          variables: {
+            input: {
+              name: formFields.name,
+              email: formFields.email,
+              message: formFields.message,
+            },
           },
-          body: JSON.stringify(formFields),
-        });
+        })) as any;
+        if (response?.data?.data != null) {
+          setHasSubmitted(true);
+          resetFormFields();
+          window.scrollTo(0, 0);
+        }
       } catch (error) {
-        console.error("An error occurred:", error);
+        setHasSubmitted(false);
+        alert("Error occurred: " + error);
       }
-      setHasSubmitted(true);
-      resetFormFields();
-      window.scrollTo(0, 0);
     }
   };
 
