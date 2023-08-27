@@ -58,6 +58,13 @@ const ContactForm = () => {
     return Object.keys(errors).length === 0;
   };
 
+  async function sendMail(formFields = defaultFormFields) {
+    const res = (await axios.post("/api/contact", {
+      ...formFields,
+    })) as any;
+    console.log(res);
+  }
+
   const handleSubmit: React.FormEventHandler = async (event) => {
     event.preventDefault();
     if (validateForm()) {
@@ -73,6 +80,7 @@ const ContactForm = () => {
           },
         })) as any;
         if (response?.data?.data != null) {
+          sendMail(formFields);
           setHasSubmitted(true);
           resetFormFields();
           window.scrollTo(0, 0);
