@@ -30,6 +30,7 @@
     "react-select": "^5.7.4",
     "react-vertical-timeline-component": "^3.6.0",
     "sanity": "^3.15.1",
+    "sanity-plugin-iframe-pane": "^2.5.5",
     "sass": "^1.65.1",
     "styled-components": "6.0.0",
     "suspend-react": "^0.1.3",

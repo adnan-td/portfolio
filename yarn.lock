@@ -1868,6 +1868,11 @@
     split2 "4.2.0"
     throttle-debounce "5.0.0"
 
+"@sanity/icons@^1.3":
+  version "1.3.10"
+  resolved "https://registry.yarnpkg.com/@sanity/icons/-/icons-1.3.10.tgz#df934a94ae6669fe6b15515d800afb221cba0498"
+  integrity sha512-5wVG/vIiGuGrSmq+Bl3PY7XDgQrGv0fyHdJI64FSulnr2wH3NMqZ6C59UFxnrZ93sr7kOt0zQFoNv2lkPBi0Cg==
+
 "@sanity/icons@^2.4.0", "@sanity/icons@^2.4.1":
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/@sanity/icons/-/icons-2.4.1.tgz#34ce2c5b58f53c7369ff926b651ea57c4e3c0a8c"
@@ -1901,6 +1906,14 @@
     rimraf "^3.0.2"
     split2 "^3.2.2"
     tar-fs "^2.1.1"
+
+"@sanity/incompatible-plugin@^1.0.0":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@sanity/incompatible-plugin/-/incompatible-plugin-1.0.4.tgz#c369af3b629de6c01e5843373fb3ede9972a53f4"
+  integrity sha512-2z39G9PTM8MXOF4fJNx3TG4tH0RrTjtH6dVLW93DSjCPbIS7FgCY5yWjZfQ+HVkwhLsF7ATDAGLA/jp65pFjAg==
+  dependencies:
+    "@sanity/icons" "^1.3"
+    react-copy-to-clipboard "^5.1.0"
 
 "@sanity/logos@^2.0.2":
   version "2.1.2"
@@ -1983,7 +1996,7 @@
     "@sanity/client" "^6.4.5"
     "@types/react" "^18.0.25"
 
-"@sanity/ui@^1.7.2":
+"@sanity/ui@^1.0.0", "@sanity/ui@^1.7.2":
   version "1.7.11"
   resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-1.7.11.tgz#c2250673b473de2f58e29b9382249d7d67a0e98b"
   integrity sha512-N9zICg3NbgyfzM/cboqTj2Ik0I+T49LFADQzLtOCqQCT/RypbBE1sB2MrD+LWaiB6lfzqM1rns4v4yD2IlOvDg==
@@ -4039,6 +4052,15 @@ framer-motion@^10.12.18:
   optionalDependencies:
     "@emotion/is-prop-valid" "^0.8.2"
 
+framer-motion@^10.15.1:
+  version "10.16.2"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.16.2.tgz#b737f628f69a883824024124dab452273f73cbba"
+  integrity sha512-aY6L9YMvqMWtfOQptaUvvr8dp97jskXY5UYLQM0vOPxKeERrG/Z034EIQZ/52u7MeCT0HlCQy3/l0HdUZCB9Tw==
+  dependencies:
+    tslib "^2.4.0"
+  optionalDependencies:
+    "@emotion/is-prop-valid" "^0.8.2"
+
 from2@^2.1.0, from2@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/from2/-/from2-2.3.0.tgz#8bfb5502bde4a4d36cfdeea007fcca21d7e382af"
@@ -5831,7 +5853,7 @@ react-clientside-effect@^1.2.6:
   dependencies:
     "@babel/runtime" "^7.12.13"
 
-react-copy-to-clipboard@^5.0.4:
+react-copy-to-clipboard@^5.0.4, react-copy-to-clipboard@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/react-copy-to-clipboard/-/react-copy-to-clipboard-5.1.0.tgz#09aae5ec4c62750ccb2e6421a58725eabc41255c"
   integrity sha512-k61RsNgAayIJNoy9yDsYzDe/yAZAzEbEgcz3DZMhF686LEyukcE1hzurxe85JandPUG+yTfGVFzuEw3xt8WP/A==
@@ -6253,6 +6275,17 @@ sanity-diff-patch@^1.0.9:
   integrity sha512-J5YeuM/S7rLTp51iqUunwzz7Rf68K/jCDGKtNCj6Wzcfgf9CH+0GtPlvf2DFsg0QQhYYZ72FOVn6skmoLjMCdw==
   dependencies:
     diff-match-patch "^1.0.5"
+
+sanity-plugin-iframe-pane@^2.5.5:
+  version "2.5.5"
+  resolved "https://registry.yarnpkg.com/sanity-plugin-iframe-pane/-/sanity-plugin-iframe-pane-2.5.5.tgz#ac39ca422bfef68669ea85bfface61905bd38437"
+  integrity sha512-GoOjYXw7KKmPwA5+dy3ebR27cN/v6DGPtBxx2eaiBvJdVBHQ74JiCs97Kx9y0cAPFBtmTQ+bg0JkKPtxJLl9cw==
+  dependencies:
+    "@sanity/icons" "^2.4.1"
+    "@sanity/incompatible-plugin" "^1.0.0"
+    "@sanity/ui" "^1.0.0"
+    framer-motion "^10.15.1"
+    usehooks-ts "2.9.1"
 
 sanity@^3.15.1:
   version "3.15.1"
@@ -7140,6 +7173,11 @@ use-sync-external-store@1.2.0, use-sync-external-store@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
   integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
+
+usehooks-ts@2.9.1:
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/usehooks-ts/-/usehooks-ts-2.9.1.tgz#953d3284851ffd097432379e271ce046a8180b37"
+  integrity sha512-2FAuSIGHlY+apM9FVlj8/oNhd+1y+Uwv5QNkMQz1oSfdHk4PXo1qoCw9I5M7j0vpH8CSWFJwXbVPeYDjLCx9PA==
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
