@@ -1,6 +1,10 @@
 /* eslint-disable @next/next/no-page-custom-font */
-import "./globals.css";
+import { ScreenWidth } from "@/context/screenwidth/screenwidth.context";
+import "../globals.css";
 import type { Metadata } from "next";
+import Script from "next/script";
+import Sublayout from "@/components/layout";
+import Structure from "@/components/layout/structure";
 
 export const metadata: Metadata = {
   title: "Adnan Husain - Software Developer and Engineer",
@@ -13,6 +17,23 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <Script id="microsoft-clarity">
+        {`
+          (function (c, l, a, r, i, t, y) {
+            c[a] =
+              c[a] ||
+              function () {
+                (c[a].q = c[a].q || []).push(arguments);
+              };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+          })(window, document, "clarity", "script", "hluabznqx8");
+          
+          `}
+      </Script>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -21,7 +42,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <ScreenWidth>
+          <Sublayout>
+            <Structure>{children}</Structure>
+          </Sublayout>
+        </ScreenWidth>
+      </body>
     </html>
   );
 }
