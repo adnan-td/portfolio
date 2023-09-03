@@ -1,11 +1,11 @@
 "use client";
 
-import { useScroll, useTransform, motion, MotionValue, useMotionValueEvent } from "framer-motion";
+import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 import { useRef, useContext } from "react";
 import { BsLinkedin, BsInstagram, BsTwitter, BsGithub } from "react-icons/bs";
 
 import { UpdateFollower } from "react-mouse-follower";
-import { NavStatusContext } from "../../context/navstatus/navstatus.context";
+import { NavStatusContext } from "@/context/navstatus/navstatus.context";
 
 import "./footer.scss";
 

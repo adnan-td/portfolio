@@ -11,6 +11,7 @@
   "dependencies": {
     "@portabletext/react": "^3.0.7",
     "@sanity/client": "^6.4.9",
+    "@sanity/color-input": "^3.1.0",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.15.1",
     "autoprefixer": "10.4.15",
@@ -45,6 +46,7 @@
     "@types/react-dom": "18.2.7",
     "@types/react-lottie": "^1.2.6",
     "@types/react-vertical-timeline-component": "^3.3.3",
-    "@types/styled-components": "^5.1.26"
+    "@types/styled-components": "^5.1.26",
+    "prettier": "^3.0.3"
   }
 }

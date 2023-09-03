@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useContext } from "react";
-import Hamburger from "./hamburger";
+import Hamburger from "@/components/navbar/hamburger";
 import { MdArticle as ArticleIcon } from "react-icons/md";
 import Link from "next/link";
 import { UpdateFollower } from "react-mouse-follower";
@@ -51,7 +51,7 @@ export default function NavbarComponent() {
 
   return (
     <div className="flex justify-between pl-14 py-6 items-center min-h-20 gap-3 sm:pl-7">
-      <Link href="/">
+      <Link href="/blog">
         <button className="cursor-pointer">
           <Image
             height="1980"
@@ -64,14 +64,9 @@ export default function NavbarComponent() {
       </Link>
       <div className="flex items-center justify-center">
         <div className="flex gap-12 items-center font-sono font-medium text-xl sm:gap-0">
-          <a
-            href="https://drive.google.com/file/d/1Io1UJSCp8j1mHFWAa0wknBYzdr3CIwlC/view?usp=sharing"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-1 sm:hidden"
-          >
-            <ArticleIcon /> resume
-          </a>
+          <Link href="/" className="flex items-center gap-1 sm:hidden">
+            <ArticleIcon /> about
+          </Link>
           <button style={{ cursor: "default" }}>menu</button>
           <div className="h-[60px] w-[70px] sm:w-[80px]"></div>
         </div>
@@ -150,22 +145,15 @@ export default function NavbarComponent() {
                   >
                     <p className="font-base mb-5 text-neutral-400 text-base">Menu</p>
                     <NavLinksComponent
-                      to="/"
+                      to="/blog"
                       text="Home"
                       mouseOptions={mouseOptionLinks}
                       handleClick={closeNavbar}
                       whileHover={whileHover}
                     />
                     <NavLinksComponent
-                      to="/projects"
-                      text="Projects"
-                      mouseOptions={mouseOptionLinks}
-                      handleClick={closeNavbar}
-                      whileHover={whileHover}
-                    />
-                    <NavLinksComponent
-                      to="/blog"
-                      text="Blog"
+                      to="/about"
+                      text="About"
                       mouseOptions={mouseOptionLinks}
                       handleClick={closeNavbar}
                       whileHover={whileHover}
