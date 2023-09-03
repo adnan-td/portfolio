@@ -10,7 +10,7 @@
     "url": "/projects/react-mouse-follower",
     "projectLink": "https://www.npmjs.com/package/react-mouse-follower",
     "githubLink": "https://github.com/Adnan-S-Husain/react-mouse-follower",
-    "mainImg": "/works/follower.svg",
+    "mainImg": "/featured/follower.svg",
     "slug": "react-mouse-follower",
     "images": [],
     "metaDescription": "React Mouse Follower is a versatile npm package built on React and Framer Motion. This package offers a set of components that allow you to effortlessly integrate and personalize an impressive mouse follower to your cursor. With React Mouse Follower, you can easily enhance the user experience by adding visually appealing and fully customizable effects that follow the movement of the mouse."

@@ -1,34 +1,25 @@
 "use client";
 
-import { useContext, useRef, useState } from "react";
-
-import { BsGithub as GitHubIcon } from "react-icons/bs";
-import { motion } from "framer-motion";
-import { DataContext } from "../../context/data/data.context";
+import { useContext, useEffect, useState } from "react";
+import { DataContext } from "@/context/data/data.context";
+import { WorkInterface } from "@/components/home/projects";
+import { SiGithub as GitHubIcon } from "react-icons/si";
 import { UpdateFollower } from "react-mouse-follower";
 import Image from "next/image";
-import { WidthContext } from "@/context/screenwidth/screenwidth.context";
-import urlFor from "../../../lib/sanity.urlfor";
+import urlFor from "../../../../../lib/sanity.urlfor";
 
-export default function ProjectsCompleted() {
-  const containerRef = useRef(null);
+export default function Page() {
   const { data } = useContext(DataContext);
-  const { screenwidth } = useContext(WidthContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div
-      className="w-full flex justify-start items-center"
-      ref={containerRef}
-      key={screenwidth > 768 ? "big" : "small"}
-    >
-      <motion.div
-        className="flex justify-start items-stretch gap-8 md:gap-4 md:items-start"
-        drag="x"
-        dragConstraints={containerRef}
-        whileTap={{ cursor: "grab" }}
-      >
+    <div className="w-screen flex justify-center min-h-screen px-[10%]">
+      <div className="grid grid-cols-3 justify-items-center items-stretch gap-6 pt-5 pb-28 lg:grid-cols-2 md:grid-cols-1 md:items-center">
         {data?.projects &&
-          data.projects.slice(0, screenwidth > 768 ? 9 : 5).map((fw: any, i: number) => {
+          data.projects.map((fw: any, i: number) => {
             return (
               <Project
                 key={i}
@@ -42,50 +33,38 @@ export default function ProjectsCompleted() {
               />
             );
           })}
-      </motion.div>
+      </div>
     </div>
   );
 }
 
-export interface WorkInterface {
-  title: string;
-  tech: string;
-  image: string;
-  url: string;
-  github: string;
-}
-
 function Project({ data }: { data: WorkInterface }) {
   const [isHovering, setIsHovering] = useState<boolean>(false);
-  const handleMouseEnter = () => {
-    setIsHovering(true);
-  };
-  const handleMouseLeave = () => {
-    setIsHovering(false);
-  };
   return (
     <UpdateFollower
-      className="md:h-[400px] min-w-[400px] flex flex-col rounded-xl max-w-[750px] bg-white cursor-pointer md:min-w-[300px] md:w-[300px] transition-all shadow-xl max-h-fit"
+      className="w-full flex flex-col rounded-xl bg-white transition-all shadow-xl max-h-fit pb-3 md:pb-5"
       style={{
         backgroundColor: isHovering ? "#171717" : "white",
         color: isHovering ? "white" : "black",
       }}
       mouseOptions={{
-        scale: 4,
-        backgroundColor: "transparent",
+        backgroundColor: "white",
         zIndex: 1,
-        backgroundElement: <FWHover />,
       }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => {
+        setIsHovering(true);
+      }}
+      onMouseLeave={() => {
+        setIsHovering(false);
+      }}
     >
-      <div className="overflow-hidden flex justify-center items-center h-4/6 w-full p-5 md:h-1/2">
+      <div className="overflow-hidden flex justify-center items-center h-4/6 w-full p-5">
         <Image
           src={urlFor(data.image).url()}
-          className="w-full max-h-[290px] rounded-lg transition-transform pointer-events-none"
+          className="w-full max-h-[320px] rounded-lg transition-transform pointer-events-none md:max-h-max"
           alt={data.title}
-          width="1980"
-          height="1980"
+          width="1920"
+          height="1920"
         />
       </div>
       <div className="flex flex-col gap-3 py-5 px-5 md:min-h-[140px]">
@@ -118,16 +97,5 @@ function Project({ data }: { data: WorkInterface }) {
         </p>
       </div>
     </UpdateFollower>
-  );
-}
-
-function FWHover() {
-  return (
-    <div
-      className="flex flex-col justify-center items-center w-full h-full text-white bg-opacity-60 font-[arial] bg-white font-semibold"
-      style={{ fontSize: "3px", letterSpacing: "0.07px" }}
-    >
-      <p>drag</p>
-    </div>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
 import { useState, createContext, ReactNode, useContext, useEffect } from "react";
 import { LoaderContext } from "../loader/loader.context";
-import axios from "axios";
+import { groq } from "next-sanity";
+import { client } from "../../../lib/sanity.client";
 
 interface Props {
   children: ReactNode;
@@ -19,10 +20,8 @@ export const DataStateProvider = ({ children }: Props) => {
   const { setLoadingPage } = useContext(LoaderContext);
 
   const fetchData = async () => {
-    const res = await axios.post("/api/aws", {
-      query: listExperiencesAndProjects,
-    });
-    setData(res?.data?.data);
+    const data = await client.fetch(getExperiencesAndProjects);
+    setData(data);
   };
 
   useEffect(() => {
@@ -41,27 +40,20 @@ export const DataStateProvider = ({ children }: Props) => {
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 };
 
-const listExperiencesAndProjects = /* GraphQL */ `
-  query {
-    listExperiences {
-      items {
-        title
-        subtitle
-        description
-        date
-        tech
-        order
-      }
-    }
-    listProjects {
-      items {
-        id
-        title
-        tech
-        image
-        github
-        url
-      }
-    }
+const getExperiencesAndProjects = groq`
+  {
+    "experiences": *[_type == "experience"] | order(order asc),
+    "projects": *[_type == "project"]
   }
 `;
+
+// const getExperiencesAndProjects = groq`
+//   {
+//     "experiences": *[_type == "experience"] | order(order asc),
+//     "projects": *[_type == "project"] {
+//       ...,
+//       author->,
+//       categories[]->,
+//     } | order(_createdAt desc)
+//   }
+// `;
