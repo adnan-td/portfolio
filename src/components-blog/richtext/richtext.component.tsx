@@ -15,7 +15,11 @@ export const RichTextComponent: PortableTextComponents = {
   },
   list: {
     bullet: ({ children }) => {
-      return <ul className="list-disc ml-10 sm:ml-6 space-y-2">{children}</ul>;
+      return (
+        <ul className="list-disc ml-10 sm:ml-6 space-y-1" style={{ lineHeight: "1.5" }}>
+          {children}
+        </ul>
+      );
     },
     number: ({ children }) => {
       return <ol className="mt-lg list-decimal">{children}</ol>;

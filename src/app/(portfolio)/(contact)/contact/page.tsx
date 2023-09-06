@@ -61,7 +61,7 @@ const ContactForm = () => {
     const res = (await axios.post("/api/contact", {
       ...formFields,
     })) as any;
-    console.log(res);
+    // console.log(res);
   }
 
   const handleSubmit: React.FormEventHandler = async (event) => {

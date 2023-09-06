@@ -11,10 +11,17 @@ import "../globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Weekly Blogs - Tech Tips, Tutorials & How-to Guides",
+  title: "Weekly Blogs: Tech Insights, Tutorials, and How-to Advice",
   description:
-    "Explore a treasure trove of tech insights, tutorials, and how-to guides on our blog. Stay updated with the latest in software development, full-stack expertise, web, and mobile technologies.",
+    "Discover tech insights, tutorials, and how-to guides on our blog. Stay updated with the latest in software development, full-stack expertise, web, and mobile technologies.",
   keywords: "blog, software, tech, development, full stack, web, mobile",
+  openGraph: {
+    title: "Weekly Blogs: Tech Insights, Tutorials, and How-to Advice",
+    description:
+      "Discover tech insights, tutorials, and how-to guides on our blog. Stay updated with the latest technologies.",
+    images: "/Logo.svg",
+  },
+  metadataBase: new URL("https://adnansh.in"),
 };
 
 const PreviewProvider = dynamic(() => import("../../components-blog/PreviewProvider"));

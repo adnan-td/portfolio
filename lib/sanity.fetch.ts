@@ -4,6 +4,7 @@ import type { QueryParams } from "@sanity/client";
 import { draftMode } from "next/headers";
 
 import { client } from "./sanity.client";
+import { revalidate } from "@/constants";
 
 export const token = process.env.SANITY_API_READ_TOKEN;
 
@@ -25,7 +26,6 @@ export async function sanityFetch<QueryResponse>({
   }
 
   return client.fetch<QueryResponse>(query, params, {
-    cache: "force-cache",
     ...(isDraftMode && {
       cache: undefined,
       token: token,
@@ -33,6 +33,7 @@ export async function sanityFetch<QueryResponse>({
     }),
     next: {
       ...(isDraftMode && { revalidate: 30 }),
+      ...(!isDraftMode && { revalidate: revalidate }),
       tags,
     },
   });

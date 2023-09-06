@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { groq } from "next-sanity";
 import { PortableText, toPlainText } from "@portabletext/react";
 import { RichTextComponent } from "@/components-blog/richtext/richtext.component";
@@ -8,7 +7,7 @@ import Link from "next/link";
 export default function BlogPage({ post }: { post: Post }) {
   return (
     <div className="w-screen flex justify-center pb-14 sm:pb-7">
-      <article className="w-full max-w-[1200px] flex flex-col gap-8 justify-center">
+      <article className="w-full max-w-[1200px] flex flex-col gap-8 justify-center items-center">
         <section className="px-7 flex flex-col gap-4 justify-center">
           <div className="break-words px-20 text-center font-heading text-5xl font-bold text-slate-900 md:px-4 md:text-3xl lg:px-5 xl:px-8 xl:text-4xl">
             <h1 className="leading-snug" data-query="post-title">
@@ -38,7 +37,7 @@ export default function BlogPage({ post }: { post: Post }) {
             <Link className="flex justify-center items-center gap-2" href="/">
               <div className="relative flex justify-center items-center gap-4 w-12 h-12 rounded-full overflow-hidden sm:w-10 sm:h-10">
                 <SanityImage
-                  className="object-cover object-center"
+                  className="object-cover object-top"
                   src={post.author.image}
                   alt={post.author.name}
                 />
@@ -62,7 +61,10 @@ export default function BlogPage({ post }: { post: Post }) {
             alt={post.title}
           />
         </section>
-        <section className="px-7 w-full text-2xl font-medium flex flex-col gap-5">
+        <section
+          className="px-7 w-full text-xl font-medium flex flex-col gap-5 max-w-[900px]"
+          style={{ lineHeight: "1.8" }}
+        >
           <PortableText value={post.body as any} components={RichTextComponent} />
         </section>
         <section className="px-7 w-full mt-5 mb-5 border-t border-b py-10">
@@ -73,7 +75,7 @@ export default function BlogPage({ post }: { post: Post }) {
                 className="relative block h-24 w-24 overflow-hidden rounded-full border md:h-20 md:w-20"
               >
                 <SanityImage
-                  className="object-cover object-center"
+                  className="object-cover object-top"
                   src={post.author.image}
                   alt={post.author.name}
                 />
@@ -108,6 +110,19 @@ export const query = groq`
       author->,
       categories[]->,
       "headings": body[length(style) == 2 && string::startsWith(style, "h")],
+    } [0]
+  }
+`;
+
+export const metaQuery = groq`
+  {
+    "post": *[_type == "post" && slug.current == $slug] {
+      mainImage,
+      author->,
+      title,
+      slug,
+      description,
+      categories->,
     } [0]
   }
 `;
