@@ -17,23 +17,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-V6DNDCN1PB"></Script>
-        <Script id="google-analytics">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-V6DNDCN1PB');
-            `}
-        </Script>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Sono:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body>
         <ScreenWidth>
           <Sublayout>

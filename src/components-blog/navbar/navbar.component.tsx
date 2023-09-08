@@ -152,7 +152,7 @@ export default function NavbarComponent() {
                       whileHover={whileHover}
                     />
                     <NavLinksComponent
-                      to="/about"
+                      to="/"
                       text="About"
                       mouseOptions={mouseOptionLinks}
                       handleClick={closeNavbar}
