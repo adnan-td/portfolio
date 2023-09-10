@@ -1,11 +1,9 @@
-/* eslint-disable @next/next/no-page-custom-font */
 import dynamic from "next/dynamic";
 import { draftMode } from "next/headers";
 import { token } from "../../../lib/sanity.fetch";
 import { ScreenWidth } from "@/context/screenwidth/screenwidth.context";
 import Sublayout from "@/components-blog/layout";
 import Structure from "@/components-blog/layout/structure";
-import Script from "next/script";
 import "../globals.css";
 
 import type { Metadata } from "next";

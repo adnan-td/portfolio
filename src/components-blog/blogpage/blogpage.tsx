@@ -3,6 +3,7 @@ import { PortableText, toPlainText } from "@portabletext/react";
 import { RichTextComponent } from "@/components-blog/richtext/richtext.component";
 import SanityImage from "../image/sanityimage";
 import Link from "next/link";
+import TableOfContents from "../tableofcontent/tableofcontent";
 
 export default function BlogPage({ post }: { post: Post }) {
   return (
@@ -54,20 +55,23 @@ export default function BlogPage({ post }: { post: Post }) {
             </time>
           </div>
         </section>
-        <section className="px-7 mt-5 relative w-full aspect-video sm:w-screen sm:px-0">
+        <section className="px-7 mt-5 relative w-full aspect-video sm:w-screen sm:px-0 rounded-lg overflow-hidden">
           <SanityImage
             className="object-cover object-center"
             src={post.mainImage}
             alt={post.title}
           />
         </section>
+        <section className="px-7 mt-10 w-full text-xl font-medium flex flex-col gap-2 max-w-[800px] overflow-hidden rounded-2xl border border-slate-200 p-6">
+          <TableOfContents headings={post.headings} />
+        </section>
         <section
-          className="px-7 w-full text-xl font-medium flex flex-col gap-5 max-w-[900px]"
+          className="px-7 w-full text-xl font-medium flex flex-col gap-5 max-w-[800px]"
           style={{ lineHeight: "1.8" }}
         >
           <PortableText value={post.body as any} components={RichTextComponent} />
         </section>
-        <section className="px-7 w-full mt-5 mb-5 border-t border-b py-10">
+        <section className="px-7 w-full mt-5 mb-5 border-t border-b py-10 max-w-[800px]">
           <div className="flex w-full flex-row items-start gap-5 md:gap-2">
             <div className="">
               <Link

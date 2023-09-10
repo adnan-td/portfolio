@@ -37,5 +37,19 @@ interface Post extends Response {
   mainImage: any;
   publishedAt: string;
   description: string;
-  headings?: any;
+  headings?: Heading[];
+}
+
+interface Heading {
+  style: string;
+  _key: string;
+  _type: string;
+  children: HeadingChild[];
+}
+
+interface HeadingChild {
+  _key: string;
+  _type: string;
+  marks: any[];
+  text: string;
 }
