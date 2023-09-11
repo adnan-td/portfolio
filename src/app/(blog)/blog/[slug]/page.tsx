@@ -7,6 +7,7 @@ import { client } from "../../../../../lib/sanity.client";
 import { groq } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import { revalidate as rv } from "@/constants";
+import { redirect } from "next/navigation";
 
 export const revalidate = rv;
 
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const builder = imageUrlBuilder(client);
   const post = (await sanityFetch<resp>({ query: metaQuery, tags: ["post"], params: params }))
     ?.post;
-
+  if (!post) return null;
   return {
     title: post.title,
     description: post.description,
@@ -55,7 +56,9 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: Props) {
   const data = await sanityFetch<resp>({ query, tags: ["post"], params: params });
-
+  if (data?.post == null) {
+    redirect("/not-found");
+  }
   return (
     <LiveQuery enabled={draftMode().isEnabled} query={query} initialData={{}} as={BlogPage}>
       <BlogPage post={data?.post} />

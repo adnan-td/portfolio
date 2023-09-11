@@ -11,7 +11,7 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, { schemaType
 
           .options({
             url: `${
-              process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"
+              process.env.NODE_ENV === "production" ? "https://adnansh.in" : "http://localhost:3000"
             }/api/draft/enable`,
             defaultSize: "desktop",
             reload: {

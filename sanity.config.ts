@@ -6,6 +6,7 @@ import { myTheme } from "./sanity.theme";
 import StudioLogo from "@/components-blog/studio-logo";
 import { defaultDocumentNode } from "./sanity.structure";
 import { colorInput } from "@sanity/color-input";
+import { codeInput } from "@sanity/code-input";
 
 export default defineConfig({
   basePath: "/admin",
@@ -21,6 +22,7 @@ export default defineConfig({
     }),
     visionTool(),
     colorInput(),
+    codeInput(),
   ],
 
   schema: {
