@@ -23,7 +23,11 @@ export const RichTextComponent: PortableTextComponents = {
       );
     },
     number: ({ children }) => {
-      return <ol className="mt-lg list-decimal">{children}</ol>;
+      return (
+        <ol className="mt-lg ml-10 sm:ml-6 list-decimal" style={{ lineHeight: "1.5" }}>
+          {children}
+        </ol>
+      );
     },
   },
   block: {
