@@ -9,8 +9,6 @@ import imageUrlBuilder from "@sanity/image-url";
 import { revalidate as rv } from "@/constants";
 import { redirect } from "next/navigation";
 
-export const revalidate = rv;
-
 type Props = {
   params: { slug: string };
 };
@@ -20,10 +18,8 @@ interface resp {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  // console.log("generating meta data");
   const builder = imageUrlBuilder(client);
-  const post = (await sanityFetch<resp>({ query: metaQuery, tags: ["post"], params: params }))
-    ?.post;
+  const post = (await sanityFetch<resp>({ query: metaQuery, params: params }))?.post;
   if (!post) return null;
   return {
     title: post.title,
@@ -41,11 +37,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  // console.log("generating static params");
   const posts = (
     await client.fetch(getParamQuery, {
       next: {
-        revalidate: revalidate,
+        revalidate: rv,
       },
     })
   ).posts as Post[];
@@ -55,7 +50,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: Props) {
-  const data = await sanityFetch<resp>({ query, tags: ["post"], params: params });
+  const data = await sanityFetch<resp>({ query, params: params });
   if (data?.post == null) {
     redirect("/not-found");
   }
