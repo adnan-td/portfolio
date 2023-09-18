@@ -33,6 +33,7 @@ export default defineType({
       lists: [
         { title: "Bullet", value: "bullet" },
         { title: "Number", value: "number" },
+        { title: "List", value: "nospace" },
       ],
       // Marks let you mark up inline text in the block editor.
       marks: {

@@ -55,15 +55,17 @@ export default function BlogPage({ post }: { post: Post }) {
             </time>
           </div>
         </section>
-        <section className="px-7 mt-5 relative w-full aspect-video sm:w-screen sm:px-0 rounded-lg overflow-hidden">
+        <section className="px-7 mt-5 relative w-full aspect-video sm:w-screen sm:px-0 rounded-lg lg:rounded-none overflow-hidden">
           <SanityImage
             className="object-cover object-center"
             src={post.mainImage}
             alt={post.title}
           />
         </section>
-        <section className="px-7 mt-10 w-full text-xl font-medium flex flex-col gap-2 max-w-[800px] overflow-hidden rounded-2xl border border-slate-200 p-6">
-          <TableOfContents headings={post.headings} />
+        <section className="w-full md:px-4 flex justify-center">
+          <div className="px-7 mt-10 w-full text-xl font-medium flex flex-col gap-2 max-w-[800px] overflow-hidden rounded-2xl border border-slate-300 p-6">
+            <TableOfContents headings={post.headings} />
+          </div>
         </section>
         <section
           className="px-7 w-full text-xl font-medium flex flex-col gap-5 max-w-[800px]"

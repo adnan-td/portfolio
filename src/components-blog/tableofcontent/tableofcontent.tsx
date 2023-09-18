@@ -11,7 +11,7 @@ function TableRow({ outline, i }: { outline: Outline; i: number }) {
       className="flex flex-col gap-2 font-semibold text-slate-800 text-lg z-[1]"
       style={{ marginLeft: `calc(0px + ${i} * 8px)` }}
     >
-      <a href={`#${slugify(outline.title)}`} className="inline-block hover:underline md:underline">
+      <a href={`#${slugify(outline.title)}`} className="inline-block hover:underline">
         {outline.title}
       </a>
       {outline.subheadings.map((subheading, ind) => {

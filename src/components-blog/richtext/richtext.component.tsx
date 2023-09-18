@@ -17,17 +17,16 @@ export const RichTextComponent: PortableTextComponents = {
   list: {
     bullet: ({ children }) => {
       return (
-        <ul className="list-disc ml-10 sm:ml-6 space-y-1" style={{ lineHeight: "1.5" }}>
+        <ul className="list-disc ml-10 sm:ml-6 space-y-1" style={{ lineHeight: "1.6" }}>
           {children}
         </ul>
       );
     },
     number: ({ children }) => {
-      return (
-        <ol className="mt-lg ml-10 sm:ml-6 list-decimal" style={{ lineHeight: "1.5" }}>
-          {children}
-        </ol>
-      );
+      return <ol className="mt-lg ml-10 sm:ml-6 list-decimal">{children}</ol>;
+    },
+    nospace: ({ children }) => {
+      return <div className="mt-lg flex flex-col list-none">{children}</div>;
     },
   },
   block: {
@@ -73,7 +72,7 @@ export const RichTextComponent: PortableTextComponents = {
           href={value?.href}
           target={target}
           rel={target === "_blank" && "noindex nofollow"}
-          className="underline decoration-slate-800 hover:decoration-black"
+          className="underline text-blue-700 hover:text-blue-500"
         >
           {children}
         </Link>
