@@ -1,7 +1,5 @@
 "use client";
 
-import { DataStateProvider } from "@/context/data/data.context";
-import { LoaderState } from "@/context/loader/loader.context";
 import { NavStatusProvider } from "@/context/navstatus/navstatus.context";
 import { WidthContext } from "@/context/screenwidth/screenwidth.context";
 import { useContext } from "react";
@@ -11,11 +9,7 @@ export default function Sublayout({ children }: { children: React.ReactNode }) {
   const { screenwidth } = useContext(WidthContext);
   return (
     <FollowerProvider visible={screenwidth > 640}>
-      <NavStatusProvider>
-        <LoaderState>
-          <DataStateProvider>{children}</DataStateProvider>
-        </LoaderState>
-      </NavStatusProvider>
+      <NavStatusProvider>{children}</NavStatusProvider>
     </FollowerProvider>
   );
 }

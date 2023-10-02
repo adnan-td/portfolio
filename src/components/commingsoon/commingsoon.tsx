@@ -1,18 +1,9 @@
-"use client";
-
 import { useRouter } from "next/navigation";
 import Lottie from "react-lottie";
 import animationJson from "../../json/commingsoon.json";
-import React, { useContext, useEffect } from "react";
-import { LoaderContext } from "../../context/loader/loader.context";
 
 export default function ComingSoon() {
-  const { setLoadingPage } = useContext(LoaderContext);
   const navigate = useRouter();
-
-  useEffect(() => {
-    setLoadingPage(false);
-  }, [setLoadingPage]);
 
   function handleReturn() {
     navigate.push("/", { scroll: false });

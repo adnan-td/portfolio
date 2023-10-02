@@ -4,45 +4,59 @@ import { useContext, useRef, useState } from "react";
 
 import { BsGithub as GitHubIcon } from "react-icons/bs";
 import { motion } from "framer-motion";
-import { DataContext } from "../../context/data/data.context";
 import { UpdateFollower } from "react-mouse-follower";
 import Image from "next/image";
 import { WidthContext } from "@/context/screenwidth/screenwidth.context";
 import urlFor from "../../../lib/sanity.urlfor";
 
-export default function ProjectsCompleted() {
+export default function ProjectsCompleted({ projects }: { projects: any[] }) {
   const containerRef = useRef(null);
-  const { data } = useContext(DataContext);
   const { screenwidth } = useContext(WidthContext);
 
   return (
-    <div
-      className="w-full flex justify-start items-center"
-      ref={containerRef}
-      key={screenwidth > 768 ? "big" : "small"}
-    >
-      <motion.div
-        className="flex justify-start items-stretch gap-8 md:gap-4 md:items-start"
-        drag="x"
-        dragConstraints={containerRef}
-        whileTap={{ cursor: "grab" }}
-      >
-        {data?.projects &&
-          data.projects.slice(0, screenwidth > 768 ? 9 : 5).map((fw: any, i: number) => {
-            return (
-              <Project
-                key={i}
-                data={{
-                  title: fw.title,
-                  tech: fw.tech,
-                  image: fw.image,
-                  url: fw.url,
-                  github: fw.github,
-                }}
-              />
-            );
-          })}
-      </motion.div>
+    <div className="w-full flex justify-start items-center" ref={containerRef}>
+      {screenwidth > 768 ? (
+        <motion.div
+          className="flex justify-start items-stretch gap-8 md:gap-4 md:items-start"
+          drag="x"
+          dragConstraints={containerRef}
+          whileTap={{ cursor: "grab" }}
+        >
+          {projects &&
+            projects.slice(9).map((fw: any, i: number) => {
+              return (
+                <Project
+                  key={i}
+                  data={{
+                    title: fw.title,
+                    tech: fw.tech,
+                    image: fw.image,
+                    url: fw.url,
+                    github: fw.github,
+                  }}
+                />
+              );
+            })}
+        </motion.div>
+      ) : (
+        <div className="w-full flex flex-col justify-start items-center gap-8">
+          {projects &&
+            projects.slice(5).map((fw: any, i: number) => {
+              return (
+                <Project
+                  key={i}
+                  data={{
+                    title: fw.title,
+                    tech: fw.tech,
+                    image: fw.image,
+                    url: fw.url,
+                    github: fw.github,
+                  }}
+                />
+              );
+            })}
+        </div>
+      )}
     </div>
   );
 }

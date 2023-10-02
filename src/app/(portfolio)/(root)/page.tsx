@@ -6,8 +6,15 @@ import Learned from "@/components/home/learned";
 import ProjectsCompleted from "@/components/home/projects";
 import featuredProjectsJson from "@/json/featuredProjects.json";
 import Link from "next/link";
+import { groq } from "next-sanity";
+import { client } from "@/../lib/sanity.client";
+import { revalidate as rv } from "@/constants";
 
-export default function Home() {
+export const revalidate = rv;
+
+export default async function Home() {
+  const { experiences, projects } = await client.fetch(getExperiencesAndProjects);
+
   return (
     <div className="px-[5vw] flex flex-col w-full items-center">
       <LandingPage />
@@ -42,7 +49,7 @@ export default function Home() {
         </div>
       </div>
       <div className="w-screen px-[5vw] flex justify-center flex-wrap mb-28 gap-10">
-        <TimeLine />
+        <TimeLine exp={experiences} />
       </div>
 
       <div className="flex flex-col gap-6 mb-20">
@@ -52,7 +59,7 @@ export default function Home() {
         </div>
       </div>
       <div className="w-screen pl-[5vw] py-10 flex justify-center mb-16 gap-10 overflow-hidden">
-        <ProjectsCompleted />
+        <ProjectsCompleted projects={projects} />
       </div>
       <div className="flex mb-48">
         <HomeBtn href="/projects" text="View all projects" />
@@ -75,3 +82,10 @@ function HomeBtn({ href, text }: { href: string; text: string }) {
     </Link>
   );
 }
+
+const getExperiencesAndProjects = groq`
+  {
+    "experiences": *[_type == "experience"] | order(order asc),
+    "projects": *[_type == "project"]
+  }
+`;

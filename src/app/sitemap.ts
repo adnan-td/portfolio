@@ -1,29 +1,6 @@
 import { MetadataRoute } from "next";
-import { groq } from "next-sanity";
-import { client } from "../../lib/sanity.client";
-import { revalidate } from "@/constants";
-
-async function getPostMap(): Promise<MetadataRoute.Sitemap> {
-  const posts = (
-    await client.fetch(getParamQuery, {
-      next: {
-        revalidate: revalidate,
-      },
-    })
-  ).posts as Post[];
-  return posts.map((post) => {
-    return {
-      url: `https://adnansh.in/blog/${post.slug.current}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    };
-  });
-}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // console.log("Generating site map");
-  const posts = await getPostMap();
   return [
     {
       url: "https://adnansh.in",
@@ -79,14 +56,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "yearly",
       priority: 0.7,
     },
-    ...posts,
   ];
 }
-
-const getParamQuery = groq`
-  {
-    "posts": *[_type == "post"] {
-      slug,
-    }
-  }
-`;

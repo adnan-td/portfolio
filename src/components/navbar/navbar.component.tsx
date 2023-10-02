@@ -164,7 +164,8 @@ export default function NavbarComponent() {
                       whileHover={whileHover}
                     />
                     <NavLinksComponent
-                      to="/blog"
+                      to="https://devpiece.adnansh.in"
+                      target="_blank"
                       text="Blog"
                       mouseOptions={mouseOptionLinks}
                       handleClick={closeNavbar}
@@ -193,16 +194,18 @@ function NavLinksComponent({
   mouseOptions,
   to,
   text,
+  target,
   handleClick,
 }: {
   whileHover: object;
   mouseOptions: MouseSettings;
   to: string;
   text: string;
+  target?: string;
   handleClick: () => void;
 }) {
   return (
-    <Link onClick={handleClick} href={to}>
+    <Link onClick={handleClick} target={target} href={to}>
       <UpdateFollower mouseOptions={mouseOptions} className="inline-block">
         <motion.button whileHover={whileHover}>{text}</motion.button>
       </UpdateFollower>

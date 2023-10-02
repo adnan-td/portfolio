@@ -3,8 +3,6 @@
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import { MdBusinessCenter } from "react-icons/md";
 import "react-vertical-timeline-component/style.min.css";
-import { useContext } from "react";
-import { DataContext } from "@/context/data/data.context";
 
 interface experience {
   date: string;
@@ -14,15 +12,14 @@ interface experience {
   tech: string;
 }
 
-export default function TimeLine() {
+export default function TimeLine({ exp }: { exp: any[] }) {
   const color1 = "white";
   const color2 = "black";
-  const data = useContext(DataContext)?.data?.experiences;
   return (
     <div className="w-full mb-28">
       <VerticalTimeline lineColor="black">
-        {data
-          ? data.map((exp: experience, i: number) => {
+        {exp
+          ? exp.map((exp: experience, i: number) => {
               return (
                 <VerticalTimelineElement
                   className="vertical-timeline-element--work"
