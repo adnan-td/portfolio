@@ -4,9 +4,6 @@ import { WorkInterface } from "@/components/home/projects";
 import { SiGithub as GitHubIcon } from "react-icons/si";
 import Image from "next/image";
 import urlFor from "@/../lib/sanity.urlfor";
-import { revalidate as rv } from "@/constants";
-
-export const revalidate = rv;
 
 export default function AllProjectPage({ projects }: { projects: any[] }) {
   useEffect(() => {

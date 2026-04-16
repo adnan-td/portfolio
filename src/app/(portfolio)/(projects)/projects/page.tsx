@@ -1,9 +1,8 @@
 import AllProjectPage from "@/components/allprojects/allprojects.component";
-import { revalidate as rv } from "@/constants";
 import { groq } from "next-sanity";
 import { client } from "@/../lib/sanity.client";
 
-export const revalidate = rv;
+export const revalidate = 3600;
 
 export default async function Page() {
   const data = await client.fetch(getProjects);

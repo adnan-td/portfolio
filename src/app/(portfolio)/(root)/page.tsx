@@ -8,9 +8,8 @@ import featuredProjectsJson from "@/json/featuredProjects.json";
 import Link from "next/link";
 import { groq } from "next-sanity";
 import { client } from "@/../lib/sanity.client";
-import { revalidate as rv } from "@/constants";
 
-export const revalidate = rv;
+export const revalidate = 3600;
 
 export default async function Home() {
   const { experiences, projects } = await client.fetch(getExperiencesAndProjects);
