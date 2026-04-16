@@ -14,7 +14,7 @@ Install Yarn by `npm install yarn -g`
 
 ## Step 5: Creating `.env` file:
 
-Create a `.env` file in the root folder of the project, copy and paste the `.env.sample` into the .env file.
+Create a `.env.local` file in the root folder of the project by copying `.env.example`.
 
 ACCESS_TOKEN_SECRET - Generate the token using `openssl rand -hex 32` command in your terminal and copy and past in the .env file.
 

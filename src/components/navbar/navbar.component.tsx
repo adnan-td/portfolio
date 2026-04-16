@@ -5,8 +5,6 @@ import { useContext } from "react";
 import Hamburger from "./hamburger";
 import { MdArticle as ArticleIcon } from "react-icons/md";
 import Link from "next/link";
-import { UpdateFollower } from "react-mouse-follower";
-import { MouseSettings } from "react-mouse-follower/dist/types";
 import { NavStatusContext } from "../../context/navstatus/navstatus.context";
 import Image from "next/image";
 
@@ -15,18 +13,6 @@ export default function NavbarComponent() {
 
   const closeNavbar = () => {
     setIsOpen(false);
-  };
-
-  const mouseOptionLinks: MouseSettings = {
-    scale: 6,
-    backgroundColor: "white",
-    mixBlendMode: "difference",
-  };
-
-  const mouseOptionSocials: MouseSettings = {
-    scale: 4,
-    backgroundColor: "white",
-    mixBlendMode: "difference",
   };
 
   const variantsNavbarGrid = {
@@ -86,101 +72,87 @@ export default function NavbarComponent() {
                 key="navbar-bg"
                 className="bg-black fixed top-0 left-0 min-h-screen min-w-full overflow-auto z-[2]"
               ></motion.div>
-              <UpdateFollower
-                mouseOptions={{
-                  zIndex: 3,
+              <motion.div
+                key="navbar-grid"
+                variants={variantsNavbarGrid}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+                transition={{
+                  type: "tween",
+                  delay: 0.2,
                 }}
+                className="bg-white p-6 pt-32 grid grid-cols-2 gap-10 fixed right-0 top-0 min-h-screen align-top opacity-100 z-[2] overflow-auto sm:w-screen sm:px-[15%] sm:grid-cols-1"
               >
-                <motion.div
-                  key="navbar-grid"
-                  variants={variantsNavbarGrid}
-                  initial="hidden"
-                  animate="show"
-                  exit="exit"
-                  transition={{
-                    type: "just",
-                    delay: 0.2,
-                  }}
-                  className="bg-white p-6 pt-32 grid grid-cols-2 gap-10 fixed right-0 top-0 min-h-screen align-top opacity-100 z-[2] overflow-auto sm:w-screen sm:px-[15%] sm:grid-cols-1"
-                >
-                  <div id="nav-grid-left" className="flex flex-col gap-40 px-20 z-[3] sm:px-0">
-                    <div
-                      id="socials"
-                      className="flex flex-col gap-3 font-semibold text-base sm:hidden"
-                    >
-                      <p className="font-base mb-5 text-neutral-400">Socials</p>
-                      <NavSocialsComponent
-                        text="LinkedIn"
-                        href="https://www.linkedin.com/in/adnan-shabbir-husain/"
-                        whileHover={whileHover}
-                        mouseOptions={mouseOptionSocials}
-                      />
-                      <NavSocialsComponent
-                        text="GitHub"
-                        href="https://github.com/Adnan-S-Husain"
-                        whileHover={whileHover}
-                        mouseOptions={mouseOptionSocials}
-                      />
-                      <NavSocialsComponent
-                        text="Instagram"
-                        href="https://www.instagram.com/adnan_td0/"
-                        whileHover={whileHover}
-                        mouseOptions={mouseOptionSocials}
-                      />
-                      <NavSocialsComponent
-                        text="Twitter"
-                        href="https://twitter.com/adnan_td"
-                        whileHover={whileHover}
-                        mouseOptions={mouseOptionSocials}
-                      />
-                    </div>
-                    <div
-                      id="getintouch"
-                      className="flex flex-col gap-3 font-semibold text-base min-w-[200px]"
-                    >
-                      <p className="font-base mb-3 text-neutral-400">Get in touch</p>
-                      <a className="underline" href="mailto:adnan.s.husain.1@gmail.com">
-                        adnan.s.husain.1@gmail.com
-                      </a>
-                    </div>
+                <div id="nav-grid-left" className="flex flex-col gap-40 px-20 z-[3] sm:px-0">
+                  <div
+                    id="socials"
+                    className="flex flex-col gap-3 font-semibold text-base sm:hidden"
+                  >
+                    <p className="font-base mb-5 text-neutral-400">Socials</p>
+                    <NavSocialsComponent
+                      text="LinkedIn"
+                      href="https://www.linkedin.com/in/adnan-shabbir-husain/"
+                      whileHover={whileHover}
+                    />
+                    <NavSocialsComponent
+                      text="GitHub"
+                      href="https://github.com/Adnan-S-Husain"
+                      whileHover={whileHover}
+                    />
+                    <NavSocialsComponent
+                      text="Instagram"
+                      href="https://www.instagram.com/adnan_td0/"
+                      whileHover={whileHover}
+                    />
+                    <NavSocialsComponent
+                      text="Twitter"
+                      href="https://twitter.com/adnan_td"
+                      whileHover={whileHover}
+                    />
                   </div>
                   <div
-                    id="nav-grid-right"
-                    className="flex flex-col gap-5 font-semibold text-[40px] z-[3] sm:text-3xl sm:row-start-1"
+                    id="getintouch"
+                    className="flex flex-col gap-3 font-semibold text-base min-w-[200px]"
                   >
-                    <p className="font-base mb-5 text-neutral-400 text-base">Menu</p>
-                    <NavLinksComponent
-                      to="/"
-                      text="Home"
-                      mouseOptions={mouseOptionLinks}
-                      handleClick={closeNavbar}
-                      whileHover={whileHover}
-                    />
-                    <NavLinksComponent
-                      to="/projects"
-                      text="Projects"
-                      mouseOptions={mouseOptionLinks}
-                      handleClick={closeNavbar}
-                      whileHover={whileHover}
-                    />
-                    <NavLinksComponent
-                      to="https://devpiece.adnansh.in"
-                      target="_blank"
-                      text="Blog"
-                      mouseOptions={mouseOptionLinks}
-                      handleClick={closeNavbar}
-                      whileHover={whileHover}
-                    />
-                    <NavLinksComponent
-                      to="/contact"
-                      text="Contact"
-                      mouseOptions={mouseOptionLinks}
-                      handleClick={closeNavbar}
-                      whileHover={whileHover}
-                    />
+                    <p className="font-base mb-3 text-neutral-400">Get in touch</p>
+                    <a className="underline" href="mailto:adnan.s.husain.1@gmail.com">
+                      adnan.s.husain.1@gmail.com
+                    </a>
                   </div>
-                </motion.div>
-              </UpdateFollower>
+                </div>
+                <div
+                  id="nav-grid-right"
+                  className="flex flex-col gap-5 font-semibold text-[40px] z-[3] sm:text-3xl sm:row-start-1"
+                >
+                  <p className="font-base mb-5 text-neutral-400 text-base">Menu</p>
+                  <NavLinksComponent
+                    to="/"
+                    text="Home"
+                    handleClick={closeNavbar}
+                    whileHover={whileHover}
+                  />
+                  <NavLinksComponent
+                    to="/projects"
+                    text="Projects"
+                    handleClick={closeNavbar}
+                    whileHover={whileHover}
+                  />
+                  <NavLinksComponent
+                    to="https://devpiece.adnansh.in"
+                    target="_blank"
+                    text="Blog"
+                    handleClick={closeNavbar}
+                    whileHover={whileHover}
+                  />
+                  <NavLinksComponent
+                    to="/contact"
+                    text="Contact"
+                    handleClick={closeNavbar}
+                    whileHover={whileHover}
+                  />
+                </div>
+              </motion.div>
             </>
           )}
         </AnimatePresence>
@@ -191,14 +163,12 @@ export default function NavbarComponent() {
 
 function NavLinksComponent({
   whileHover,
-  mouseOptions,
   to,
   text,
   target,
   handleClick,
 }: {
-  whileHover: object;
-  mouseOptions: MouseSettings;
+  whileHover: any;
   to: string;
   text: string;
   target?: string;
@@ -206,31 +176,25 @@ function NavLinksComponent({
 }) {
   return (
     <Link onClick={handleClick} target={target} href={to}>
-      <UpdateFollower mouseOptions={mouseOptions} className="inline-block">
-        <motion.button whileHover={whileHover}>{text}</motion.button>
-      </UpdateFollower>
+      <motion.button whileHover={whileHover}>{text}</motion.button>
     </Link>
   );
 }
 
 function NavSocialsComponent({
   whileHover,
-  mouseOptions,
   text,
   href,
 }: {
-  whileHover: object;
-  mouseOptions: MouseSettings;
+  whileHover: any;
   text: string;
   href: string;
 }) {
   return (
     <div>
-      <UpdateFollower mouseOptions={mouseOptions} className="inline-block">
-        <motion.a href={href} whileHover={whileHover} target="_blank" rel="noreferrer">
-          {text}
-        </motion.a>
-      </UpdateFollower>
+      <motion.a href={href} whileHover={whileHover} target="_blank" rel="noreferrer">
+        {text}
+      </motion.a>
     </div>
   );
 }

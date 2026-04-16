@@ -1,19 +1,14 @@
 "use client";
 
 import { NavStatusProvider } from "@/context/navstatus/navstatus.context";
-import { WidthContext } from "@/context/screenwidth/screenwidth.context";
-import { useContext, useEffect, useState } from "react";
-import { FollowerProvider } from "react-mouse-follower";
+import { useEffect, useState } from "react";
 import loaderjson from "@/json/loader.json";
 import Lottie from "react-lottie";
 
 export default function Sublayout({ children }: { children: React.ReactNode }) {
-  const { screenwidth } = useContext(WidthContext);
   return (
     <Loader>
-      <FollowerProvider visible={screenwidth > 640}>
-        <NavStatusProvider>{children}</NavStatusProvider>
-      </FollowerProvider>
+      <NavStatusProvider>{children}</NavStatusProvider>
     </Loader>
   );
 }

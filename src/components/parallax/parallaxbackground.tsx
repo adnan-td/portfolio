@@ -5,16 +5,25 @@ import { motion, useTransform, useScroll, MotionValue } from "framer-motion";
 
 const ParallaxEffectBgImg = ({ img, className }: { img: string; className: string }) => {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
-  const y = useParallax(scrollYProgress, [-1000, 1000]);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const y = useParallax(scrollYProgress, [140, -120]);
+
   return (
-    <div className={className} style={{ overflow: "hidden" }}>
-      <motion.div
+    <div ref={ref} className={className} style={{ overflow: "hidden", position: "relative" }}>
+      <motion.img
+        src={img}
+        alt=""
+        aria-hidden="true"
+        draggable={false}
         style={{
-          height: "100%",
+          position: "absolute",
+          left: 0,
+          top: 50,
           width: "100%",
-          background: `url("${img}") center center / cover no-repeat`,
-          translateY: y,
+          height: "calc(100% + 260px)",
+          objectFit: "contain",
+          objectPosition: "center center",
+          y,
         }}
       />
     </div>

@@ -3,7 +3,6 @@
 import { useContext, useState } from "react";
 import { WidthContext } from "../../context/screenwidth/screenwidth.context";
 import { motion } from "framer-motion";
-import { UpdateFollower } from "react-mouse-follower";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -67,28 +66,14 @@ function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: b
   const imageContClass =
     "max-w-[600px] shadow-md w-full aspect-[16/12] overflow-hidden rounded-lg cursor-pointer relative flex justify-center items-center";
   return (
-    <UpdateFollower
-      mouseOptions={
-        screenwidth > 768
-          ? {
-              backgroundColor: data.mouseColor,
-            }
-          : {
-              backgroundColor: data.mouseColor,
-              zIndex: 3,
-              scale: 5,
-              backgroundElement: <FWHover color={data.mouseColor} />,
-            }
-      }
+    <motion.div
+      className="relative grid grid-cols-2 items-center w-full gap-8 p-5 py-10 md:flex overflow-hidden"
+      onClick={handleDivClick}
+      initial={{ opacity: 0, scale: 0.4, x: slideAmount() }}
+      whileInView={{ scale: 1, opacity: 1, x: 0 }}
+      transition={{ duration: 0.3 }}
+      viewport={{ once: true }}
     >
-      <motion.div
-        className="relative grid grid-cols-2 items-center w-full gap-8 p-5 py-10 md:flex overflow-hidden"
-        onClick={handleDivClick}
-        initial={{ opacity: 0, scale: 0.4, x: slideAmount() }}
-        whileInView={{ scale: 1, opacity: 1, x: 0 }}
-        transition={{ duration: 0.3 }}
-        viewport={{ once: true }}
-      >
         <div
           className="relative w-full flex justify-end md:absolute md:top-0 md:bottom-0 md:left-0 md:right-0 md:justify-center"
           style={{
@@ -96,21 +81,11 @@ function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: b
             justifyContent: isInverted && screenwidth > 768 ? "flex-start" : null,
           }}
         >
-          <UpdateFollower
+          <div
             className={
               isHoverImg && screenwidth > 768
                 ? `${imageContClass} grayscale-[10%] md:grayscale-0`
                 : imageContClass
-            }
-            mouseOptions={
-              screenwidth > 768
-                ? {
-                    scale: 5,
-                    zIndex: 3,
-                    backgroundElement: <FWHover color={data.mouseColor} />,
-                    backgroundColor: data.mouseColor,
-                  }
-                : {}
             }
           >
             <Image
@@ -124,7 +99,7 @@ function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: b
             {screenwidth < 768 && (
               <div className="absolute top-0 bottom-0 left-0 right-0 w-full h-full bg-black bg-opacity-80"></div>
             )}
-          </UpdateFollower>
+          </div>
         </div>
         <div
           className="w-full flex justify-start h-full md:justify-center"
@@ -143,8 +118,7 @@ function FeaturedWork({ data, isInverted }: { data: WorkInterface; isInverted: b
             <p className="text-1xl text-[#6f6f6f] font-medium w-full">{data.tech}</p>
           </div>
         </div>
-      </motion.div>
-    </UpdateFollower>
+    </motion.div>
   );
 }
 

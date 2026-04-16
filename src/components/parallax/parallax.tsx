@@ -2,7 +2,6 @@
 
 import { useScroll, useTransform, motion, MotionValue, useMotionValueEvent } from "framer-motion";
 import { useRef } from "react";
-import { UpdateFollower } from "react-mouse-follower";
 
 export default function ParallaxComponent({
   mouseColor,
@@ -28,22 +27,15 @@ export default function ParallaxComponent({
 
   const y = useParallax(scrollYProgress, [-400, 0]);
   return (
-    <UpdateFollower
-      mouseOptions={{
-        backgroundColor: mouseColor,
-        zIndex: zIndex,
-      }}
+    <motion.div
+      className={`relative left-0 top-0 overflow-hidden w-full ` + className}
+      ref={ref}
+      style={style}
     >
-      <motion.div
-        className={`relative left-0 top-0 overflow-hidden w-full ` + className}
-        ref={ref}
-        style={style}
-      >
-        <motion.div className={"relative " + childClass} style={{ translateY: y }}>
-          {children}
-        </motion.div>
+      <motion.div className={"relative " + childClass} style={{ translateY: y }}>
+        {children}
       </motion.div>
-    </UpdateFollower>
+    </motion.div>
   );
 }
 

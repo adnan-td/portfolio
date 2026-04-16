@@ -56,10 +56,14 @@ export default function Learned() {
           <Select
             options={selectOptions}
             className="w-full"
+            instanceId="learned-skills-select"
+            inputId="learned-skills-select-input"
             defaultValue={selectOptions[0]}
             value={tab}
             onChange={(event) => {
-              setTab(event);
+              if (event) {
+                setTab(event);
+              }
             }}
             closeMenuOnScroll
             styles={customStyles}

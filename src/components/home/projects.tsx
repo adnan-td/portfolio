@@ -1,62 +1,58 @@
 "use client";
 
-import { useContext, useRef, useState } from "react";
+import { useState } from "react";
 
 import { BsGithub as GitHubIcon } from "react-icons/bs";
-import { motion } from "framer-motion";
-import { UpdateFollower } from "react-mouse-follower";
 import Image from "next/image";
-import { WidthContext } from "@/context/screenwidth/screenwidth.context";
+import Link from "next/link";
 import urlFor from "../../../lib/sanity.urlfor";
 
 export default function ProjectsCompleted({ projects }: { projects: any[] }) {
-  const containerRef = useRef(null);
-  const { screenwidth } = useContext(WidthContext);
+  const completedProjects = (projects?.slice(9, 15)?.length ? projects.slice(9, 15) : projects) || [];
+  const topRow = completedProjects.slice(0, 3);
+  const bottomRow = completedProjects.slice(3, 6);
 
   return (
-    <div className="w-full flex justify-start items-center" ref={containerRef}>
-      {screenwidth > 768 ? (
-        <motion.div
-          className="flex justify-start items-stretch gap-8 md:gap-4 md:items-start"
-          drag="x"
-          dragConstraints={containerRef}
-          whileTap={{ cursor: "grab" }}
-        >
-          {projects &&
-            projects.slice(9).map((fw: any, i: number) => {
-              return (
-                <Project
-                  key={i}
-                  data={{
-                    title: fw.title,
-                    tech: fw.tech,
-                    image: fw.image,
-                    url: fw.url,
-                    github: fw.github,
-                  }}
-                />
-              );
-            })}
-        </motion.div>
-      ) : (
-        <div className="w-full flex flex-col justify-start items-center gap-8">
-          {projects &&
-            projects.slice(5).map((fw: any, i: number) => {
-              return (
-                <Project
-                  key={i}
-                  data={{
-                    title: fw.title,
-                    tech: fw.tech,
-                    image: fw.image,
-                    url: fw.url,
-                    github: fw.github,
-                  }}
-                />
-              );
-            })}
+    <div className="projects-completed-showcase w-full max-w-[1500px]">
+      <div className="projects-completed-grid">
+        {topRow.map((fw: any, i: number) => (
+          <Project
+            key={`top-${i}`}
+            data={{
+              title: fw.title,
+              tech: fw.tech,
+              image: fw.image,
+              url: fw.url,
+              github: fw.github,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="projects-completed-bottom-wrap">
+        <div className="projects-completed-bottom-glow" aria-hidden="true"></div>
+        <div className="projects-completed-grid projects-completed-grid--ghost">
+          {bottomRow.map((fw: any, i: number) => (
+            <div key={`bottom-${i}`} className={`projects-completed-ghost ghost-${i + 1}`}>
+              <Project
+                data={{
+                  title: fw.title,
+                  tech: fw.tech,
+                  image: fw.image,
+                  url: fw.url,
+                  github: fw.github,
+                }}
+              />
+            </div>
+          ))}
         </div>
-      )}
+
+        <div className="projects-completed-cta-wrap">
+          <Link href="/projects" className="projects-completed-cta">
+            View all projects
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
@@ -71,42 +67,58 @@ export interface WorkInterface {
 
 function Project({ data }: { data: WorkInterface }) {
   const [isHovering, setIsHovering] = useState<boolean>(false);
+
   const handleMouseEnter = () => {
     setIsHovering(true);
   };
+
   const handleMouseLeave = () => {
     setIsHovering(false);
   };
+
   return (
-    <UpdateFollower
-      className="md:h-[400px] min-w-[400px] flex flex-col rounded-xl max-w-[750px] bg-white cursor-pointer md:min-w-[300px] md:w-[300px] transition-all shadow-xl max-h-fit"
+    <div
+      className="h-full min-h-[420px] min-w-0 w-full flex flex-col rounded-[28px] bg-white cursor-pointer transition-all shadow-xl overflow-hidden"
       style={{
         backgroundColor: isHovering ? "#171717" : "white",
         color: isHovering ? "white" : "black",
       }}
-      mouseOptions={{
-        scale: 4,
-        backgroundColor: "transparent",
-        zIndex: 1,
-        backgroundElement: <FWHover />,
-      }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="overflow-hidden flex justify-center items-center h-4/6 w-full p-5 md:h-1/2">
+      <div className="overflow-hidden flex justify-center items-center h-[230px] w-full p-5">
         <Image
           src={urlFor(data.image).url()}
-          className="w-full max-h-[290px] rounded-lg transition-transform pointer-events-none"
+          className="h-full w-full rounded-lg object-contain object-center transition-transform pointer-events-none"
           alt={data.title}
           width="1980"
           height="1980"
         />
       </div>
-      <div className="flex flex-col gap-3 py-5 px-5 md:min-h-[140px]">
-        <p className="text-2xl font-medium">{data.title}</p>
-        <p className="text-1xl text-[#6f6f6f] font-medium">{data.tech}</p>
+      <div className="flex flex-col gap-3 px-5 pt-2 pb-5 min-h-[150px]">
+        <p
+          className="text-2xl font-medium leading-tight min-h-[3.75rem] overflow-hidden"
+          style={{
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+          }}
+        >
+          {data.title}
+        </p>
+        <p
+          className="text-1xl text-[#6f6f6f] font-medium leading-snug min-h-[2.75rem] overflow-hidden"
+          style={{
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+          }}
+        >
+          {data.tech}
+        </p>
       </div>
-      <div className="flex w-full px-5 items-center justify-between">
+
+      <div className="flex w-full px-5 pb-5 mt-auto items-center justify-between">
         <p>
           {data.github && (
             <a href={data.github} target="_blank" rel="noreferrer">
@@ -131,17 +143,6 @@ function Project({ data }: { data: WorkInterface }) {
           )}
         </p>
       </div>
-    </UpdateFollower>
-  );
-}
-
-function FWHover() {
-  return (
-    <div
-      className="flex flex-col justify-center items-center w-full h-full text-white bg-opacity-60 font-[arial] bg-white font-semibold"
-      style={{ fontSize: "3px", letterSpacing: "0.07px" }}
-    >
-      <p>drag</p>
     </div>
   );
 }

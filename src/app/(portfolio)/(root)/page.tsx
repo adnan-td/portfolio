@@ -58,11 +58,8 @@ export default async function Home() {
           <h2 className="main-skills-head">Completed</h2>
         </div>
       </div>
-      <div className="w-screen pl-[5vw] py-10 flex justify-center mb-16 gap-10 overflow-hidden">
+      <div className="w-screen px-[5vw] py-10 flex justify-center mb-32 overflow-hidden">
         <ProjectsCompleted projects={projects} />
-      </div>
-      <div className="flex mb-48">
-        <HomeBtn href="/projects" text="View all projects" />
       </div>
     </div>
   );

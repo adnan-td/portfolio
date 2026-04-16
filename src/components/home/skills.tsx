@@ -2,12 +2,9 @@
 
 import { DiDart, DiJavascript1, DiNodejs, DiPython, DiReact } from "react-icons/di";
 import {
-  SiAmazonaws,
-  SiAmazondynamodb,
   SiAndroid,
   SiApollographql,
-  SiAzuredevops,
-  SiCss3,
+  SiCss,
   SiDjango,
   SiExpress,
   SiFigma,
@@ -28,7 +25,7 @@ import {
   SiTailwindcss,
   SiTypescript,
 } from "react-icons/si";
-import { FaJava } from "react-icons/fa";
+import { FaAws, FaJava, FaMicrosoft } from "react-icons/fa";
 import { CgCPlusPlus, CgDatabase } from "react-icons/cg";
 
 export interface skillsInterface {
@@ -37,7 +34,7 @@ export interface skillsInterface {
 }
 export interface skillInterface {
   name: string;
-  icon: JSX.Element;
+  icon: React.ReactNode;
   key?: string;
 }
 export const skills: skillsInterface[] = [
@@ -160,7 +157,7 @@ export const skills: skillsInterface[] = [
       },
       {
         name: "CSS/SASS",
-        icon: <SiCss3 />,
+        icon: <SiCss />,
       },
       {
         name: "Tailwind CSS",
@@ -230,7 +227,7 @@ export const skills: skillsInterface[] = [
       },
       {
         name: "DynamoDB",
-        icon: <SiAmazondynamodb />,
+        icon: <FaAws />,
       },
     ],
   },
@@ -251,11 +248,11 @@ export const skills: skillsInterface[] = [
       },
       {
         name: "AWS Cloud",
-        icon: <SiAmazonaws />,
+        icon: <FaAws />,
       },
       {
         name: "DevOps (CI/CD)",
-        icon: <SiAzuredevops />,
+        icon: <FaMicrosoft />,
       },
       {
         name: "Android Dev",

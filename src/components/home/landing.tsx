@@ -2,30 +2,12 @@
 
 import BgVideo from "@/components/home/hovervideo";
 import { motion } from "framer-motion";
-import { UpdateFollower } from "react-mouse-follower";
-import { MouseSettings } from "react-mouse-follower/dist/types";
 
 export default function LandingPage() {
-  const mouseOuterOptions: MouseSettings = {
-    backgroundColor: "white",
-    mixBlendMode: "difference",
-    scale: 15,
-    backgroundElement: <BgVideo />,
-    customPosition: null,
-    zIndex: 1,
-    rotate: 360,
-  };
-  const mouseInnerOptions: MouseSettings = {
-    scale: 33,
-    rotate: -360,
-  };
   return (
     <>
       <div className="font-sono min-h-[80vh] flex flex-col justify-center items-center xl:min-h-fit">
-        <UpdateFollower
-          className="flex flex-col justify-center -mt-24 xl:hidden"
-          mouseOptions={mouseOuterOptions}
-        >
+        <div className="flex flex-col justify-center -mt-24 xl:hidden">
           <div className="main-cont flex flex-col gap-4 cursor-pointer bg-transparent py-40 items-center">
             <motion.p
               initial={{ y: -300 }}
@@ -35,21 +17,19 @@ export default function LandingPage() {
             >
               Hi, my name is
             </motion.p>
-            <UpdateFollower mouseOptions={mouseInnerOptions}>
-              <motion.h1
-                className="main-title text-8xl font-bold sm:text-7xl text-center"
-                initial={{ scale: 0.3 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.3 }}
-              >
-                <span>Adnan</span> <span>Shabbir</span>{" "}
-                <span>
-                  Husain<span className="sm:hidden">.</span>
-                </span>
-              </motion.h1>
-            </UpdateFollower>
+            <motion.h1
+              className="main-title text-8xl font-bold sm:text-7xl text-center"
+              initial={{ scale: 0.3 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              <span>Adnan</span> <span>Shabbir</span>{" "}
+              <span>
+                Husain<span className="sm:hidden">.</span>
+              </span>
+            </motion.h1>
           </div>
-        </UpdateFollower>
+        </div>
         <div className="hidden xl:flex font-sono">
           <div className="flex gap-14 justify-center items-center lg:flex-col">
             <div className="w-[320px] h-[320px] rounded-full flex justify-center items-center overflow-hidden sm:w-[240px] sm:h-[240px]">

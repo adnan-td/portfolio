@@ -1,21 +1,29 @@
 import FeatureComponent from "@/components/featurepage/feature.component";
 import featuredProjectsJson from "@/json/featuredProjects.json";
 import allContent from "@/components/featurepage/content";
-import NotFound from "@/app/not-found";
+import { notFound } from "next/navigation";
 
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata(
-  { params }: Props,
-  parent?: ResolvingMetadata
-): Promise<Metadata> {
-  const proj = featuredProjectsJson.find((proj) => {
-    return proj.slug == params.slug;
-  });
+function getProjectBySlug(slug: string) {
+  return featuredProjectsJson.find((proj) => proj.slug === slug);
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const proj = getProjectBySlug(slug);
+
+  if (!proj) {
+    return {
+      title: "Project not found",
+      description: "The requested project could not be found.",
+    };
+  }
+
   return {
     title: proj.title,
     description: proj.metaDescription,
@@ -28,13 +36,15 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const proj = featuredProjectsJson.find((proj) => {
-    return proj.slug == params.slug;
-  });
-  if (proj == null) return <NotFound />;
+export default async function Page({ params }: Props) {
+  const { slug } = await params;
+  const proj = getProjectBySlug(slug);
 
-  var text = allContent[proj?.id];
+  if (!proj) {
+    notFound();
+  }
+
+  const text = allContent[proj.id];
 
   return (
     <div>

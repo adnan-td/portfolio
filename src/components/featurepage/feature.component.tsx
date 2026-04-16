@@ -4,7 +4,6 @@ import { useContext, useEffect } from "react";
 import { MdLaunch as LaunchIcon } from "react-icons/md";
 import ParallaxEffectBgImg from "../parallax/parallaxbackground";
 import { WidthContext } from "../../context/screenwidth/screenwidth.context";
-import { UpdateFollower } from "react-mouse-follower";
 
 export default function FeatureComponent({
   text,
@@ -19,7 +18,7 @@ export default function FeatureComponent({
   mouseColor,
   metaDescription,
 }: {
-  text?: string | JSX.Element;
+  text?: React.ReactNode;
   images: string[];
   mainImg: string;
   title: string;
@@ -43,14 +42,8 @@ export default function FeatureComponent({
   }, [bgColor]);
 
   return (
-    <UpdateFollower
-      mouseOptions={{
-        backgroundColor: mouseColor,
-        zIndex: 1,
-      }}
-      className="w-screen flex flex-col justify-center items-center gap-16 pt-32 mb-16 z-[1]"
-    >
-      <div className="w-[45%] xl:w-[65%] lg:w-[70%] md:w-[75%] sm:w-[80%] mb-52 flex flex-col gap-5 md:mb-10">
+    <div className="w-screen flex flex-col justify-center items-center gap-16 pt-32 mb-16 z-[1]">
+      <div className="relative z-10 w-[45%] xl:w-[65%] lg:w-[70%] md:w-[75%] sm:w-[80%] mb-20 flex flex-col gap-5 md:mb-8">
         <p className="text-2xl font-medium md:text-lg">Project</p>
         <p className="text-6xl font-semibold md:text-3xl">{title}</p>
         <p className="text-6xl font-medium md:text-3xl">{description}</p>
@@ -58,15 +51,13 @@ export default function FeatureComponent({
       {screenwidth >= 768 ? (
         <ParallaxEffectBgImg
           img={mainImg}
-          className="w-full h-[120vh] aspect-video md:aspect-square"
+          className="relative z-0 -mt-[18vh] w-full h-[125vh] aspect-video md:aspect-square"
         />
       ) : (
         <div
-          className="w-full aspect-square"
+          className="-mt-8 w-full h-[72vh] px-6"
           style={{
-            height: "100%",
-            width: "100%",
-            background: `url("${mainImg}") center center / cover no-repeat`,
+            background: `url("${mainImg}") center center / contain no-repeat`,
           }}
         ></div>
       )}
@@ -117,6 +108,6 @@ export default function FeatureComponent({
           </div>
         </div>
       </div>
-    </UpdateFollower>
+    </div>
   );
 }

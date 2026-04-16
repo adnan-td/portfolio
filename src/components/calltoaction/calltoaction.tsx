@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function CallToAction() {
   return (
     <Link href="/contact">
-      <div className="sm:hidden fixed bottom-14 right-14 w-20 h-20 bg-black rounded-full flex justify-center items-center cursor-pointer hover:scale-110 transition-all">
+      <div className="sm:hidden fixed bottom-14 right-[30px] w-20 h-20 bg-black rounded-full flex justify-center items-center cursor-pointer hover:scale-110 transition-all">
         <svg
           width="32"
           height="32"

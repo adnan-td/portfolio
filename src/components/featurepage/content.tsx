@@ -1,5 +1,5 @@
 interface ContentMap {
-  [key: string]: JSX.Element;
+  [key: string]: React.ReactNode;
 }
 
 const AllContent: ContentMap = {

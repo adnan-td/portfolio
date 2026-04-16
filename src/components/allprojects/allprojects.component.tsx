@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { WorkInterface } from "@/components/home/projects";
 import { SiGithub as GitHubIcon } from "react-icons/si";
-import { UpdateFollower } from "react-mouse-follower";
 import Image from "next/image";
 import urlFor from "@/../lib/sanity.urlfor";
 import { revalidate as rv } from "@/constants";
@@ -39,16 +38,13 @@ export default function AllProjectPage({ projects }: { projects: any[] }) {
 
 function Project({ data }: { data: WorkInterface }) {
   const [isHovering, setIsHovering] = useState<boolean>(false);
+
   return (
-    <UpdateFollower
-      className="w-full flex flex-col rounded-xl bg-white transition-all shadow-xl max-h-fit pb-3 md:pb-5"
+    <div
+      className="h-full min-h-[420px] w-full flex flex-col rounded-[28px] bg-white transition-all shadow-xl overflow-hidden"
       style={{
         backgroundColor: isHovering ? "#171717" : "white",
         color: isHovering ? "white" : "black",
-      }}
-      mouseOptions={{
-        backgroundColor: "white",
-        zIndex: 1,
       }}
       onMouseEnter={() => {
         setIsHovering(true);
@@ -57,20 +53,40 @@ function Project({ data }: { data: WorkInterface }) {
         setIsHovering(false);
       }}
     >
-      <div className="overflow-hidden flex justify-center items-center h-4/6 w-full p-5">
+      <div className="overflow-hidden flex justify-center items-center h-[230px] w-full p-5">
         <Image
           src={urlFor(data.image).url()}
-          className="w-full max-h-[320px] rounded-lg transition-transform pointer-events-none md:max-h-max"
+          className="h-full w-full rounded-lg object-contain object-center transition-transform pointer-events-none"
           alt={data.title}
           width="1920"
           height="1920"
         />
       </div>
-      <div className="flex flex-col gap-3 py-5 px-5 md:min-h-[140px]">
-        <p className="text-2xl font-medium">{data.title}</p>
-        <p className="text-1xl text-[#6f6f6f] font-medium">{data.tech}</p>
+
+      <div className="flex flex-col gap-3 px-5 pt-2 pb-5 min-h-[150px]">
+        <p
+          className="text-2xl font-medium leading-tight min-h-[3.75rem] overflow-hidden"
+          style={{
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+          }}
+        >
+          {data.title}
+        </p>
+        <p
+          className="text-1xl text-[#6f6f6f] font-medium leading-snug min-h-[2.75rem] overflow-hidden"
+          style={{
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+          }}
+        >
+          {data.tech}
+        </p>
       </div>
-      <div className="flex w-full px-5 items-center justify-between">
+
+      <div className="flex w-full px-5 pb-5 mt-auto items-center justify-between">
         <p>
           {data.github && (
             <a href={data.github} target="_blank" rel="noreferrer">
@@ -95,6 +111,6 @@ function Project({ data }: { data: WorkInterface }) {
           )}
         </p>
       </div>
-    </UpdateFollower>
+    </div>
   );
 }
