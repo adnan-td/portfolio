@@ -5,6 +5,8 @@ import { SiGithub as GitHubIcon } from "react-icons/si";
 import Image from "next/image";
 import urlFor from "@/../lib/sanity.urlfor";
 
+export const revalidate = 3600;
+
 export default function AllProjectPage({ projects }: { projects: any[] }) {
   useEffect(() => {
     window.scrollTo(0, 0);

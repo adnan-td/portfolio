@@ -1,0 +1,47 @@
+{"_id":"skill.all.javascript","_type":"skill","title":"Javascript","type":"all","iconReact":"DiJavascript1","order":14}
+{"_id":"skill.all.typescript","_type":"skill","title":"Typescript","type":"all","iconReact":"SiTypescript","order":13}
+{"_id":"skill.all.python","_type":"skill","title":"Python","type":"all","iconReact":"DiPython","order":12}
+{"_id":"skill.all.java","_type":"skill","title":"Java","type":"all","iconReact":"FaJava","order":11}
+{"_id":"skill.all.dart","_type":"skill","title":"Dart","type":"all","iconReact":"DiDart","order":10}
+{"_id":"skill.all.reactjs","_type":"skill","title":"ReactJs","type":"all","iconReact":"DiReact","order":9}
+{"_id":"skill.all.nextjs","_type":"skill","title":"NextJs","type":"all","iconReact":"SiNextdotjs","order":8}
+{"_id":"skill.all.flutter","_type":"skill","title":"Flutter","type":"all","iconReact":"SiFlutter","order":7}
+{"_id":"skill.all.nodejs","_type":"skill","title":"NodeJs","type":"all","iconReact":"DiNodejs","order":6}
+{"_id":"skill.all.graphql","_type":"skill","title":"Graphql","type":"all","iconReact":"SiGraphql","order":5}
+{"_id":"skill.all.django","_type":"skill","title":"Django","type":"all","iconReact":"SiDjango","order":4}
+{"_id":"skill.all.sql","_type":"skill","title":"SQL","type":"all","iconReact":"SiMysql","order":3}
+{"_id":"skill.all.mongodb","_type":"skill","title":"MongoDB","type":"all","iconReact":"SiMongodb","order":2}
+{"_id":"skill.all.neo4j","_type":"skill","title":"Neo4j","type":"all","iconReact":"SiNeo4J","order":1}
+{"_id":"skill.javascript","_type":"skill","title":"Javascript","type":"languages","iconReact":"DiJavascript1","order":7}
+{"_id":"skill.typescript","_type":"skill","title":"Typescript","type":"languages","iconReact":"SiTypescript","order":6}
+{"_id":"skill.python","_type":"skill","title":"Python","type":"languages","iconReact":"SiPython","order":5}
+{"_id":"skill.java","_type":"skill","title":"Java","type":"languages","iconReact":"FaJava","order":4}
+{"_id":"skill.c-cpp","_type":"skill","title":"C/C++","type":"languages","iconReact":"CgCPlusPlus","order":3}
+{"_id":"skill.dart","_type":"skill","title":"Dart","type":"languages","iconReact":"DiDart","order":2}
+{"_id":"skill.kotlin","_type":"skill","title":"Kotlin","type":"languages","iconReact":"SiKotlin","order":1}
+{"_id":"skill.reactjs","_type":"skill","title":"ReactJs","type":"frontend","iconReact":"DiReact","order":8}
+{"_id":"skill.nextjs","_type":"skill","title":"NextJs","type":"frontend","iconReact":"SiNextdotjs","order":7}
+{"_id":"skill.flutter","_type":"skill","title":"Flutter","type":"frontend","iconReact":"SiFlutter","order":6}
+{"_id":"skill.html","_type":"skill","title":"Html","type":"frontend","iconReact":"SiHtml5","order":5}
+{"_id":"skill.css-sass","_type":"skill","title":"CSS/SASS","type":"frontend","iconReact":"SiCss","order":4}
+{"_id":"skill.tailwindcss","_type":"skill","title":"Tailwind CSS","type":"frontend","iconReact":"SiTailwindcss","order":3}
+{"_id":"skill.framer-motion","_type":"skill","title":"Framer Motion","type":"frontend","iconReact":"SiFramer","order":2}
+{"_id":"skill.apollo","_type":"skill","title":"Apollo","type":"frontend","iconReact":"SiApollographql","order":1}
+{"_id":"skill.nodejs","_type":"skill","title":"NodeJs","type":"backend","iconReact":"DiNodejs","order":7}
+{"_id":"skill.graphql","_type":"skill","title":"Graphql","type":"backend","iconReact":"SiGraphql","order":6}
+{"_id":"skill.expressjs","_type":"skill","title":"ExpressJs","type":"backend","iconReact":"SiExpress","order":5}
+{"_id":"skill.firebase","_type":"skill","title":"Firebase","type":"backend","iconReact":"SiFirebase","order":4}
+{"_id":"skill.django","_type":"skill","title":"Django","type":"backend","iconReact":"SiDjango","order":3}
+{"_id":"skill.nextjs-backend","_type":"skill","title":"NextJs","type":"backend","iconReact":"SiNextdotjs","order":2}
+{"_id":"skill.spring-boot","_type":"skill","title":"Spring Boot","type":"backend","iconReact":"SiSpringboot","order":1}
+{"_id":"skill.sql","_type":"skill","title":"SQL","type":"database","iconReact":"SiMysql","order":5}
+{"_id":"skill.postgresql","_type":"skill","title":"PostgresQL","type":"database","iconReact":"SiPostgresql","order":4}
+{"_id":"skill.mongodb","_type":"skill","title":"MongoDB","type":"database","iconReact":"SiMongodb","order":3}
+{"_id":"skill.neo4j","_type":"skill","title":"Neo4j","type":"database","iconReact":"SiNeo4J","order":2}
+{"_id":"skill.dynamodb","_type":"skill","title":"DynamoDB","type":"database","iconReact":"FaAws","order":1}
+{"_id":"skill.dsa","_type":"skill","title":"DSA","type":"others","iconReact":"CgDatabase","order":6}
+{"_id":"skill.git-github","_type":"skill","title":"Git/GitHub","type":"others","iconReact":"SiGithub","order":5}
+{"_id":"skill.figma","_type":"skill","title":"Figma/Ui-Ux","type":"others","iconReact":"SiFigma","order":4}
+{"_id":"skill.aws-cloud","_type":"skill","title":"AWS Cloud","type":"others","iconReact":"FaAws","order":3}
+{"_id":"skill.devops","_type":"skill","title":"DevOps (CI/CD)","type":"others","iconReact":"FaMicrosoft","order":2}
+{"_id":"skill.android-dev","_type":"skill","title":"Android Dev","type":"others","iconReact":"SiAndroid","order":1}

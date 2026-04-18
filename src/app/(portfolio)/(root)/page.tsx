@@ -8,11 +8,13 @@ import featuredProjectsJson from "@/json/featuredProjects.json";
 import Link from "next/link";
 import { groq } from "next-sanity";
 import { client } from "@/../lib/sanity.client";
+import { groupSkills } from "@/components/home/skills";
 
 export const revalidate = 3600;
 
 export default async function Home() {
-  const { experiences, projects } = await client.fetch(getExperiencesAndProjects);
+  const { experiences, projects, skills } = await client.fetch(getExperiencesAndProjects);
+  const parsedSkills = groupSkills(skills);
 
   return (
     <div className="px-[5vw] flex flex-col w-full items-center">
@@ -38,7 +40,7 @@ export default async function Home() {
         </div>
       </div>
       <div className="w-screen px-[5vw] flex justify-center flex-wrap mb-40 gap-10">
-        <Learned />
+        <Learned skills={parsedSkills} />
       </div>
 
       <div className="flex flex-col gap-6 mb-20">
@@ -82,6 +84,13 @@ function HomeBtn({ href, text }: { href: string; text: string }) {
 const getExperiencesAndProjects = groq`
   {
     "experiences": *[_type == "experience"] | order(order asc),
-    "projects": *[_type == "project"]
+    "projects": *[_type == "project"],
+    "skills": *[_type == "skill"] {
+      "category": type,
+      "name": title,
+      "icon": iconReact,
+      "image": iconImage.asset->url,
+      "key": _id
+    }
   }
 `;

@@ -1,27 +1,94 @@
 "use client";
 
-import { useEffect, useState, useContext, useRef } from "react";
-import { skillInterface, skills } from "./skills";
+import { useEffect, useState, useContext } from "react";
+import { Skill, skillsInterface } from "./skills";
 import Select from "react-select";
 import { WidthContext } from "../../context/screenwidth/screenwidth.context";
 import { motion } from "framer-motion";
+import { DiDart, DiJavascript1, DiNodejs, DiPython, DiReact } from "react-icons/di";
+import {
+  SiAndroid,
+  SiApollographql,
+  SiCss,
+  SiDjango,
+  SiExpress,
+  SiFigma,
+  SiFirebase,
+  SiFlutter,
+  SiFramer,
+  SiGithub,
+  SiGraphql,
+  SiHtml5,
+  SiKotlin,
+  SiMongodb,
+  SiMysql,
+  SiNeo4J,
+  SiNextdotjs,
+  SiPostgresql,
+  SiPython,
+  SiSpringboot,
+  SiTailwindcss,
+  SiTypescript,
+} from "react-icons/si";
+import { FaAws, FaJava, FaMicrosoft } from "react-icons/fa";
+import { CgCPlusPlus, CgDatabase } from "react-icons/cg";
 
-const selectOptions = skills.map((skill) => {
-  return {
-    value: skill.category,
-    label: skill.category,
+
+export default function Learned({ skills }: { skills: skillsInterface[] }) {
+  const ICONS: Record<string, any> = {
+    DiDart,
+    DiJavascript1,
+    DiNodejs,
+    DiPython,
+    DiReact,
+    SiAndroid,
+    SiApollographql,
+    SiCss,
+    SiDjango,
+    SiExpress,
+    SiFigma,
+    SiFirebase,
+    SiFlutter,
+    SiFramer,
+    SiGithub,
+    SiGraphql,
+    SiHtml5,
+    SiKotlin,
+    SiMongodb,
+    SiMysql,
+    SiNeo4J,
+    SiNextdotjs,
+    SiPostgresql,
+    SiPython,
+    SiSpringboot,
+    SiTailwindcss,
+    SiTypescript,
+    FaAws,
+    FaJava,
+    FaMicrosoft,
+    CgCPlusPlus,
+    CgDatabase,
   };
-});
+  const sortedSkills = [...skills].sort((a, b) =>
+    a.category.localeCompare(b.category)
+  );
 
-export default function Learned() {
+  const selectOptions = sortedSkills.map((skill) => {
+    return {
+      value: skill.category,
+      label: skill.category,
+    };
+  });
+
   const { screenwidth } = useContext(WidthContext);
   const [tab, setTab] = useState(selectOptions[0]);
-  const [filteredSkills, setFilteredSkills] = useState<skillInterface[]>([]);
+  const [filteredSkills, setFilteredSkills] = useState<Skill[]>([]);
 
   useEffect(() => {
-    const currentSkills = skills.find((skill) => {
+    const category = sortedSkills.find((skill) => {
       return skill.category === tab.value;
-    }).skills;
+    });
+    const currentSkills = category ? category.skills : [];
     currentSkills.forEach((skill) => {
       skill.key = tab.value;
     });
@@ -32,7 +99,7 @@ export default function Learned() {
     <div className="w-full flex justify-start items-center flex-col">
       {screenwidth > 768 ? (
         <div className="flex gap-3 justify-center items-center px-5 py-16">
-          {skills.map((skill, i) => {
+          {sortedSkills.map((skill, i) => {
             return (
               <p
                 key={i}
@@ -79,10 +146,23 @@ export default function Learned() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
               viewport={{ once: true }}
-              key={`${skill.name}-${skill.key}`}
+              key={`${skill.key}-${skill.name}-${i}`}
               className="px-10 py-4 bg-neutral-100 border border-neutral-700 rounded-lg w-full flex justify-center gap-2 items-center"
             >
-              <p className="min-w-[20px]">{skill.icon}</p>
+              <p className="min-w-[20px]">
+                {(() => {
+                  if (!skill.icon) return null;
+                  const Icon = ICONS[skill.icon];
+                  if (Icon) return <Icon />;
+                  if (skill.image)
+                    return (
+                      // fallback to image if provided
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={skill.image} alt={skill.name} className="w-5 h-5" />
+                    );
+                  return null;
+                })()}
+              </p>
               <p>{skill.name}</p>
             </motion.div>
           );

@@ -1,4 +1,4 @@
-Sitemap: https://adnansh.in/sitemap.xml
+Sitemap: https://adnan-husain.com/sitemap.xml
 
 User-Agent: *
 Disallow: /admin

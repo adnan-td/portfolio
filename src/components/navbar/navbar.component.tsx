@@ -139,7 +139,7 @@ export default function NavbarComponent() {
                     whileHover={whileHover}
                   />
                   <NavLinksComponent
-                    to="https://devpiece.adnansh.in"
+                    to="https://devpiece.adnan-husain.com"
                     target="_blank"
                     text="Blog"
                     handleClick={closeNavbar}
