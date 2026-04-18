@@ -5,6 +5,7 @@ import { Skill, skillsInterface } from "./skills";
 import Select from "react-select";
 import { WidthContext } from "../../context/screenwidth/screenwidth.context";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { DiDart, DiJavascript1, DiNodejs, DiPython, DiReact } from "react-icons/di";
 import {
   SiAndroid,
@@ -32,6 +33,7 @@ import {
 } from "react-icons/si";
 import { FaAws, FaJava, FaMicrosoft } from "react-icons/fa";
 import { CgCPlusPlus, CgDatabase } from "react-icons/cg";
+import urlFor from "../../../lib/sanity.urlfor";
 
 
 export default function Learned({ skills }: { skills: skillsInterface[] }) {
@@ -69,9 +71,18 @@ export default function Learned({ skills }: { skills: skillsInterface[] }) {
     CgCPlusPlus,
     CgDatabase,
   };
-  const sortedSkills = [...skills].sort((a, b) =>
-    a.category.localeCompare(b.category)
-  );
+  const sortedSkills = [...skills].sort((a, b) => {
+    const categoryOrder: Record<string, number> = {
+      "All": 0,
+      "Languages": 1,
+      "Frontend": 2,
+      "Backend": 3,
+      "Database": 4,
+      "Ai": 5,
+      "Others": 6,
+    }
+    return categoryOrder[a.category] - categoryOrder[b.category];
+  });
 
   const selectOptions = sortedSkills.map((skill) => {
     return {
@@ -158,7 +169,13 @@ export default function Learned({ skills }: { skills: skillsInterface[] }) {
                     return (
                       // fallback to image if provided
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={skill.image} alt={skill.name} className="w-5 h-5" />
+                      <Image
+                        src={urlFor(skill.image).url()}
+                        alt={skill.name}
+                        className="w-5 h-5"
+                        width="20"
+                        height="20"
+                      />
                     );
                   return null;
                 })()}
