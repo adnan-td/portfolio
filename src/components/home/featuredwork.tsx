@@ -2,7 +2,7 @@
 
 import { useContext, useState } from "react";
 import { WidthContext } from "../../context/screenwidth/screenwidth.context";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useScroll, useTransform, motion, MotionValue, useMotionValueEvent } from "framer-motion";
+import { useScroll, useTransform, motion, MotionValue, useMotionValueEvent } from "motion/react";
 import { useRef } from "react";
 
 export default function ParallaxComponent({

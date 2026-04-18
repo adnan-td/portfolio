@@ -1,15 +1,19 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { client } from "../../../../lib/sanity.client";
 
 export async function POST(req: Request) {
   try {
-    const gmailUser = process.env.GMAIL_USER;
-    const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
-    const contactMailFrom = process.env.CONTACT_MAIL_FROM;
-    const contactMailTo = process.env.CONTACT_MAIL_TO;
+    // fetch mail config from Sanity
+    const cfg = await client.fetch(`*[_type == "siteConfig"][0]{gmailUser, gmailAppPassword, contactMailFrom, contactMailTo}`);
+
+    const gmailUser = cfg?.gmailUser;
+    const gmailAppPassword = cfg?.gmailAppPassword;
+    const contactMailFrom = cfg?.contactMailFrom;
+    const contactMailTo = cfg?.contactMailTo;
 
     if (!gmailUser || !gmailAppPassword || !contactMailFrom || !contactMailTo) {
-      return new NextResponse("Missing email environment variables.", {
+      return new NextResponse("Missing email configuration in Sanity.", {
         status: 500,
       });
     }

@@ -4,7 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import { Skill, skillsInterface } from "./skills";
 import Select from "react-select";
 import { WidthContext } from "../../context/screenwidth/screenwidth.context";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 import { DiDart, DiJavascript1, DiNodejs, DiPython, DiReact } from "react-icons/di";
 import {

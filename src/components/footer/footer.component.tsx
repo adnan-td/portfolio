@@ -1,8 +1,9 @@
 "use client";
 
-import { useScroll, useTransform, motion, MotionValue, useMotionValueEvent } from "framer-motion";
-import { useRef, useContext } from "react";
+import { useScroll, useTransform, motion, MotionValue, useMotionValueEvent } from "motion/react";
+import { useRef, useContext, useEffect, useState } from "react";
 import { BsLinkedin, BsInstagram, BsTwitter, BsGithub } from "react-icons/bs";
+import { client } from "../../../lib/sanity.client";
 
 import { NavStatusContext } from "../../context/navstatus/navstatus.context";
 
@@ -13,6 +14,22 @@ export default function FooterComponent() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
   const { setIsInverted } = useContext(NavStatusContext);
   const y = useParallax(scrollYProgress, [-500, 0]);
+  const [socials, setSocials] = useState<Array<any>>([]);
+  const [contactEmail, setContactEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const s = await client.fetch(`*[_type == "social"] | order(title asc)`);
+        setSocials(s || []);
+        const cfg = await client.fetch(`*[_type == "siteConfig"][0]{contactMailTo}`);
+        if (cfg && cfg.contactMailTo) setContactEmail(cfg.contactMailTo);
+      } catch (e) {
+        console.error("Sanity fetch error (footer):", e);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <motion.div
       className="relative left-0 top-0 min-h-screen bg-black text-white flex flex-col justify-center items-center gap-10 pt-10 overflow-hidden"
@@ -35,9 +52,9 @@ export default function FooterComponent() {
           <div id="footer-bottom" className="flex gap-7 justify-center items-center lg:flex-col">
             <div className="flex flex-col justify-center items-start lg:items-center">
               <div className="footer-mail">
-                <a href="mailto:adnan.s.husain.1@gmail.com">
+                <a href={`mailto:${contactEmail ?? "adnan.s.husain.1@gmail.com"}`}>
                   <em>
-                    <span style={{ fontStyle: "normal" }}>adnan.s.husain.1@gmail.com</span>
+                    <span style={{ fontStyle: "normal" }}>{contactEmail ?? "adnan.s.husain.1@gmail.com"}</span>
                   </em>
                 </a>
               </div>
@@ -49,29 +66,21 @@ export default function FooterComponent() {
               </div>
               <div className="footer-link mt-3 mb-6">
                 <p className="w-full">Copyright &#169; 2023-24</p>
-              </div>
+              </div>  
             </div>
             <div id="footerSocials" className="grid grid-cols-2 gap-5">
-              <SocialLink
-                href="https://www.linkedin.com/in/adnan-shabbir-husain/"
-                content="LinkedIn"
-                icon={<BsLinkedin />}
-              />
-              <SocialLink
-                href="https://github.com/Adnan-S-Husain"
-                content="GitHub"
-                icon={<BsGithub />}
-              />
-              <SocialLink
-                href="https://www.instagram.com/adnan_td0/"
-                content="Instagram"
-                icon={<BsInstagram />}
-              />
-              <SocialLink
-                href="https://twitter.com/adnan_td"
-                content="Twitter"
-                icon={<BsTwitter />}
-              />
+              {socials.length > 0 ? (
+                socials.map((s: any) => (
+                  <SocialLink key={s._id} href={s.url} content={s.title} icon={getIconForTitle(s.title)} />
+                ))
+              ) : (
+                <>
+                  <SocialLink href="https://www.linkedin.com/in/adnan-shabbir-husain/" content="LinkedIn" icon={<BsLinkedin />} />
+                  <SocialLink href="https://github.com/Adnan-S-Husain" content="GitHub" icon={<BsGithub />} />
+                  <SocialLink href="https://www.instagram.com/adnan_td0/" content="Instagram" icon={<BsInstagram />} />
+                  <SocialLink href="https://twitter.com/adnan_td" content="Twitter" icon={<BsTwitter />} />
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -100,4 +109,13 @@ function SocialLink({ href, content, icon }: { href: string; content: string; ic
       </a>
     </div>
   );
+}
+
+function getIconForTitle(title: string) {
+  const t = title.toLowerCase();
+  if (t.includes("linkedin")) return <BsLinkedin />;
+  if (t.includes("github")) return <BsGithub />;
+  if (t.includes("instagram")) return <BsInstagram />;
+  if (t.includes("twitter")) return <BsTwitter />;
+  return <BsLinkedin />;
 }

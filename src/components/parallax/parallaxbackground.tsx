@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useTransform, useScroll, MotionValue } from "framer-motion";
+import { motion, useTransform, useScroll, MotionValue } from "motion/react";
 
 const ParallaxEffectBgImg = ({ img, className }: { img: string; className: string }) => {
   const ref = useRef(null);
