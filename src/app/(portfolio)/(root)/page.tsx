@@ -13,12 +13,12 @@ import { groupSkills } from "@/components/home/skills";
 export const revalidate = 3600;
 
 export default async function Home() {
-  const { experiences, projects, skills } = await client.fetch(getExperiencesAndProjects);
+  const { experiences, projects, skills, pills } = await client.fetch(getExperiencesAndProjects);
   const parsedSkills = groupSkills(skills);
 
   return (
     <div className="px-[5vw] flex flex-col w-full items-center">
-      <LandingPage />
+      <LandingPage pills={pills} />
 
       <div className="flex flex-col gap-6 mb-20">
         <div className="text-6xl font-semibold flex flex-col gap-3 lg:text-5xl">
@@ -91,6 +91,7 @@ const getExperiencesAndProjects = groq`
       "icon": iconReact,
       "image": iconImage.asset->url,
       "key": _id
-    }
+    },
+    "pills": *[_type == "pill"] | order(order asc)
   }
 `;

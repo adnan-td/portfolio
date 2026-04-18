@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, scale } from "motion/react";
 import { useContext, useEffect, useState } from "react";
 import Hamburger from "./hamburger";
 import { MdArticle as ArticleIcon } from "react-icons/md";
@@ -57,7 +57,7 @@ export default function NavbarComponent() {
     },
   };
 
-  const whileHover = { scale: 0.97 };
+  const whileHover = { scale: 1.10 };
 
   return (
     <div className="flex justify-between pl-14 py-6 items-center min-h-20 gap-3 sm:pl-7">
@@ -76,9 +76,11 @@ export default function NavbarComponent() {
         <div className="flex gap-12 items-center font-sono font-medium text-xl sm:gap-0">
           {/* resume link (uses Sanity-managed resume) */}
           {resumeUrl ? (
-            <a href={resumeUrl} target="_blank" rel="noreferrer" className="flex items-center gap-1 sm:hidden">
-              <ArticleIcon /> resume
-            </a>
+            <motion.div whileHover={whileHover}>
+              <a href={resumeUrl} target="_blank" rel="noreferrer" className="flex items-center gap-1 sm:hidden">
+                <ArticleIcon /> resume
+              </a>
+            </motion.div>
           ) : null}
           <button style={{ cursor: "default" }}>menu</button>
           <div className="h-[60px] w-[70px] sm:w-[80px]"></div>
@@ -110,7 +112,7 @@ export default function NavbarComponent() {
                   <div id="socials" className="flex flex-col gap-3 font-semibold text-base sm:hidden">
                     <p className="font-base mb-5 text-neutral-400">Socials</p>
                     {navSocials.map((s) => (
-                      <NavSocialsComponent key={s._id} text={s.title} href={s.url} whileHover={whileHover} />
+                      <NavSocialsComponent key={s._id} text={s.title} href={s.url} whileHover={{scale: 1.05, x: 5}} />
                     ))}
                   </div>
                   <div
@@ -155,6 +157,17 @@ export default function NavbarComponent() {
                     handleClick={closeNavbar}
                     whileHover={whileHover}
                   />
+                  {resumeUrl ? (
+                    <a
+                      href={resumeUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={closeNavbar}
+                      className="hidden xl:flex items-center gap-1"
+                    >
+                      Resume <ArticleIcon />
+                    </a>
+                  ) : null}
                 </div>
 
                 <div id="socials" className="hidden flex-col gap-3 font-semibold text-base sm:flex">
@@ -213,11 +226,11 @@ function NavSocialsComponent({
   href: string;
 }) {
   return (
-    <div>
-      <motion.a href={href} whileHover={whileHover} target="_blank" rel="noreferrer">
+    <motion.div className="cursor-pointer pointer-events-auto" whileHover={whileHover}>
+      <a href={href}  target="_blank" rel="noreferrer">
         {text}
-      </motion.a>
-    </div>
+      </a>
+    </motion.div>
   );
 }
 

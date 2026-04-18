@@ -4,5 +4,6 @@ import skill from './skill'
 import resume from './resume'
 import social from './social'
 import siteConfig from './siteConfig'
+import pill from './pill'
 
-export const schemaTypes = [experience, project, skill, resume, social, siteConfig]
+export const schemaTypes = [experience, project, skill, resume, social, siteConfig, pill]

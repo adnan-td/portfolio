@@ -1,3 +1,25 @@
+@keyframes characterRock {
+  0% {
+    transform: translateY(0px) rotateZ(-1deg);
+  }
+  25% {
+    transform: translateY(-3px) rotateZ(0.5deg);
+  }
+  50% {
+    transform: translateY(0px) rotateZ(1deg);
+  }
+  75% {
+    transform: translateY(-2px) rotateZ(-0.5deg);
+  }
+  100% {
+    transform: translateY(0px) rotateZ(-1deg);
+  }
+}
+
+.character-rock {
+  animation: characterRock 6s ease-in-out infinite;
+}
+
 .main-cont {
   background-color: transparent;
   .main-title {
